@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Dynamic Title: Pages can override this -->
+    <title>{% block title %}CardioSense | Cardiovascular Risk Intelligence{% endblock %}</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+        <!-- ================= TOP BAR ================= -->
+
+        <header class="topbar glass">
+
+            <!-- BRAND -->
+
+            <a class="brand-mark" href="/">
+
+                <div class="pulse-icon">⌁</div>
+
+                <div>
+                    <strong>
+                        CARDIO<span>.SENSE</span>
+                    </strong>
+
+                    <small>
+                        AI HEALTH INTELLIGENCE
+                    </small>
+                </div>
+
+            </a>
+
+
+            <!-- NAVIGATION -->
+            <!-- Note: We will dynamically set the 'active' class later -->
+            <nav class="top-nav">
+
+                <a class="{% if request.path == '/' %}active{% endif %}" href="/">
+                    Home
+                </a>
+
+                <a class="{% if request.path == '/predict' %}active{% endif %}" href="/predict">
+                    Predict
+                </a>
+
+                <a href="#">
+                    Insights
+                </a>
+
+                <a class="{% if request.path == '/about' %}active{% endif %}" href="/about">
+                    About
+                </a>
+
+            </nav>
+
+
+            <!-- ACTIONS -->
+
+            <div class="top-actions">
+
+                <div class="search">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        placeholder="Search anything..."
+                    >
+
+                </div>
+
+
+                <button class="icon-btn">
+                    ♧
+                    <i></i>
+                </button>
+
+
+                <div class="avatar">
+                    CS
+                </div>
+
+
+                <div class="model-status">
+
+                    <span></span>
+
+                    MODEL v1.0
+
+                    <b>
+                        READY
+                    </b>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- ================= DYNAMIC CONTENT ================= -->
+        <!-- This is where each page's unique content will be injected -->
+        {% block content %}{% endblock %}
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer class="footer">
+
+            <span>
+                CARDIO.SENSE
+            </span>
+
+            <span>
+                PREVENT &nbsp; | &nbsp;
+                PREDICT &nbsp; | &nbsp;
+                PROGRESS
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================================================
+     FIXED BOTTOM QUOTE (Global)
+     ========================================================= -->
+
+<div class="quote-block">
+
+    <div class="quote-line"></div>
+
+    <p>
+        Knowledge today<br>
+        <b>for a healthier tomorrow.</b>
+    </p>
+
+    <small>
+        DATA SCIENCE FOR<br>
+        BETTER LIVES.
+    </small>
+
+</div>
+
+
+<!-- =========================================================
+     PAGE-SPECIFIC SCRIPTS
+     ========================================================= -->
+{% block scripts %}{% endblock %}
+
+
+</body>
+</html>
+
+</body>
+</html>

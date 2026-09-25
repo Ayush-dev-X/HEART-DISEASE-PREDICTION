@@ -14,83 +14,34 @@
 
 <div class="app-shell">
 
-    <!-- ================= SIDEBAR ================= -->
-
-    <aside class="sidebar glass">
-
-        <div class="brand-mark">
-
-            <div class="pulse-icon">⌁</div>
-
-            <div>
-                <strong>CARDIO<span>.SENSE</span></strong>
-                <small>AI HEALTH INTELLIGENCE</small>
-            </div>
-
-        </div>
-
-
-        <nav class="side-nav">
-
-            <a class="nav-item active" href="/">
-                <span class="nav-icon">♡</span>
-                <span>Predict</span>
-            </a>
-
-            <a class="nav-item" href="/">
-                <span class="nav-icon">▦</span>
-                <span>Dashboard</span>
-            </a>
-
-            <a class="nav-item" href="#">
-                <span class="nav-icon">⌁</span>
-                <span>Insights</span>
-            </a>
-
-            <a class="nav-item" href="#">
-                <span class="nav-icon">◷</span>
-                <span>History</span>
-            </a>
-
-            <a class="nav-item" href="#">
-                <span class="nav-icon">⚙</span>
-                <span>Settings</span>
-            </a>
-
-        </nav>
-
-
-        <div class="sidebar-note">
-
-            <div class="tiny-line"></div>
-
-            <p>
-                Knowledge today<br>
-                <b>for a healthier tomorrow.</b>
-            </p>
-
-            <small>
-                DATA SCIENCE FOR<br>
-                BETTER LIVES.
-            </small>
-
-        </div>
-
-    </aside>
-
-
     <!-- ================= MAIN ================= -->
 
     <main class="main">
 
-        <!-- TOP BAR -->
+        <!-- ================= TOP BAR ================= -->
 
         <header class="topbar glass">
 
-            <div class="mobile-brand">
-                CARDIO<span>.SENSE</span>
-            </div>
+            <!-- BRAND -->
 
+            <a class="brand-mark" href="/">
+
+                <div class="pulse-icon">⌁</div>
+
+                <div>
+                    <strong>
+                        CARDIO<span>.SENSE</span>
+                    </strong>
+
+                    <small>
+                        AI HEALTH INTELLIGENCE
+                    </small>
+                </div>
+
+            </a>
+
+
+            <!-- NAVIGATION -->
 
             <nav class="top-nav">
 
@@ -106,12 +57,14 @@
                     Insights
                 </a>
 
-                <a href="#">
+                <a href="/about">
                     About
                 </a>
 
             </nav>
 
+
+            <!-- ACTIONS -->
 
             <div class="top-actions">
 
@@ -242,10 +195,12 @@
                 <div class="scan-ring ring-b"></div>
 
                 <div class="heart-core">
+
                     <img
                         src="{{ url_for('static', filename='images/anatomical-heart.png') }}"
                         alt=""
                     >
+
                 </div>
 
                 <div class="pulse-wave">
@@ -456,6 +411,29 @@
     </main>
 
 </div>
+
+
+
+<!-- =========================================================
+     FIXED BOTTOM QUOTE
+     ========================================================= -->
+
+<div class="quote-block">
+
+    <div class="quote-line"></div>
+
+    <p>
+        Knowledge today<br>
+        <b>for a healthier tomorrow.</b>
+    </p>
+
+    <small>
+        DATA SCIENCE FOR<br>
+        BETTER LIVES.
+    </small>
+
+</div>
+
 
 </body>
 </html>

@@ -1,420 +1,105 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
+{% block title %}CardioSense | Prediction Result{% endblock %}
 
-    <meta charset="UTF-8">
+{% block content %}
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <!-- ================= HEADING ================= -->
 
-    <title>
-        CardioSense | Prediction Result
-    </title>
+    <section class="page-heading">
 
-    <link
-        rel="stylesheet"
-        href="{{ url_for('static', filename='css/style.css') }}"
-    >
+        <div>
 
-</head>
-
-
-<body>
-
-<div class="app-shell">
-
-
-    <!-- ================= SIDEBAR ================= -->
-
-    <aside class="sidebar glass">
-
-        <div class="brand-mark">
-
-            <div class="pulse-icon">
-                ⌁
-            </div>
-
-            <div>
-
-                <strong>
-                    CARDIO<span>.SENSE</span>
-                </strong>
-
-                <small>
-                    AI HEALTH INTELLIGENCE
-                </small>
-
-            </div>
-
-        </div>
-
-
-        <nav class="side-nav">
-
-            <a
-                class="nav-item active"
-                href="/predict"
-            >
-
-                <span class="nav-icon">
-                    ♡
-                </span>
-
-                <span>
-                    Predict
-                </span>
-
-            </a>
-
-
-            <a
-                class="nav-item"
-                href="/"
-            >
-
-                <span class="nav-icon">
-                    ▦
-                </span>
-
-                <span>
-                    Dashboard
-                </span>
-
-            </a>
-
-
-            <a class="nav-item" href="#">
-
-                <span class="nav-icon">
-                    ⌁
-                </span>
-
-                <span>
-                    Insights
-                </span>
-
-            </a>
-
-
-            <a class="nav-item" href="#">
-
-                <span class="nav-icon">
-                    ◷
-                </span>
-
-                <span>
-                    History
-                </span>
-
-            </a>
-
-
-            <a class="nav-item" href="#">
-
-                <span class="nav-icon">
-                    ⚙
-                </span>
-
-                <span>
-                    Settings
-                </span>
-
-            </a>
-
-        </nav>
-
-
-        <div class="sidebar-note">
-
-            <div class="tiny-line"></div>
-
-            <p>
-                Knowledge today<br>
-                <b>
-                    for a healthier tomorrow.
-                </b>
+            <p class="eyebrow">
+                PREDICTION RESULT
             </p>
 
-            <small>
-                DATA SCIENCE FOR<br>
-                BETTER LIVES.
-            </small>
+            <h1>
+                Risk Assessment
+            </h1>
+
+            <p>
+                CardioSense analysis has been completed.
+            </p>
 
         </div>
 
-    </aside>
+
+        <a
+            href="/predict"
+            class="btn btn-secondary"
+        >
+
+            New Assessment
+
+            <span>
+                ↻
+            </span>
+
+        </a>
+
+    </section>
 
 
 
-    <!-- ================= MAIN ================= -->
+    <!-- ================= RESULT GRID ================= -->
 
-    <main class="main">
-
-
-        <!-- TOP BAR -->
-
-        <header class="topbar glass">
-
-            <div class="mobile-brand">
-                CARDIO<span>.SENSE</span>
-            </div>
+    <section class="result-grid">
 
 
-            <nav class="top-nav">
+        <!-- ================= RISK CARD ================= -->
 
-                <a href="/">
-                    Home
-                </a>
+        <div class="result-risk-card glass">
 
-                <a
-                    class="active"
-                    href="/predict"
-                >
-                    Predict
-                </a>
+            <div class="result-card-title">
 
-                <a href="#">
-                    Insights
-                </a>
-
-                <a href="{{ url_for('about') }}">
-                    About
-                </a>
-
-            </nav>
-
-
-            <div class="top-actions">
-
-                <div class="search">
-
-                    <span>
-                        ⌕
-                    </span>
-
-                    <input
-                        type="text"
-                        placeholder="Search anything..."
-                    >
-
-                </div>
-
-
-                <button class="icon-btn">
-                    ♧
-                    <i></i>
-                </button>
-
-
-                <div class="avatar">
-                    CS
-                </div>
-
-
-                <div class="model-status">
-
-                    <span></span>
-
-                    MODEL v1.0
-
-                    <b>
-                        READY
-                    </b>
-
-                </div>
-
-            </div>
-
-        </header>
-
-
-
-        <!-- ================= HEADING ================= -->
-
-        <section class="page-heading">
-
-            <div>
-
-                <p class="eyebrow">
-                    PREDICTION RESULT
-                </p>
-
-                <h1>
-                    Risk Assessment
-                </h1>
-
-                <p>
-                    CardioSense analysis has been completed.
-                </p>
-
-            </div>
-
-
-            <a
-                href="/predict"
-                class="btn btn-secondary"
-            >
-
-                New Assessment
-
-                <span>
-                    ↻
+                <span class="result-icon">
+                    ◎
                 </span>
 
-            </a>
+                <div>
 
-        </section>
+                    <h2>
+                        PREDICTED RISK
+                    </h2>
 
-
-
-        <!-- ================= RESULT GRID ================= -->
-
-        <section class="result-grid">
-
-
-            <!-- ================= RISK CARD ================= -->
-
-            <div class="result-risk-card glass">
-
-                <div class="result-card-title">
-
-                    <span class="result-icon">
-                        ◎
-                    </span>
-
-                    <div>
-
-                        <h2>
-                            PREDICTED RISK
-                        </h2>
-
-                        <p>
-                            Logistic Regression
-                        </p>
-
-                    </div>
-
-                    <div class="analysis-complete">
-                        <span></span>
-                        ANALYSIS COMPLETE
-                    </div>
+                    <p>
+                        Logistic Regression
+                    </p>
 
                 </div>
 
-
-
-                <!-- RISK CIRCLE -->
-
-                <div class="risk-circle-wrapper">
-
-                    <div
-                        class="risk-circle"
-                        style="--risk: {{ risk_percentage }}%;"
-                    >
-
-                        <div class="risk-inner">
-
-                            <strong>
-                                {{ risk_percentage }}%
-                            </strong>
-
-                            <span
-                                class="{{ 'high-risk' if risk_percentage >= 50 else 'lower-risk' }}"
-                            >
-
-                                {{ risk_level }}
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
+                <div class="analysis-complete">
+                    <span></span>
+                    ANALYSIS COMPLETE
                 </div>
 
-
-
-                <!-- RESULT MESSAGE -->
-
-                <div class="risk-message">
-
-                    <div class="warning-icon">
-                        !
-                    </div>
-
-                    <div>
-
-                        {% if risk_percentage >= 50 %}
-
-                        <h3>
-                            Higher likelihood detected.
-                        </h3>
-
-                        <p>
-
-                            Based on the information provided,
-                            the model estimates a higher probability
-                            of cardiovascular disease.
-
-                        </p>
-
-                        {% else %}
-
-                        <h3>
-                            Lower likelihood detected.
-                        </h3>
-
-                        <p>
-
-                            Based on the information provided,
-                            the model estimates a lower probability
-                            of cardiovascular disease.
-
-                        </p>
-
-                        {% endif %}
-
-                    </div>
-
-                </div>
+            </div>
 
 
 
-                <!-- MODEL INFO -->
+            <!-- RISK CIRCLE -->
 
-                <div class="model-result-card">
+            <div class="risk-circle-wrapper">
 
-                    <div>
+                <div
+                    class="risk-circle"
+                    style="--risk: {{ risk_percentage }}%;"
+                >
 
-                        <span>
-                            MODEL
-                        </span>
+                    <div class="risk-inner">
 
                         <strong>
-                            Logistic Regression
+                            {{ risk_percentage }}%
                         </strong>
 
-                    </div>
+                        <span
+                            class="{{ 'high-risk' if risk_percentage >= 50 else 'lower-risk' }}"
+                        >
 
+                            {{ risk_level }}
 
-                    <div>
-
-                        <span>
-                            PREDICTION
                         </span>
-
-                        <strong>
-
-                            {% if prediction == 1 %}
-                                Positive
-                            {% else %}
-                                Negative
-                            {% endif %}
-
-                        </strong>
 
                     </div>
 
@@ -424,132 +109,45 @@
 
 
 
-            <!-- ================= PATIENT SUMMARY ================= -->
+            <!-- RESULT MESSAGE -->
 
-            <div class="patient-card glass">
+            <div class="risk-message">
 
-                <div class="result-card-title">
-
-                    <span class="result-icon">
-                        ♙
-                    </span>
-
-                    <div>
-
-                        <h2>
-                            PATIENT SUMMARY
-                        </h2>
-
-                        <p>
-                            Assessment information
-                        </p>
-
-                    </div>
-
+                <div class="warning-icon">
+                    !
                 </div>
 
+                <div>
 
-                <div class="patient-grid">
+                    {% if risk_percentage >= 50 %}
 
+                    <h3>
+                        Higher likelihood detected.
+                    </h3>
 
-                    <div>
-                        <span>AGE</span>
-                        <strong>
-                            {{ age }} years
-                        </strong>
-                    </div>
+                    <p>
 
+                        Based on the information provided,
+                        the model estimates a higher probability
+                        of cardiovascular disease.
 
-                    <div>
-                        <span>SEX</span>
-                        <strong>
-                            {{ "Male" if sex == "M" else "Female" }}
-                        </strong>
-                    </div>
+                    </p>
 
+                    {% else %}
 
-                    <div>
-                        <span>CHEST PAIN</span>
-                        <strong>
-                            {{ chest_pain }}
-                        </strong>
-                    </div>
+                    <h3>
+                        Lower likelihood detected.
+                    </h3>
 
+                    <p>
 
-                    <div>
-                        <span>RESTING BP</span>
-                        <strong>
-                            {{ resting_bp }} mm Hg
-                        </strong>
-                    </div>
+                        Based on the information provided,
+                        the model estimates a lower probability
+                        of cardiovascular disease.
 
+                    </p>
 
-                    <div>
-                        <span>CHOLESTEROL</span>
-                        <strong>
-                            {{ cholesterol }} mg/dL
-                        </strong>
-                    </div>
-
-
-                    <div>
-                        <span>FASTING SUGAR</span>
-                        <strong>
-
-                            {% if fasting_bs == 1 %}
-                                &gt; 120 mg/dL
-                            {% else %}
-                                ≤ 120 mg/dL
-                            {% endif %}
-
-                        </strong>
-                    </div>
-
-
-                    <div>
-                        <span>RESTING ECG</span>
-                        <strong>
-                            {{ resting_ecg }}
-                        </strong>
-                    </div>
-
-
-                    <div>
-                        <span>MAX HEART RATE</span>
-                        <strong>
-                            {{ max_hr }} bpm
-                        </strong>
-                    </div>
-
-
-                    <div>
-                        <span>EXERCISE ANGINA</span>
-                        <strong>
-
-                            {% if exercise_angina == "Y" %}
-                                Yes
-                            {% else %}
-                                No
-                            {% endif %}
-
-                        </strong>
-                    </div>
-
-
-                    <div>
-                        <span>ST DEPRESSION</span>
-                        <strong>
-                            {{ oldpeak }} mm
-                        </strong>
-                    </div>
-
-
-                    <div>
-                        <span>ST SLOPE</span>
-                        <strong>
-                            {{ st_slope }}
-                        </strong>
-                    </div>
+                    {% endif %}
 
                 </div>
 
@@ -557,238 +155,389 @@
 
 
 
-            <!-- ================= INTERPRETATION ================= -->
+            <!-- MODEL INFO -->
 
-            <div class="interpretation-card glass">
+            <div class="model-result-card">
 
-                <div class="result-card-title">
-
-                    <span class="result-icon">
-                        ◇
-                    </span>
-
-                    <div>
-
-                        <h2>
-                            WHAT DOES THIS MEAN?
-                        </h2>
-
-                        <p>
-                            Understanding the prediction
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <p class="interpretation-text">
-
-                    The prediction represents the output of
-                    the trained CardioSense machine learning
-                    model based on the parameters entered.
-
-                    A higher probability indicates that the
-                    model identified patterns associated with
-                    cardiovascular disease in the training data.
-
-                </p>
-
-
-                <div class="medical-note">
-
-                    <strong>
-                        Important
-                    </strong>
+                <div>
 
                     <span>
-                        This is a machine learning prediction,
-                        not a medical diagnosis. Consult a
-                        qualified healthcare professional for
-                        medical advice.
+                        MODEL
                     </span>
 
+                    <strong>
+                        Logistic Regression
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        PREDICTION
+                    </span>
+
+                    <strong>
+
+                        {% if prediction == 1 %}
+                            Positive
+                        {% else %}
+                            Negative
+                        {% endif %}
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= PATIENT SUMMARY ================= -->
+
+        <div class="patient-card glass">
+
+            <div class="result-card-title">
+
+                <span class="result-icon">
+                    ♙
+                </span>
+
+                <div>
+
+                    <h2>
+                        PATIENT SUMMARY
+                    </h2>
+
+                    <p>
+                        Assessment information
+                    </p>
+
                 </div>
 
             </div>
 
 
-        </section>
+            <div class="patient-grid">
+
+
+                <div>
+                    <span>AGE</span>
+                    <strong>
+                        {{ age }} years
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span>SEX</span>
+                    <strong>
+                        {{ "Male" if sex == "M" else "Female" }}
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span>CHEST PAIN</span>
+                    <strong>
+                        {{ chest_pain }}
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span>RESTING BP</span>
+                    <strong>
+                        {{ resting_bp }} mm Hg
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span>CHOLESTEROL</span>
+                    <strong>
+                        {{ cholesterol }} mg/dL
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span>FASTING SUGAR</span>
+                    <strong>
+
+                        {% if fasting_bs == 1 %}
+                            &gt; 120 mg/dL
+                        {% else %}
+                            ≤ 120 mg/dL
+                        {% endif %}
+
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span>RESTING ECG</span>
+                    <strong>
+                        {{ resting_ecg }}
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span>MAX HEART RATE</span>
+                    <strong>
+                        {{ max_hr }} bpm
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span>EXERCISE ANGINA</span>
+                    <strong>
+
+                        {% if exercise_angina == "Y" %}
+                            Yes
+                        {% else %}
+                            No
+                        {% endif %}
+
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span>ST DEPRESSION</span>
+                    <strong>
+                        {{ oldpeak }} mm
+                    </strong>
+                </div>
+
+
+                <div>
+                    <span>ST SLOPE</span>
+                    <strong>
+                        {{ st_slope }}
+                    </strong>
+                </div>
+
+            </div>
+
+        </div>
 
 
 
-        <!-- ====================================================
-             PERSONALIZED HEALTH GUIDANCE
-        ==================================================== -->
+        <!-- ================= INTERPRETATION ================= -->
 
-        <section class="guidance-section">
+        <div class="interpretation-card glass">
 
+            <div class="result-card-title">
 
-            <!-- ================= SECTION HEADING ================= -->
+                <span class="result-icon">
+                    ◇
+                </span>
 
-            <div class="guidance-heading">
+                <div>
 
-                <p class="eyebrow">
-                    PERSONALIZED INSIGHTS
-                </p>
+                    <h2>
+                        WHAT DOES THIS MEAN?
+                    </h2>
 
-                <h2>
-                    Health Guidance
-                </h2>
+                    <p>
+                        Understanding the prediction
+                    </p>
 
-                <p>
-                    Suggestions and precautionary measures based
-                    on your assessment
-                </p>
+                </div>
 
             </div>
 
 
+            <p class="interpretation-text">
 
-            <!-- ================= GUIDANCE GRID ================= -->
+                The prediction represents the output of
+                the trained CardioSense machine learning
+                model based on the parameters entered.
 
-            <div class="guidance-grid">
+                A higher probability indicates that the
+                model identified patterns associated with
+                cardiovascular disease in the training data.
+
+            </p>
 
 
-                <!-- ================= SUGGESTIONS ================= -->
+            <div class="medical-note">
 
-                <div class="recommendations-card glass">
+                <strong>
+                    Important
+                </strong>
 
-                    <div class="result-card-title">
+                <span>
+                    This is a machine learning prediction,
+                    not a medical diagnosis. Consult a
+                    qualified healthcare professional for
+                    medical advice.
+                </span>
 
-                        <span class="result-icon">
-                            +
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ====================================================
+         PERSONALIZED HEALTH GUIDANCE
+    ==================================================== -->
+
+    <section class="guidance-section">
+
+
+        <!-- ================= SECTION HEADING ================= -->
+
+        <div class="guidance-heading">
+
+            <p class="eyebrow">
+                PERSONALIZED INSIGHTS
+            </p>
+
+            <h2>
+                Health Guidance
+            </h2>
+
+            <p>
+                Suggestions and precautionary measures based
+                on your assessment
+            </p>
+
+        </div>
+
+
+
+        <!-- ================= GUIDANCE GRID ================= -->
+
+        <div class="guidance-grid">
+
+
+            <!-- ================= SUGGESTIONS ================= -->
+
+            <div class="recommendations-card glass">
+
+                <div class="result-card-title">
+
+                    <span class="result-icon">
+                        +
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            SUGGESTIONS
+                        </h2>
+
+                        <p>
+                            Personalized guidance based on your assessment
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="recommendation-list">
+
+                    {% for suggestion in suggestions %}
+
+                    <div>
+
+                        <span>
+                            ✓
                         </span>
 
-                        <div>
-
-                            <h2>
-                                SUGGESTIONS
-                            </h2>
-
-                            <p>
-                                Personalized guidance based on your assessment
-                            </p>
-
-                        </div>
+                        {{ suggestion }}
 
                     </div>
 
+                    {% endfor %}
 
-                    <div class="recommendation-list">
+                </div>
 
-                        {% for suggestion in suggestions %}
+            </div>
 
-                        <div>
 
-                            <span>
-                                ✓
-                            </span>
 
-                            {{ suggestion }}
+            <!-- ================= PRECAUTIONARY MEASURES ================= -->
 
-                        </div>
+            <div class="recommendations-card glass">
 
-                        {% endfor %}
+                <div class="result-card-title">
+
+                    <span class="result-icon">
+                        !
+                    </span>
+
+                    <div>
+
+                        <h2>
+                            PRECAUTIONARY MEASURES
+                        </h2>
+
+                        <p>
+                            Important considerations based on your assessment
+                        </p>
 
                     </div>
 
                 </div>
 
 
+                <div class="recommendation-list">
 
-                <!-- ================= PRECAUTIONARY MEASURES ================= -->
+                    {% for precaution in precautions %}
 
-                <div class="recommendations-card glass">
+                    <div>
 
-                    <div class="result-card-title">
-
-                        <span class="result-icon">
+                        <span>
                             !
                         </span>
 
-                        <div>
-
-                            <h2>
-                                PRECAUTIONARY MEASURES
-                            </h2>
-
-                            <p>
-                                Important considerations based on your assessment
-                            </p>
-
-                        </div>
+                        {{ precaution }}
 
                     </div>
 
-
-                    <div class="recommendation-list">
-
-                        {% for precaution in precautions %}
-
-                        <div>
-
-                            <span>
-                                !
-                            </span>
-
-                            {{ precaution }}
-
-                        </div>
-
-                        {% endfor %}
-
-                    </div>
+                    {% endfor %}
 
                 </div>
 
-
             </div>
 
-        </section>
-
-
-
-        <!-- ================= ACTIONS ================= -->
-
-        <div class="result-actions">
-
-            <a
-                href="/predict"
-                class="btn btn-primary"
-            >
-
-                New Assessment
-
-                <span>
-                    ↻
-                </span>
-
-            </a>
 
         </div>
 
+    </section>
 
 
-        <!-- ================= FOOTER ================= -->
 
-        <footer class="footer">
+    <!-- ================= ACTIONS ================= -->
+
+    <div class="result-actions">
+
+        <a
+            href="/predict"
+            class="btn btn-primary"
+        >
+
+            New Assessment
 
             <span>
-                CARDIO.SENSE
+                ↻
             </span>
 
-            <span>
-                PREVENT &nbsp; | &nbsp;
-                PREDICT &nbsp; | &nbsp;
-                PROGRESS
-            </span>
+        </a>
 
-        </footer>
+    </div>
 
-    </main>
-
-</div>
-
-</body>
-</html>
+{% endblock %}

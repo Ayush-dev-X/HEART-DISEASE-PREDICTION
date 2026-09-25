@@ -1,7 +1,12 @@
 /* =========================================================
    CARDIOSENSE
    Premium Dark Medical / AI Dashboard
-   CLEAN RESPONSIVE FINAL CSS
+   SIDEBAR-FREE FINAL CSS
+   ========================================================= */
+
+
+/* =========================================================
+   GOOGLE FONTS
    ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
@@ -12,6 +17,7 @@
    ========================================================= */
 
 :root {
+
     --bg: #041117;
     --bg-secondary: #071a21;
 
@@ -53,7 +59,9 @@ html {
 }
 
 body {
+
     min-height: 100vh;
+
     margin: 0;
 
     background:
@@ -80,13 +88,21 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+
+/* =========================================================
+   BACKGROUND GRID
+   ========================================================= */
+
 body::before {
+
     content: "";
 
     position: fixed;
+
     inset: 0;
 
     pointer-events: none;
+
     z-index: 0;
 
     background:
@@ -117,6 +133,7 @@ body::before {
         );
 }
 
+
 a {
     color: inherit;
     text-decoration: none;
@@ -142,19 +159,14 @@ img {
    ========================================================= */
 
 .app-shell {
+
     position: relative;
+
     z-index: 1;
 
     min-height: 100vh;
+
     width: 100%;
-
-    display: grid;
-
-    grid-template-columns:
-        285px
-        minmax(0, 1fr);
-
-    align-items: start;
 }
 
 
@@ -163,6 +175,7 @@ img {
    ========================================================= */
 
 .ambient {
+
     position: fixed;
 
     border-radius: 50%;
@@ -177,6 +190,7 @@ img {
 }
 
 .ambient-one {
+
     width: 420px;
     height: 420px;
 
@@ -187,6 +201,7 @@ img {
 }
 
 .ambient-two {
+
     width: 500px;
     height: 500px;
 
@@ -202,6 +217,7 @@ img {
    ========================================================= */
 
 .glass {
+
     background:
         linear-gradient(
             145deg,
@@ -222,34 +238,50 @@ img {
 
 
 /* =========================================================
-   SIDEBAR
+   MAIN
    ========================================================= */
 
-.sidebar {
-    width: 225px;
+.main {
 
-    margin:
-        30px 0 30px 30px;
+    width: 100%;
+
+    min-width: 0;
+
+    min-height: 100vh;
+
+    padding:
+        30px 30px 35px;
+
+    overflow: visible;
+}
+
+
+/* =========================================================
+   TOP BAR
+   ========================================================= */
+
+.topbar {
+
+    height: 84px;
 
     border-radius: 18px;
 
     display: flex;
-    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 25px;
+
+    padding:
+        0 20px 0 25px;
 
     position: sticky;
 
-    top: 30px;
+    top: 20px;
 
-    height:
-        calc(100vh - 60px);
-
-    max-height:
-        calc(100vh - 60px);
-
-    z-index: 20;
-
-    padding:
-        24px 14px;
+    z-index: 50;
 
     min-width: 0;
 }
@@ -260,15 +292,19 @@ img {
    ========================================================= */
 
 .brand-mark {
+
     display: flex;
+
     align-items: center;
 
     gap: 8px;
 
-    padding:
-        3px 2px 27px;
+    min-width: 205px;
 
-    min-width: 0;
+    flex-shrink: 0;
+
+    padding:
+        3px 2px;
 }
 
 .brand-mark > div {
@@ -276,6 +312,9 @@ img {
 }
 
 .brand-mark strong {
+
+    display: block;
+
     font-size: 20px;
 
     letter-spacing: 0.5px;
@@ -284,10 +323,11 @@ img {
 }
 
 .brand-mark strong span {
-    color: #ff8990;
+    color: var(--red-light);
 }
 
 .brand-mark small {
+
     display: block;
 
     font-size: 6.5px;
@@ -302,6 +342,7 @@ img {
 }
 
 .pulse-icon {
+
     color: var(--red);
 
     font-size: 27px;
@@ -316,187 +357,26 @@ img {
 
 
 /* =========================================================
-   SIDEBAR NAV
+   TOP NAV
    ========================================================= */
-
-.side-nav {
-    display: flex;
-    flex-direction: column;
-
-    gap: 8px;
-}
-
-.nav-item {
-    height: 55px;
-
-    border-radius: 12px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 16px;
-
-    padding:
-        0 17px;
-
-    color: #9bb3ba;
-
-    font-size: 14px;
-
-    border:
-        1px solid transparent;
-
-    transition:
-        background 0.25s ease,
-        color 0.25s ease,
-        transform 0.25s ease,
-        border-color 0.25s ease;
-}
-
-.nav-item:hover {
-    background:
-        rgba(255, 255, 255, 0.035);
-
-    color: #fff;
-
-    transform:
-        translateX(2px);
-}
-
-.nav-item.active {
-    background:
-        linear-gradient(
-            90deg,
-            rgba(255, 78, 91, 0.16),
-            rgba(255, 78, 91, 0.04)
-        );
-
-    border-color:
-        rgba(255, 94, 105, 0.38);
-
-    color: #fff;
-
-    box-shadow:
-        0 0 25px rgba(255, 66, 79, 0.08);
-}
-
-.nav-item.active .nav-icon {
-    color: var(--red);
-}
-
-.nav-icon {
-    width: 22px;
-
-    text-align: center;
-
-    font-size: 19px;
-
-    flex-shrink: 0;
-}
-
-
-/* =========================================================
-   SIDEBAR FOOTER
-   ========================================================= */
-
-.sidebar-note {
-    margin-top: auto;
-
-    padding:
-        20px 12px;
-
-    color: #7d969d;
-
-    font-size: 11px;
-
-    line-height: 1.65;
-}
-
-.sidebar-note p {
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size: 15px;
-
-    color: #a7bbc0;
-}
-
-.sidebar-note b {
-    color: #dcebed;
-
-    font-weight: 500;
-}
-
-.sidebar-note small {
-    font-size: 8px;
-
-    letter-spacing: 1.5px;
-}
-
-.tiny-line {
-    width: 18px;
-    height: 2px;
-
-    background: var(--red);
-
-    margin-bottom: 10px;
-}
-
-
-/* =========================================================
-   MAIN
-   ========================================================= */
-
-.main {
-    width: 100%;
-
-    min-width: 0;
-    min-height: 100vh;
-
-    padding:
-        30px 30px 80px 0;
-
-    overflow: visible;
-}
-
-
-/* =========================================================
-   TOP BAR
-   ========================================================= */
-
-.topbar {
-    height: 84px;
-
-    border-radius: 18px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding:
-        0 20px 0 30px;
-
-    position: sticky;
-
-    top: 20px;
-
-    z-index: 50;
-
-    min-width: 0;
-}
-
-.mobile-brand {
-    display: none;
-}
 
 .top-nav {
+
     display: flex;
 
+    align-items: center;
+
+    justify-content: center;
+
     gap: 34px;
+
+    flex: 1;
+
+    min-width: 0;
 }
 
 .top-nav a {
+
     font-size: 14px;
 
     color: #a5bcc2;
@@ -505,6 +385,8 @@ img {
 
     padding:
         32px 0;
+
+    white-space: nowrap;
 }
 
 .top-nav a:hover,
@@ -513,6 +395,7 @@ img {
 }
 
 .top-nav a.active::after {
+
     content: "";
 
     position: absolute;
@@ -536,15 +419,22 @@ img {
    ========================================================= */
 
 .top-actions {
+
     display: flex;
+
     align-items: center;
+
+    justify-content: flex-end;
 
     gap: 13px;
 
     min-width: 0;
+
+    flex-shrink: 0;
 }
 
 .search {
+
     height: 43px;
 
     width: 270px;
@@ -555,6 +445,7 @@ img {
     border-radius: 24px;
 
     display: flex;
+
     align-items: center;
 
     padding:
@@ -566,9 +457,11 @@ img {
 }
 
 .search input {
+
     background: transparent;
 
     border: none;
+
     outline: none;
 
     color: white;
@@ -587,6 +480,7 @@ img {
 }
 
 .icon-btn {
+
     border: none;
 
     background: transparent;
@@ -603,6 +497,7 @@ img {
 }
 
 .icon-btn i {
+
     position: absolute;
 
     width: 6px;
@@ -617,6 +512,7 @@ img {
 }
 
 .avatar {
+
     width: 40px;
     height: 40px;
 
@@ -628,6 +524,7 @@ img {
         1px solid rgba(255, 255, 255, 0.25);
 
     display: grid;
+
     place-items: center;
 
     font-size: 11px;
@@ -641,6 +538,7 @@ img {
 }
 
 .model-status {
+
     height: 43px;
 
     padding:
@@ -656,6 +554,7 @@ img {
     font-size: 11px;
 
     display: flex;
+
     align-items: center;
 
     gap: 8px;
@@ -665,6 +564,7 @@ img {
 
 .model-status span,
 .mini-status span {
+
     width: 8px;
     height: 8px;
 
@@ -679,9 +579,85 @@ img {
 }
 
 .model-status b {
+
     color: var(--green);
 
     font-weight: 500;
+}
+
+
+/* =========================================================
+   BOTTOM QUOTE
+   ========================================================= */
+
+.quote-block {
+
+    position: relative;
+
+    width: 100%;
+
+    margin: 25px auto 0;
+
+    padding:
+        20px 20px 28px;
+
+    text-align: center;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+.quote-line {
+
+    width: 34px;
+
+    height: 2px;
+
+    margin:
+        0 auto 8px;
+
+    border-radius: 2px;
+
+    background: var(--red);
+
+    box-shadow:
+        0 0 10px rgba(255, 93, 105, 0.4);
+}
+
+.quote-block p {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 15px;
+
+    line-height: 1.25;
+
+    color: #a7bbc0;
+}
+
+.quote-block p b {
+
+    color: #dcebed;
+
+    font-weight: 500;
+}
+
+.quote-block small {
+
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 7px;
+
+    line-height: 1.45;
+
+    letter-spacing: 1.5px;
+
+    color: #6f8c94;
 }
 
 
@@ -690,6 +666,7 @@ img {
    ========================================================= */
 
 .hero {
+
     display: grid;
 
     grid-template-columns:
@@ -707,12 +684,14 @@ img {
 }
 
 .hero-copy {
+
     padding-left: 10px;
 
     min-width: 0;
 }
 
 .eyebrow {
+
     color: var(--red-light);
 
     font-size: 11px;
@@ -725,6 +704,7 @@ img {
 }
 
 .hero h1 {
+
     font-family:
         "Playfair Display",
         serif;
@@ -741,12 +721,14 @@ img {
 }
 
 .hero h1 em {
+
     font-style: normal;
 
     color: #cfe4e8;
 }
 
 .hero-text {
+
     max-width: 540px;
 
     color: #8eaab1;
@@ -757,6 +739,7 @@ img {
 }
 
 .hero-buttons {
+
     display: flex;
 
     gap: 12px;
@@ -765,6 +748,7 @@ img {
 }
 
 .btn {
+
     height: 48px;
 
     padding:
@@ -773,7 +757,9 @@ img {
     border-radius: 10px;
 
     display: inline-flex;
+
     align-items: center;
+
     justify-content: center;
 
     gap: 30px;
@@ -791,11 +777,13 @@ img {
 }
 
 .btn:hover {
+
     transform:
         translateY(-2px);
 }
 
 .btn-primary {
+
     background:
         linear-gradient(
             135deg,
@@ -813,11 +801,13 @@ img {
 }
 
 .btn-primary:hover {
+
     box-shadow:
         0 15px 40px rgba(238, 63, 79, 0.38);
 }
 
 .btn-secondary {
+
     border:
         1px solid var(--border);
 
@@ -828,11 +818,13 @@ img {
 }
 
 .btn-secondary:hover {
+
     background:
         rgba(255, 255, 255, 0.07);
 }
 
 .trust-row {
+
     display: flex;
 
     gap: 25px;
@@ -854,6 +846,7 @@ img {
    ========================================================= */
 
 .hero-visual {
+
     height: 490px;
 
     border-radius: 25px;
@@ -863,6 +856,7 @@ img {
     overflow: hidden;
 
     display: grid;
+
     place-items: center;
 
     background:
@@ -879,21 +873,25 @@ img {
 }
 
 .hero-visual::after {
+
     content: "";
 
     position: absolute;
 
     width: 100%;
+
     height: 1px;
 
     background:
         rgba(120, 200, 215, 0.12);
 
     top: 50%;
+
     left: 0;
 }
 
 .scan-ring {
+
     position: absolute;
 
     border:
@@ -903,12 +901,16 @@ img {
 }
 
 .ring-a {
+
     width: 330px;
+
     height: 330px;
 }
 
 .ring-b {
+
     width: 410px;
+
     height: 410px;
 
     border-style: dashed;
@@ -918,6 +920,7 @@ img {
 }
 
 .orbit {
+
     position: absolute;
 
     border:
@@ -927,7 +930,9 @@ img {
 }
 
 .orbit-one {
+
     width: 260px;
+
     height: 100px;
 
     transform:
@@ -935,7 +940,9 @@ img {
 }
 
 .orbit-two {
+
     width: 340px;
+
     height: 135px;
 
     transform:
@@ -943,35 +950,43 @@ img {
 }
 
 .heart-core {
+
     position: absolute;
 
     left: 50%;
+
     top: 50%;
 
     transform:
         translate(-50%, -50%);
 
     width: 250px;
+
     height: 300px;
 
     z-index: 20;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     pointer-events: none;
 }
 
 .heart-core img {
+
     display: block;
 
     width: 100%;
+
     height: 100%;
 
     object-fit: contain;
 
     opacity: 1;
+
     visibility: visible;
 
     filter:
@@ -984,6 +999,7 @@ img {
 }
 
 .pulse-wave {
+
     position: absolute;
 
     z-index: 10;
@@ -1003,6 +1019,7 @@ img {
 }
 
 .visual-label {
+
     position: absolute;
 
     font-size: 8px;
@@ -1015,9 +1032,11 @@ img {
 }
 
 .visual-label span {
+
     display: inline-block;
 
     width: 5px;
+
     height: 5px;
 
     border-radius: 50%;
@@ -1031,24 +1050,32 @@ img {
 }
 
 .label-one {
+
     left: 22px;
+
     top: 130px;
 }
 
 .label-two {
+
     right: 25px;
+
     top: 105px;
 }
 
 .label-three {
+
     right: 28px;
+
     bottom: 125px;
 }
 
 .visual-caption {
+
     position: absolute;
 
     left: 25px;
+
     bottom: 25px;
 
     font-size: 8px;
@@ -1070,6 +1097,7 @@ img {
    ========================================================= */
 
 .stats-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -1082,6 +1110,7 @@ img {
 }
 
 .stat-card {
+
     padding: 23px;
 
     border-radius: 15px;
@@ -1096,6 +1125,7 @@ img {
 }
 
 .stat-card:hover {
+
     transform:
         translateY(-4px);
 
@@ -1105,6 +1135,7 @@ img {
 
 .stat-card span,
 .process-card b {
+
     color: var(--red);
 
     font-size: 10px;
@@ -1113,6 +1144,7 @@ img {
 }
 
 .stat-card strong {
+
     display: block;
 
     margin:
@@ -1123,6 +1155,7 @@ img {
 
 .stat-card p,
 .process-card p {
+
     font-size: 12px;
 
     color: #7e9ba3;
@@ -1136,6 +1169,7 @@ img {
    ========================================================= */
 
 .info-section {
+
     padding:
         50px 25px 70px 20px;
 
@@ -1152,6 +1186,7 @@ img {
 }
 
 .info-section h2 {
+
     font-family:
         "Playfair Display",
         serif;
@@ -1164,6 +1199,7 @@ img {
 }
 
 .process-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -1173,6 +1209,7 @@ img {
 }
 
 .process-card {
+
     padding: 20px;
 
     border-radius: 14px;
@@ -1181,6 +1218,7 @@ img {
 }
 
 .process-card h3 {
+
     font-size: 13px;
 
     margin:
@@ -1193,9 +1231,11 @@ img {
    ========================================================= */
 
 .page-heading {
+
     display: flex;
 
     align-items: flex-end;
+
     justify-content: space-between;
 
     gap: 25px;
@@ -1211,6 +1251,7 @@ img {
 }
 
 .page-heading h1 {
+
     font-family:
         "Playfair Display",
         serif;
@@ -1223,12 +1264,14 @@ img {
 }
 
 .page-heading > div > p:last-child {
+
     color: #7f9ba2;
 
     font-size: 12px;
 }
 
 .date-chip {
+
     flex-shrink: 0;
 
     font-size: 9px;
@@ -1247,6 +1290,7 @@ img {
 }
 
 .date-chip b {
+
     color: var(--green);
 
     font-weight: 500;
@@ -1260,6 +1304,7 @@ img {
    ========================================================= */
 
 .assessment-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -1277,11 +1322,13 @@ img {
 }
 
 .form-card {
+
     border-radius: 16px;
 
     padding: 25px;
 
     min-width: 0;
+
     min-height: 260px;
 
     height: auto;
@@ -1290,6 +1337,7 @@ img {
 }
 
 .card-heading {
+
     display: flex;
 
     gap: 14px;
@@ -1302,7 +1350,9 @@ img {
 }
 
 .heading-icon {
+
     width: 36px;
+
     height: 36px;
 
     flex-shrink: 0;
@@ -1313,6 +1363,7 @@ img {
     border-radius: 9px;
 
     display: grid;
+
     place-items: center;
 
     color: var(--red);
@@ -1321,12 +1372,14 @@ img {
 }
 
 .card-heading h2 {
+
     font-size: 16px;
 
     margin-bottom: 5px;
 }
 
 .card-heading p {
+
     margin: 0;
 
     color: #718d95;
@@ -1335,6 +1388,7 @@ img {
 }
 
 .field-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -1344,6 +1398,7 @@ img {
 }
 
 .field-grid label {
+
     display: block;
 
     min-width: 0;
@@ -1357,6 +1412,7 @@ img {
 
 .field-grid input,
 .field-grid select {
+
     display: block;
 
     width: 100%;
@@ -1387,6 +1443,7 @@ img {
 
 .field-grid input:focus,
 .field-grid select:focus {
+
     border-color:
         rgba(255, 94, 105, 0.55);
 
@@ -1395,6 +1452,7 @@ img {
 }
 
 select option {
+
     background: #0b252d;
 
     color: #edf7fa;
@@ -1409,9 +1467,11 @@ select option {
 }
 
 .input-unit span {
+
     position: absolute;
 
     right: 11px;
+
     top: 23px;
 
     color: #5f7e86;
@@ -1422,6 +1482,7 @@ select option {
 }
 
 .assessment-side {
+
     display: flex;
 
     flex-direction: column;
@@ -1434,6 +1495,7 @@ select option {
 }
 
 .mini-status {
+
     font-size: 9px;
 
     color: var(--green);
@@ -1450,6 +1512,7 @@ select option {
 }
 
 .assessment-side h2 {
+
     font-family:
         "Playfair Display",
         serif;
@@ -1462,6 +1525,7 @@ select option {
 }
 
 .assessment-side p {
+
     font-size: 13px;
 
     color: #829ea5;
@@ -1470,6 +1534,7 @@ select option {
 }
 
 .disclaimer {
+
     border-left:
         2px solid var(--red);
 
@@ -1498,6 +1563,7 @@ select option {
    ========================================================= */
 
 .demo-section {
+
     position: relative;
 
     z-index: 2;
@@ -1513,6 +1579,7 @@ select option {
 }
 
 .demo-heading h2 {
+
     margin:
         0 0 7px;
 
@@ -1526,6 +1593,7 @@ select option {
 }
 
 .demo-heading p:last-child {
+
     margin: 0;
 
     color: #718d95;
@@ -1534,6 +1602,7 @@ select option {
 }
 
 .demo-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -1545,6 +1614,7 @@ select option {
 }
 
 .demo-card {
+
     position: relative;
 
     min-width: 0;
@@ -1579,6 +1649,7 @@ select option {
 }
 
 .demo-card:hover {
+
     transform:
         translateY(-3px);
 
@@ -1594,6 +1665,7 @@ select option {
 }
 
 .demo-number {
+
     display: block;
 
     margin-bottom: 8px;
@@ -1606,6 +1678,7 @@ select option {
 }
 
 .demo-card strong {
+
     display: block;
 
     margin-bottom: 7px;
@@ -1614,6 +1687,7 @@ select option {
 }
 
 .demo-card small {
+
     display: block;
 
     color: #78959d;
@@ -1624,9 +1698,11 @@ select option {
 }
 
 .demo-arrow {
+
     position: absolute;
 
     right: 17px;
+
     top: 50%;
 
     transform:
@@ -1643,6 +1719,7 @@ select option {
    ========================================================= */
 
 .result-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -1666,6 +1743,7 @@ select option {
 .patient-card,
 .interpretation-card,
 .recommendations-card {
+
     border-radius: 18px;
 
     padding: 25px;
@@ -1679,6 +1757,7 @@ select option {
    ========================================================= */
 
 .result-card-title {
+
     display: flex;
 
     align-items: center;
@@ -1691,7 +1770,9 @@ select option {
 }
 
 .result-icon {
+
     width: 38px;
+
     height: 38px;
 
     flex-shrink: 0;
@@ -1699,6 +1780,7 @@ select option {
     border-radius: 10px;
 
     display: grid;
+
     place-items: center;
 
     color: var(--red);
@@ -1713,12 +1795,14 @@ select option {
 }
 
 .result-card-title h2 {
+
     font-size: 13px;
 
     letter-spacing: 0.8px;
 }
 
 .result-card-title p {
+
     color: #718d95;
 
     font-size: 9px;
@@ -1727,6 +1811,7 @@ select option {
 }
 
 .analysis-complete {
+
     margin-left: auto;
 
     color: var(--green);
@@ -1745,7 +1830,9 @@ select option {
 }
 
 .analysis-complete span {
+
     width: 6px;
+
     height: 6px;
 
     background: var(--green);
@@ -1762,9 +1849,11 @@ select option {
    ========================================================= */
 
 .risk-circle-wrapper {
+
     display: flex;
 
     justify-content: center;
+
     align-items: center;
 
     padding:
@@ -1772,7 +1861,9 @@ select option {
 }
 
 .risk-circle {
+
     width: 245px;
+
     height: 245px;
 
     flex-shrink: 0;
@@ -1780,6 +1871,7 @@ select option {
     border-radius: 50%;
 
     display: grid;
+
     place-items: center;
 
     background:
@@ -1795,11 +1887,13 @@ select option {
 }
 
 .risk-circle::before {
+
     content: "";
 
     position: absolute;
 
     width: 210px;
+
     height: 210px;
 
     border-radius: 50%;
@@ -1816,6 +1910,7 @@ select option {
 }
 
 .risk-inner {
+
     position: relative;
 
     z-index: 2;
@@ -1828,6 +1923,7 @@ select option {
 }
 
 .risk-inner strong {
+
     font-family:
         "Playfair Display",
         serif;
@@ -1838,6 +1934,7 @@ select option {
 }
 
 .risk-inner span {
+
     font-size: 9px;
 
     letter-spacing: 2px;
@@ -1861,6 +1958,7 @@ select option {
    ========================================================= */
 
 .risk-message {
+
     display: flex;
 
     gap: 15px;
@@ -1877,12 +1975,15 @@ select option {
 }
 
 .warning-icon {
+
     min-width: 28px;
+
     height: 28px;
 
     border-radius: 50%;
 
     display: grid;
+
     place-items: center;
 
     background:
@@ -1894,12 +1995,14 @@ select option {
 }
 
 .risk-message h3 {
+
     font-size: 12px;
 
     margin-bottom: 7px;
 }
 
 .risk-message p {
+
     color: #829da4;
 
     font-size: 10px;
@@ -1913,6 +2016,7 @@ select option {
    ========================================================= */
 
 .model-result-card {
+
     display: grid;
 
     grid-template-columns:
@@ -1930,6 +2034,7 @@ select option {
 }
 
 .model-result-card div {
+
     padding: 13px;
 
     background:
@@ -1939,12 +2044,14 @@ select option {
 }
 
 .model-result-card div + div {
+
     border-left:
         1px solid rgba(184, 226, 235, 0.08);
 }
 
 .model-result-card span,
 .patient-grid span {
+
     display: block;
 
     color: #63818a;
@@ -1957,6 +2064,7 @@ select option {
 }
 
 .model-result-card strong {
+
     font-size: 10px;
 
     color: #d6e7ea;
@@ -1968,6 +2076,7 @@ select option {
    ========================================================= */
 
 .patient-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -1978,6 +2087,7 @@ select option {
 }
 
 .patient-grid div {
+
     padding:
         15px 10px;
 
@@ -1988,11 +2098,13 @@ select option {
 }
 
 .patient-grid div:nth-child(odd) {
+
     border-right:
         1px solid rgba(184, 226, 235, 0.07);
 }
 
 .patient-grid strong {
+
     font-size: 11px;
 
     color: #d9e9ec;
@@ -2006,12 +2118,14 @@ select option {
    ========================================================= */
 
 .interpretation-card {
+
     grid-column: 1 / -1;
 
     min-height: 220px;
 }
 
 .interpretation-text {
+
     color: #829da4;
 
     font-size: 11px;
@@ -2023,6 +2137,7 @@ select option {
 }
 
 .medical-note {
+
     display: flex;
 
     gap: 12px;
@@ -2037,6 +2152,7 @@ select option {
 }
 
 .medical-note strong {
+
     color: var(--cyan);
 
     font-size: 9px;
@@ -2045,6 +2161,7 @@ select option {
 }
 
 .medical-note span {
+
     color: #78959d;
 
     font-size: 9px;
@@ -2058,6 +2175,7 @@ select option {
    ========================================================= */
 
 .guidance-section {
+
     padding:
         0 25px 25px 20px;
 
@@ -2065,10 +2183,12 @@ select option {
 }
 
 .guidance-heading {
+
     margin-bottom: 18px;
 }
 
 .guidance-heading h2 {
+
     font-family:
         "Playfair Display",
         serif;
@@ -2081,12 +2201,14 @@ select option {
 }
 
 .guidance-heading p:last-child {
+
     color: #718d95;
 
     font-size: 10px;
 }
 
 .guidance-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -2101,6 +2223,7 @@ select option {
 }
 
 .guidance-grid .recommendations-card {
+
     width: 100%;
 
     min-width: 0;
@@ -2109,12 +2232,14 @@ select option {
 }
 
 .guidance-grid .recommendations-card h2 {
+
     font-size: 14px;
 
     letter-spacing: 0.7px;
 }
 
 .guidance-grid .recommendations-card > p {
+
     font-size: 10px;
 
     color: #718d95;
@@ -2126,6 +2251,7 @@ select option {
    ========================================================= */
 
 .recommendation-list {
+
     display: flex;
 
     flex-direction: column;
@@ -2136,6 +2262,7 @@ select option {
 }
 
 .recommendation-list div {
+
     padding: 11px;
 
     border-radius: 8px;
@@ -2153,6 +2280,7 @@ select option {
 }
 
 .recommendation-list span {
+
     color: var(--green);
 
     margin-right: 8px;
@@ -2164,6 +2292,7 @@ select option {
    ========================================================= */
 
 .result-actions {
+
     display: flex;
 
     justify-content: flex-end;
@@ -2182,11 +2311,12 @@ select option {
    ========================================================= */
 
 .footer {
+
     border-top:
         1px solid rgba(184, 226, 235, 0.10);
 
     padding:
-        20px 25px;
+        20px 25px 25px;
 
     color: #5f7c84;
 
@@ -2203,6 +2333,7 @@ select option {
     flex-wrap: wrap;
 
     margin-top: 40px;
+
 }
 
 
@@ -2211,9 +2342,11 @@ select option {
    ========================================================= */
 
 .about-hero {
+
     display: flex;
 
     align-items: flex-end;
+
     justify-content: space-between;
 
     gap: 40px;
@@ -2225,10 +2358,12 @@ select option {
 }
 
 .about-intro {
+
     max-width: 760px;
 }
 
 .about-intro h1 {
+
     font-family:
         "Playfair Display",
         serif;
@@ -2245,12 +2380,14 @@ select option {
 }
 
 .about-intro h1 em {
+
     font-style: normal;
 
     color: #cfe4e8;
 }
 
 .about-intro > p:last-child {
+
     max-width: 650px;
 
     color: #8eaab1;
@@ -2266,6 +2403,7 @@ select option {
    ========================================================= */
 
 .about-status {
+
     flex-shrink: 0;
 
     min-width: 225px;
@@ -2276,13 +2414,16 @@ select option {
     border-radius: 13px;
 
     display: flex;
+
     align-items: center;
 
     gap: 12px;
 }
 
 .about-status-dot {
+
     width: 9px;
+
     height: 9px;
 
     border-radius: 50%;
@@ -2294,6 +2435,7 @@ select option {
 }
 
 .about-status small {
+
     display: block;
 
     color: #63818a;
@@ -2306,6 +2448,7 @@ select option {
 }
 
 .about-status strong {
+
     display: block;
 
     color: #b9ced2;
@@ -2321,6 +2464,7 @@ select option {
    ========================================================= */
 
 .about-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -2333,6 +2477,7 @@ select option {
 }
 
 .about-card {
+
     min-height: 250px;
 
     padding: 27px;
@@ -2345,6 +2490,7 @@ select option {
 }
 
 .about-card:hover {
+
     transform:
         translateY(-4px);
 
@@ -2353,6 +2499,7 @@ select option {
 }
 
 .about-number {
+
     color: var(--red);
 
     font-size: 10px;
@@ -2361,6 +2508,7 @@ select option {
 }
 
 .about-card h2 {
+
     font-family:
         "Playfair Display",
         serif;
@@ -2374,6 +2522,7 @@ select option {
 }
 
 .about-card p {
+
     color: #7f9ba2;
 
     font-size: 12px;
@@ -2387,6 +2536,7 @@ select option {
    ========================================================= */
 
 .about-tech {
+
     display: grid;
 
     grid-template-columns:
@@ -2405,6 +2555,7 @@ select option {
 }
 
 .about-tech h2 {
+
     font-family:
         "Playfair Display",
         serif;
@@ -2417,6 +2568,7 @@ select option {
 }
 
 .tech-flow {
+
     min-height: 155px;
 
     border-radius: 17px;
@@ -2426,18 +2578,21 @@ select option {
     display: flex;
 
     align-items: center;
+
     justify-content: space-between;
 
     gap: 15px;
 }
 
 .tech-step {
+
     flex: 1;
 
     min-width: 0;
 }
 
 .tech-step span {
+
     display: block;
 
     color: var(--red);
@@ -2450,6 +2605,7 @@ select option {
 }
 
 .tech-step strong {
+
     display: block;
 
     font-size: 13px;
@@ -2458,6 +2614,7 @@ select option {
 }
 
 .tech-step small {
+
     color: #718d95;
 
     font-size: 9px;
@@ -2466,6 +2623,7 @@ select option {
 }
 
 .tech-line {
+
     width: 45px;
 
     height: 1px;
@@ -2482,6 +2640,7 @@ select option {
    ========================================================= */
 
 .about-disclaimer {
+
     margin:
         0 25px 55px 20px;
 
@@ -2498,7 +2657,9 @@ select option {
 }
 
 .disclaimer-mark {
+
     width: 28px;
+
     height: 28px;
 
     flex-shrink: 0;
@@ -2506,6 +2667,7 @@ select option {
     border-radius: 50%;
 
     display: grid;
+
     place-items: center;
 
     color: var(--red-light);
@@ -2522,6 +2684,7 @@ select option {
 }
 
 .about-disclaimer strong {
+
     display: block;
 
     color: #dbecef;
@@ -2532,6 +2695,7 @@ select option {
 }
 
 .about-disclaimer p {
+
     color: #78959d;
 
     font-size: 10px;
@@ -2545,6 +2709,7 @@ select option {
    ========================================================= */
 
 @keyframes pulse {
+
     0%,
     100% {
         transform: scale(1);
@@ -2558,6 +2723,7 @@ select option {
 }
 
 @keyframes spin {
+
     to {
         transform: rotate(360deg);
     }
@@ -2565,50 +2731,22 @@ select option {
 
 
 /* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-
-/* =========================================================
-   1200px — COMPACT DESKTOP / SMALL LAPTOP
+   1200px
+   COMPACT DESKTOP
    ========================================================= */
 
 @media (max-width: 1200px) {
 
-    .app-shell {
-        grid-template-columns:
-            115px
-            minmax(0, 1fr);
+    .main {
+        padding-right: 20px;
     }
 
-    .sidebar {
-        width: 80px;
-
-        margin-left: 15px;
-        margin-right: 20px;
+    .topbar {
+        gap: 18px;
     }
 
     .brand-mark {
-        justify-content: center;
-
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .brand-mark > div:last-child,
-    .nav-item span:last-child,
-    .sidebar-note {
-        display: none;
-    }
-
-    .nav-item {
-        justify-content: center;
-
-        padding: 0;
-    }
-
-    .main {
-        padding-right: 20px;
+        min-width: 190px;
     }
 
     .top-nav {
@@ -2624,6 +2762,7 @@ select option {
     }
 
     .hero {
+
         grid-template-columns:
             minmax(0, 1fr)
             minmax(300px, 0.85fr);
@@ -2644,6 +2783,7 @@ select option {
     }
 
     .result-grid {
+
         grid-template-columns:
             minmax(0, 1fr)
             minmax(0, 1fr);
@@ -2660,18 +2800,28 @@ select option {
 
 
 /* =========================================================
-   1100px — REDUCE TOPBAR PRESSURE
+   1100px
    ========================================================= */
 
 @media (max-width: 1100px) {
 
     .topbar {
-        padding-left: 22px;
+
+        padding-left: 20px;
+
         padding-right: 16px;
     }
 
+    .brand-mark {
+        min-width: 175px;
+    }
+
+    .brand-mark strong {
+        font-size: 18px;
+    }
+
     .top-nav {
-        gap: 20px;
+        gap: 16px;
     }
 
     .top-nav a {
@@ -2697,7 +2847,8 @@ select option {
 
 
 /* =========================================================
-   1000px — HIDE SEARCH
+   1000px
+   HIDE SEARCH
    ========================================================= */
 
 @media (max-width: 1000px) {
@@ -2717,15 +2868,11 @@ select option {
 
 
 /* =========================================================
-   900px — TABLET
-   Sidebar and desktop navigation disappear.
+   900px
+   TABLET
    ========================================================= */
 
 @media (max-width: 900px) {
-
-    /* ---------------------------------------------
-       APP
-       --------------------------------------------- */
 
     .app-shell {
         display: block;
@@ -2733,25 +2880,21 @@ select option {
         min-height: 100vh;
     }
 
-    .sidebar {
-        display: none;
-    }
-
     .main {
+
         width: 100%;
 
         min-height: 100vh;
 
         padding:
-            20px 20px 60px;
+            20px 20px 80px;
     }
 
 
-    /* ---------------------------------------------
-       TOP BAR
-       --------------------------------------------- */
+    /* TOP BAR */
 
     .topbar {
+
         height: 72px;
 
         position: sticky;
@@ -2764,18 +2907,16 @@ select option {
         border-radius: 15px;
     }
 
-    .mobile-brand {
-        display: block;
-
-        font-size: 17px;
-
-        font-weight: 600;
-
-        white-space: nowrap;
+    .brand-mark {
+        min-width: auto;
     }
 
-    .mobile-brand span {
-        color: var(--red-light);
+    .brand-mark strong {
+        font-size: 17px;
+    }
+
+    .brand-mark small {
+        font-size: 5.5px;
     }
 
     .top-nav {
@@ -2783,6 +2924,7 @@ select option {
     }
 
     .top-actions {
+
         margin-left: auto;
 
         gap: 10px;
@@ -2793,11 +2935,10 @@ select option {
     }
 
 
-    /* ---------------------------------------------
-       HERO
-       --------------------------------------------- */
+    /* HERO */
 
     .hero {
+
         grid-template-columns: 1fr;
 
         padding:
@@ -2815,6 +2956,7 @@ select option {
     }
 
     .hero-visual {
+
         width: 100%;
 
         max-width: 650px;
@@ -2826,49 +2968,46 @@ select option {
     }
 
 
-    /* ---------------------------------------------
-       STATS
-       --------------------------------------------- */
+    /* STATS */
 
     .stats-grid {
+
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
     }
 
 
-    /* ---------------------------------------------
-       HOW IT WORKS
-       --------------------------------------------- */
+    /* HOW IT WORKS */
 
     .info-section {
+
         grid-template-columns: 1fr;
     }
 
     .process-grid {
+
         grid-template-columns:
             repeat(3, minmax(0, 1fr));
     }
 
 
-    /* ---------------------------------------------
-       ASSESSMENT
-       --------------------------------------------- */
+    /* ASSESSMENT */
 
     .assessment-grid {
         grid-template-columns: 1fr;
     }
 
     .demo-grid {
+
         grid-template-columns:
             repeat(3, minmax(0, 1fr));
     }
 
 
-    /* ---------------------------------------------
-       RESULT
-       --------------------------------------------- */
+    /* RESULT */
 
     .result-grid {
+
         grid-template-columns: 1fr;
 
         padding:
@@ -2880,16 +3019,16 @@ select option {
     }
 
     .guidance-grid {
+
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
     }
 
 
-    /* ---------------------------------------------
-       ABOUT
-       --------------------------------------------- */
+    /* ABOUT */
 
     .about-hero {
+
         display: block;
 
         padding:
@@ -2903,6 +3042,7 @@ select option {
     }
 
     .about-grid {
+
         grid-template-columns: 1fr;
 
         padding:
@@ -2910,6 +3050,7 @@ select option {
     }
 
     .about-tech {
+
         grid-template-columns: 1fr;
 
         padding:
@@ -2919,7 +3060,8 @@ select option {
 
 
 /* =========================================================
-   780px — MOBILE
+   780px
+   MOBILE
    ========================================================= */
 
 @media (max-width: 780px) {
@@ -2931,13 +3073,27 @@ select option {
     }
 
     .main {
+
         width: 100%;
 
         padding:
-            12px 12px 60px;
+            12px 12px 35px;
     }
 
+    .quote-block p {
+        font-size: 13px;
+    }
+
+    .quote-block small {
+        font-size: 6px;
+        letter-spacing: 1.3px;
+    }
+
+
+    /* TOP BAR */
+
     .topbar {
+
         height: auto;
 
         position: sticky;
@@ -2952,8 +3108,16 @@ select option {
         border-radius: 15px;
     }
 
-    .mobile-brand {
+    .brand-mark strong {
         font-size: 16px;
+    }
+
+    .brand-mark small {
+        display: none;
+    }
+
+    .pulse-icon {
+        font-size: 23px;
     }
 
     .top-actions {
@@ -2961,7 +3125,9 @@ select option {
     }
 
     .avatar {
+
         width: 35px;
+
         height: 35px;
     }
 
@@ -2970,11 +3136,10 @@ select option {
     }
 
 
-    /* ---------------------------------------------
-       HERO
-       --------------------------------------------- */
+    /* HERO */
 
     .hero {
+
         grid-template-columns: 1fr;
 
         padding:
@@ -3000,20 +3165,17 @@ select option {
     }
 
 
-    /* ---------------------------------------------
-       BUTTONS
-       --------------------------------------------- */
+    /* BUTTONS */
 
     .hero-buttons {
         flex-wrap: wrap;
     }
 
 
-    /* ---------------------------------------------
-       STATS
-       --------------------------------------------- */
+    /* STATS */
 
     .stats-grid {
+
         grid-template-columns: 1fr;
 
         padding:
@@ -3021,11 +3183,10 @@ select option {
     }
 
 
-    /* ---------------------------------------------
-       HOW IT WORKS
-       --------------------------------------------- */
+    /* HOW IT WORKS */
 
     .info-section {
+
         grid-template-columns: 1fr;
 
         padding:
@@ -3037,11 +3198,10 @@ select option {
     }
 
 
-    /* ---------------------------------------------
-       PAGE HEADING
-       --------------------------------------------- */
+    /* PAGE HEADING */
 
     .page-heading {
+
         display: block;
 
         padding:
@@ -3053,17 +3213,17 @@ select option {
     }
 
     .date-chip {
+
         display: inline-block;
 
         margin-top: 20px;
     }
 
 
-    /* ---------------------------------------------
-       ASSESSMENT
-       --------------------------------------------- */
+    /* ASSESSMENT */
 
     .assessment-grid {
+
         grid-template-columns: 1fr;
 
         padding:
@@ -3079,6 +3239,7 @@ select option {
     }
 
     .assessment-side {
+
         min-height: auto;
 
         padding:
@@ -3086,6 +3247,7 @@ select option {
     }
 
     .demo-section {
+
         padding:
             0 10px 25px;
     }
@@ -3099,11 +3261,10 @@ select option {
     }
 
 
-    /* ---------------------------------------------
-       RESULT
-       --------------------------------------------- */
+    /* RESULT */
 
     .result-grid {
+
         grid-template-columns: 1fr;
 
         padding:
@@ -3122,12 +3283,16 @@ select option {
     }
 
     .risk-circle {
+
         width: 215px;
+
         height: 215px;
     }
 
     .risk-circle::before {
+
         width: 183px;
+
         height: 183px;
     }
 
@@ -3136,11 +3301,10 @@ select option {
     }
 
 
-    /* ---------------------------------------------
-       GUIDANCE
-       --------------------------------------------- */
+    /* GUIDANCE */
 
     .guidance-section {
+
         padding:
             0 10px 25px;
     }
@@ -3154,11 +3318,10 @@ select option {
     }
 
 
-    /* ---------------------------------------------
-       RESULT ACTIONS
-       --------------------------------------------- */
+    /* RESULT ACTIONS */
 
     .result-actions {
+
         padding:
             0 10px 25px;
 
@@ -3172,23 +3335,24 @@ select option {
     }
 
 
-    /* ---------------------------------------------
-       FOOTER
-       --------------------------------------------- */
+    /* FOOTER */
 
     .footer {
+
         font-size: 7px;
 
         padding:
-            18px 10px;
+            18px 10px 25px;
     }
 
 
-    /* ---------------------------------------------
-       ABOUT
-       --------------------------------------------- */
+    
+
+
+    /* ABOUT */
 
     .about-hero {
+
         padding:
             45px 10px 40px;
     }
@@ -3198,6 +3362,7 @@ select option {
     }
 
     .about-grid {
+
         grid-template-columns: 1fr;
 
         padding:
@@ -3209,11 +3374,13 @@ select option {
     }
 
     .about-tech {
+
         padding:
             40px 10px 50px;
     }
 
     .tech-flow {
+
         flex-direction: column;
 
         align-items: stretch;
@@ -3224,6 +3391,7 @@ select option {
     }
 
     .about-disclaimer {
+
         margin:
             0 10px 40px;
     }
@@ -3231,37 +3399,52 @@ select option {
 
 
 /* =========================================================
-   450px — VERY SMALL PHONES
+   450px
+   VERY SMALL PHONES
    ========================================================= */
 
 @media (max-width: 450px) {
 
     .main {
+
         padding-left: 8px;
+
         padding-right: 8px;
+
+        padding-bottom: 35px;
     }
 
 
-    /* ---------------------------------------------
-       TOP BAR
-       --------------------------------------------- */
+    .quote-block p {
+        font-size: 12px;
+    }
+
+    .quote-block small {
+        font-size: 5.5px;
+    }
+
+    /* TOP BAR */
 
     .topbar {
         padding:
             13px 14px;
     }
 
-    .mobile-brand {
+    .brand-mark strong {
         font-size: 15px;
     }
 
+    .pulse-icon {
+        font-size: 21px;
+    }
 
-    /* ---------------------------------------------
-       HERO
-       --------------------------------------------- */
+
+    /* HERO */
 
     .hero {
+
         padding-left: 8px;
+
         padding-right: 8px;
     }
 
@@ -3278,6 +3461,7 @@ select option {
     }
 
     .trust-row {
+
         flex-wrap: wrap;
 
         gap: 12px;
@@ -3288,17 +3472,23 @@ select option {
     }
 
     .ring-a {
+
         width: 250px;
+
         height: 250px;
     }
 
     .ring-b {
+
         width: 310px;
+
         height: 310px;
     }
 
     .heart-core {
+
         width: 180px;
+
         height: 220px;
     }
 
@@ -3307,14 +3497,14 @@ select option {
     }
 
     .visual-caption {
+
         left: 15px;
+
         bottom: 15px;
     }
 
 
-    /* ---------------------------------------------
-       RESULT
-       --------------------------------------------- */
+    /* RESULT */
 
     .patient-grid {
         grid-template-columns: 1fr;
@@ -3329,6 +3519,7 @@ select option {
     }
 
     .model-result-card div + div {
+
         border-left: none;
 
         border-top:
@@ -3336,17 +3527,22 @@ select option {
     }
 
     .risk-circle-wrapper {
+
         padding:
             30px 0;
     }
 
     .risk-circle {
+
         width: 190px;
+
         height: 190px;
     }
 
     .risk-circle::before {
+
         width: 162px;
+
         height: 162px;
     }
 
@@ -3359,9 +3555,9 @@ select option {
     }
 
 
-    /* ---------------------------------------------
-       ABOUT
-       --------------------------------------------- */
+    
+
+    /* ABOUT */
 
     .about-intro h1 {
         font-size: 36px;
@@ -3371,3 +3567,4 @@ select option {
         width: 100%;
     }
 }
+
