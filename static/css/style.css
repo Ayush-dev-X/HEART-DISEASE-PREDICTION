@@ -227,35 +227,44 @@ select {
     display: flex;
     align-items: center;
 
-    gap: 12px;
+    gap: 8px;
 
-    padding: 3px 7px 27px;
+    padding: 3px 2px 27px;
+
+    min-width: 0;
+}
+
+.brand-mark > div {
+    min-width: 0;
 }
 
 .brand-mark strong {
-    font-size: 22px;
-    letter-spacing: 1px;
+    font-size: 20px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
 }
-
 .brand-mark strong span {
-    color: var(--red);
+    color: #ff8990;   /* .SENSE - orangish/coral tint */
 }
-
 .brand-mark small {
     display: block;
 
-    font-size: 7px;
+    font-size: 6.5px;
     color: #79949d;
 
-    letter-spacing: 1.7px;
+    letter-spacing: 1.4px;
     margin-top: 5px;
+
+    white-space: nowrap;
 }
 
 .pulse-icon {
     color: var(--red);
 
-    font-size: 32px;
+    font-size: 27px;
     line-height: 1;
+
+    flex-shrink: 0;
 
     text-shadow:
         0 0 18px rgba(255, 94, 105, 0.55);
@@ -833,24 +842,42 @@ select {
 }
 
 .heart-core {
-    font-size: 145px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 
-    color: #ef4655;
+    width: 250px;
+    height: 300px;
 
-    text-shadow:
-        0 0 30px rgba(255, 55, 72, 0.65),
-        0 0 90px rgba(255, 55, 72, 0.22);
+    z-index: 20;
 
-    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    animation:
-        pulse 2s infinite;
+    pointer-events: none;
 }
 
+.heart-core img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    opacity: 1;
+    visibility: visible;
+
+    filter:
+        drop-shadow(0 0 18px rgba(255, 55, 72, 0.45))
+        drop-shadow(0 0 55px rgba(255, 55, 72, 0.18));
+}
 .pulse-wave {
     position: absolute;
 
-    z-index: 3;
+    z-index: 10;
 
     color: #ff8b92;
 
@@ -2392,7 +2419,8 @@ select option {
     }
 
     .heart-core {
-        font-size: 105px;
+        width: 180px;
+        height: 220px;
     }
 
     .visual-label {
@@ -2440,5 +2468,468 @@ select option {
 
     .risk-inner strong {
         font-size: 35px;
+    }
+}
+/* =========================================================
+   TYPOGRAPHY SCALE
+   ========================================================= */
+
+body {
+    font-size: 14px;
+}
+
+.nav-item {
+    font-size: 14px;
+}
+
+.top-nav a {
+    font-size: 14px;
+}
+
+.search input {
+    font-size: 13px;
+}
+
+.model-status {
+    font-size: 11px;
+}
+
+.hero-text {
+    font-size: 15px;
+}
+
+.eyebrow {
+    font-size: 11px;
+}
+
+.trust-row {
+    font-size: 9px;
+}
+
+.stat-card strong {
+    font-size: 15px;
+}
+
+.stat-card p,
+.process-card p {
+    font-size: 12px;
+}
+
+.card-heading h2 {
+    font-size: 16px;
+}
+
+.card-heading p {
+    font-size: 11px;
+}
+
+.field-grid label {
+    font-size: 11px;
+}
+
+.field-grid input,
+.field-grid select {
+    font-size: 13px;
+}
+
+.assessment-side p {
+    font-size: 13px;
+}
+
+.demo-card strong {
+    font-size: 13px;
+}
+
+.demo-card small {
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   ABOUT PAGE
+   ========================================================= */
+
+.about-hero {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 40px;
+
+    padding: 70px 25px 55px 20px;
+
+    min-width: 0;
+}
+
+.about-intro {
+    max-width: 760px;
+}
+
+.about-intro h1 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 52px;
+    line-height: 1.08;
+
+    font-weight: 500;
+
+    letter-spacing: -1px;
+
+    margin-bottom: 24px;
+}
+
+.about-intro h1 em {
+    font-style: normal;
+    color: #cfe4e8;
+}
+
+.about-intro > p:last-child {
+    max-width: 650px;
+
+    color: #8eaab1;
+
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+
+/* ABOUT STATUS */
+
+.about-status {
+    flex-shrink: 0;
+
+    min-width: 225px;
+
+    padding: 18px 20px;
+
+    border-radius: 13px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.about-status-dot {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    box-shadow:
+        0 0 12px var(--green);
+}
+
+.about-status small {
+    display: block;
+
+    color: #63818a;
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 5px;
+}
+
+.about-status strong {
+    display: block;
+
+    color: #b9ced2;
+
+    font-size: 10px;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* ABOUT CARDS */
+
+.about-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+
+    padding:
+        0 25px 75px 20px;
+}
+
+.about-card {
+    min-height: 250px;
+
+    padding: 27px;
+
+    border-radius: 17px;
+
+    transition: 0.25s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-4px);
+
+    border-color:
+        rgba(255, 94, 105, 0.28);
+}
+
+.about-number {
+    color: var(--red);
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+}
+
+.about-card h2 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 27px;
+
+    font-weight: 500;
+
+    margin: 30px 0 14px;
+}
+
+.about-card p {
+    color: #7f9ba2;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+/* TECHNOLOGY */
+
+.about-tech {
+    display: grid;
+
+    grid-template-columns:
+        minmax(220px, 0.65fr)
+        minmax(0, 1.35fr);
+
+    gap: 45px;
+
+    align-items: center;
+
+    padding:
+        55px 25px 70px 20px;
+
+    border-top:
+        1px solid rgba(184, 226, 235, 0.08);
+}
+
+.about-tech h2 {
+    font-family: "Playfair Display", serif;
+
+    font-size: 38px;
+
+    line-height: 1.12;
+
+    font-weight: 500;
+}
+
+.tech-flow {
+    min-height: 155px;
+
+    border-radius: 17px;
+
+    padding: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.tech-step {
+    flex: 1;
+
+    min-width: 0;
+}
+
+.tech-step span {
+    display: block;
+
+    color: var(--red);
+
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+
+    margin-bottom: 14px;
+}
+
+.tech-step strong {
+    display: block;
+
+    font-size: 13px;
+
+    margin-bottom: 6px;
+}
+
+.tech-step small {
+    color: #718d95;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+.tech-line {
+    width: 45px;
+
+    height: 1px;
+
+    flex-shrink: 0;
+
+    background:
+        rgba(255, 94, 105, 0.35);
+}
+
+
+/* DISCLAIMER */
+
+.about-disclaimer {
+    margin:
+        0 25px 55px 20px;
+
+    padding: 20px 23px;
+
+    border-radius: 13px;
+
+    display: flex;
+
+    gap: 15px;
+
+    align-items: flex-start;
+}
+
+.disclaimer-mark {
+    width: 28px;
+    height: 28px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    color: var(--red-light);
+
+    background:
+        rgba(255, 94, 105, 0.10);
+
+    border:
+        1px solid rgba(255, 94, 105, 0.22);
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.about-disclaimer strong {
+    display: block;
+
+    color: #dbecef;
+
+    font-size: 11px;
+
+    margin-bottom: 6px;
+}
+
+.about-disclaimer p {
+    color: #78959d;
+
+    font-size: 10px;
+
+    line-height: 1.7;
+}
+
+
+/* ABOUT RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .about-hero {
+        display: block;
+    }
+
+    .about-status {
+        margin-top: 30px;
+
+        display: inline-flex;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-tech {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 780px) {
+
+    .about-hero {
+        padding:
+            45px 10px 40px;
+    }
+
+    .about-intro h1 {
+        font-size: 43px;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+
+        padding:
+            0 10px 45px;
+    }
+
+    .about-card {
+        min-height: auto;
+    }
+
+    .about-tech {
+        padding:
+            40px 10px 50px;
+    }
+
+    .tech-flow {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .tech-line {
+        width: 100%;
+    }
+
+    .about-disclaimer {
+        margin:
+            0 10px 40px;
+    }
+}
+
+
+@media (max-width: 450px) {
+
+    .about-intro h1 {
+        font-size: 36px;
+    }
+
+    .about-status {
+        width: 100%;
     }
 }
