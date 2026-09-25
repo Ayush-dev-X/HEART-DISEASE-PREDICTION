@@ -613,55 +613,135 @@
             </div>
 
 
+        </section>
 
-            <!-- ================= RECOMMENDATIONS ================= -->
 
-            <div class="recommendations-card glass">
 
-                <div class="result-card-title">
+        <!-- ====================================================
+             PERSONALIZED HEALTH GUIDANCE
+        ==================================================== -->
 
-                    <span class="result-icon">
-                        +
-                    </span>
+        <section class="guidance-section">
 
-                    <div>
 
-                        <h2>
-                            GENERAL GUIDANCE
-                        </h2>
+            <!-- ================= SECTION HEADING ================= -->
 
-                        <p>
-                            Health-conscious next steps
-                        </p>
+            <div class="guidance-heading">
+
+                <p class="eyebrow">
+                    PERSONALIZED INSIGHTS
+                </p>
+
+                <h2>
+                    Health Guidance
+                </h2>
+
+                <p>
+                    Suggestions and precautionary measures based
+                    on your assessment
+                </p>
+
+            </div>
+
+
+
+            <!-- ================= GUIDANCE GRID ================= -->
+
+            <div class="guidance-grid">
+
+
+                <!-- ================= SUGGESTIONS ================= -->
+
+                <div class="recommendations-card glass">
+
+                    <div class="result-card-title">
+
+                        <span class="result-icon">
+                            +
+                        </span>
+
+                        <div>
+
+                            <h2>
+                                SUGGESTIONS
+                            </h2>
+
+                            <p>
+                                Personalized guidance based on your assessment
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="recommendation-list">
+
+                        {% for suggestion in suggestions %}
+
+                        <div>
+
+                            <span>
+                                ✓
+                            </span>
+
+                            {{ suggestion }}
+
+                        </div>
+
+                        {% endfor %}
 
                     </div>
 
                 </div>
 
 
-                <div class="recommendation-list">
 
-                    <div>
-                        <span>✓</span>
-                        Consult a healthcare professional
+                <!-- ================= PRECAUTIONARY MEASURES ================= -->
+
+                <div class="recommendations-card glass">
+
+                    <div class="result-card-title">
+
+                        <span class="result-icon">
+                            !
+                        </span>
+
+                        <div>
+
+                            <h2>
+                                PRECAUTIONARY MEASURES
+                            </h2>
+
+                            <p>
+                                Important considerations based on your assessment
+                            </p>
+
+                        </div>
+
                     </div>
 
-                    <div>
-                        <span>✓</span>
-                        Maintain regular health check-ups
-                    </div>
 
-                    <div>
-                        <span>✓</span>
-                        Follow a heart-healthy lifestyle
-                    </div>
+                    <div class="recommendation-list">
 
-                    <div>
-                        <span>✓</span>
-                        Monitor important cardiovascular factors
+                        {% for precaution in precautions %}
+
+                        <div>
+
+                            <span>
+                                !
+                            </span>
+
+                            {{ precaution }}
+
+                        </div>
+
+                        {% endfor %}
+
                     </div>
 
                 </div>
+
 
             </div>
 
