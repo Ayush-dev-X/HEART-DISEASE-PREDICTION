@@ -1,7 +1,7 @@
 /* =========================================================
    CARDIOSENSE
    Premium Dark Medical / AI Dashboard
-   CLEAN FINAL CSS
+   CLEAN RESPONSIVE FINAL CSS
    ========================================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
@@ -65,10 +65,19 @@ body {
         );
 
     color: var(--text);
-    font-family: "Inter", Arial, sans-serif;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size: 14px;
 
     overflow-x: hidden;
     overflow-y: auto;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 body::before {
@@ -99,6 +108,13 @@ body::before {
             #000,
             transparent 90%
         );
+
+    -webkit-mask-image:
+        linear-gradient(
+            to bottom,
+            #000,
+            transparent 90%
+        );
 }
 
 a {
@@ -110,6 +126,14 @@ button,
 input,
 select {
     font-family: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+img {
+    max-width: 100%;
 }
 
 
@@ -125,7 +149,10 @@ select {
     width: 100%;
 
     display: grid;
-    grid-template-columns: 285px minmax(0, 1fr);
+
+    grid-template-columns:
+        285px
+        minmax(0, 1fr);
 
     align-items: start;
 }
@@ -139,9 +166,11 @@ select {
     position: fixed;
 
     border-radius: 50%;
+
     filter: blur(110px);
 
     opacity: 0.14;
+
     pointer-events: none;
 
     z-index: 0;
@@ -180,7 +209,8 @@ select {
             rgba(5, 23, 30, 0.58)
         );
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
 
     box-shadow:
         var(--shadow),
@@ -198,7 +228,8 @@ select {
 .sidebar {
     width: 225px;
 
-    margin: 30px 0 30px 30px;
+    margin:
+        30px 0 30px 30px;
 
     border-radius: 18px;
 
@@ -206,14 +237,19 @@ select {
     flex-direction: column;
 
     position: sticky;
+
     top: 30px;
 
-    height: calc(100vh - 60px);
-    max-height: calc(100vh - 60px);
+    height:
+        calc(100vh - 60px);
+
+    max-height:
+        calc(100vh - 60px);
 
     z-index: 20;
 
-    padding: 24px 14px;
+    padding:
+        24px 14px;
 
     min-width: 0;
 }
@@ -229,7 +265,8 @@ select {
 
     gap: 8px;
 
-    padding: 3px 2px 27px;
+    padding:
+        3px 2px 27px;
 
     min-width: 0;
 }
@@ -240,19 +277,25 @@ select {
 
 .brand-mark strong {
     font-size: 20px;
+
     letter-spacing: 0.5px;
+
     white-space: nowrap;
 }
+
 .brand-mark strong span {
-    color: #ff8990;   /* .SENSE - orangish/coral tint */
+    color: #ff8990;
 }
+
 .brand-mark small {
     display: block;
 
     font-size: 6.5px;
+
     color: #79949d;
 
     letter-spacing: 1.4px;
+
     margin-top: 5px;
 
     white-space: nowrap;
@@ -262,6 +305,7 @@ select {
     color: var(--red);
 
     font-size: 27px;
+
     line-height: 1;
 
     flex-shrink: 0;
@@ -292,21 +336,31 @@ select {
 
     gap: 16px;
 
-    padding: 0 17px;
+    padding:
+        0 17px;
 
     color: #9bb3ba;
-    font-size: 13px;
 
-    border: 1px solid transparent;
+    font-size: 14px;
 
-    transition: 0.25s ease;
+    border:
+        1px solid transparent;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .nav-item:hover {
-    background: rgba(255, 255, 255, 0.035);
+    background:
+        rgba(255, 255, 255, 0.035);
+
     color: #fff;
 
-    transform: translateX(2px);
+    transform:
+        translateX(2px);
 }
 
 .nav-item.active {
@@ -317,7 +371,8 @@ select {
             rgba(255, 78, 91, 0.04)
         );
 
-    border-color: rgba(255, 94, 105, 0.38);
+    border-color:
+        rgba(255, 94, 105, 0.38);
 
     color: #fff;
 
@@ -347,28 +402,35 @@ select {
 .sidebar-note {
     margin-top: auto;
 
-    padding: 20px 12px;
+    padding:
+        20px 12px;
 
     color: #7d969d;
 
     font-size: 11px;
+
     line-height: 1.65;
 }
 
 .sidebar-note p {
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-size: 15px;
+
     color: #a7bbc0;
 }
 
 .sidebar-note b {
     color: #dcebed;
+
     font-weight: 500;
 }
 
 .sidebar-note small {
     font-size: 8px;
+
     letter-spacing: 1.5px;
 }
 
@@ -388,10 +450,12 @@ select {
 
 .main {
     width: 100%;
+
     min-width: 0;
     min-height: 100vh;
 
-    padding: 30px 30px 80px 0;
+    padding:
+        30px 30px 80px 0;
 
     overflow: visible;
 }
@@ -410,9 +474,11 @@ select {
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 20px 0 30px;
+    padding:
+        0 20px 0 30px;
 
     position: sticky;
+
     top: 20px;
 
     z-index: 50;
@@ -426,16 +492,19 @@ select {
 
 .top-nav {
     display: flex;
+
     gap: 34px;
 }
 
 .top-nav a {
-    font-size: 13px;
+    font-size: 14px;
+
     color: #a5bcc2;
 
     position: relative;
 
-    padding: 32px 0;
+    padding:
+        32px 0;
 }
 
 .top-nav a:hover,
@@ -449,6 +518,7 @@ select {
     position: absolute;
 
     bottom: 21px;
+
     left: 0;
     right: 0;
 
@@ -476,21 +546,28 @@ select {
 
 .search {
     height: 43px;
+
     width: 270px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid var(--border);
+
     border-radius: 24px;
 
     display: flex;
     align-items: center;
 
-    padding: 0 15px;
+    padding:
+        0 15px;
 
     color: #819ba2;
+
+    min-width: 0;
 }
 
 .search input {
     background: transparent;
+
     border: none;
     outline: none;
 
@@ -500,7 +577,9 @@ select {
 
     margin-left: 9px;
 
-    font-size: 12px;
+    font-size: 13px;
+
+    min-width: 0;
 }
 
 .search input::placeholder {
@@ -509,6 +588,7 @@ select {
 
 .icon-btn {
     border: none;
+
     background: transparent;
 
     color: #9bb2b8;
@@ -518,6 +598,8 @@ select {
     position: relative;
 
     cursor: pointer;
+
+    flex-shrink: 0;
 }
 
 .icon-btn i {
@@ -561,7 +643,8 @@ select {
 .model-status {
     height: 43px;
 
-    padding: 0 15px;
+    padding:
+        0 15px;
 
     border:
         1px solid var(--border);
@@ -570,12 +653,14 @@ select {
 
     color: #8fa8af;
 
-    font-size: 10px;
+    font-size: 11px;
 
     display: flex;
     align-items: center;
 
     gap: 8px;
+
+    white-space: nowrap;
 }
 
 .model-status span,
@@ -595,6 +680,7 @@ select {
 
 .model-status b {
     color: var(--green);
+
     font-weight: 500;
 }
 
@@ -606,26 +692,30 @@ select {
 .hero {
     display: grid;
 
-    grid-template-columns: minmax(0, 1fr) minmax(350px, 0.9fr);
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(350px, 0.9fr);
 
     gap: 30px;
 
     align-items: center;
 
-    padding: 65px 25px 48px 20px;
+    padding:
+        65px 25px 48px 20px;
 
     min-height: 610px;
 }
 
 .hero-copy {
     padding-left: 10px;
+
     min-width: 0;
 }
 
 .eyebrow {
     color: var(--red-light);
 
-    font-size: 10px;
+    font-size: 11px;
 
     letter-spacing: 2.4px;
 
@@ -635,7 +725,9 @@ select {
 }
 
 .hero h1 {
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-weight: 500;
 
@@ -650,6 +742,7 @@ select {
 
 .hero h1 em {
     font-style: normal;
+
     color: #cfe4e8;
 }
 
@@ -660,7 +753,7 @@ select {
 
     line-height: 1.8;
 
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .hero-buttons {
@@ -674,7 +767,8 @@ select {
 .btn {
     height: 48px;
 
-    padding: 0 22px;
+    padding:
+        0 22px;
 
     border-radius: 10px;
 
@@ -685,15 +779,20 @@ select {
     gap: 30px;
 
     font-size: 12px;
+
     font-weight: 600;
 
     cursor: pointer;
 
-    transition: 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
 }
 
 .btn:hover {
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 }
 
 .btn-primary {
@@ -742,7 +841,7 @@ select {
 
     color: #6f8d95;
 
-    font-size: 8px;
+    font-size: 9px;
 
     letter-spacing: 1.2px;
 
@@ -831,21 +930,26 @@ select {
     width: 260px;
     height: 100px;
 
-    transform: rotate(-28deg);
+    transform:
+        rotate(-28deg);
 }
 
 .orbit-two {
     width: 340px;
     height: 135px;
 
-    transform: rotate(52deg);
+    transform:
+        rotate(52deg);
 }
 
 .heart-core {
     position: absolute;
+
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
+
+    transform:
+        translate(-50%, -50%);
 
     width: 250px;
     height: 300px;
@@ -871,9 +975,14 @@ select {
     visibility: visible;
 
     filter:
-        drop-shadow(0 0 18px rgba(255, 55, 72, 0.45))
-        drop-shadow(0 0 55px rgba(255, 55, 72, 0.18));
+        drop-shadow(
+            0 0 18px rgba(255, 55, 72, 0.45)
+        )
+        drop-shadow(
+            0 0 55px rgba(255, 55, 72, 0.18)
+        );
 }
+
 .pulse-wave {
     position: absolute;
 
@@ -979,13 +1088,16 @@ select {
 
     min-height: 130px;
 
-    transition: 0.25s ease;
-
     min-width: 0;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .stat-card:hover {
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 
     border-color:
         rgba(255, 94, 105, 0.3);
@@ -1003,14 +1115,15 @@ select {
 .stat-card strong {
     display: block;
 
-    margin: 14px 0 8px;
+    margin:
+        14px 0 8px;
 
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .stat-card p,
 .process-card p {
-    font-size: 11px;
+    font-size: 12px;
 
     color: #7e9ba3;
 
@@ -1076,34 +1189,6 @@ select {
 
 
 /* =========================================================
-   FOOTER
-   ========================================================= */
-
-.footer {
-    border-top:
-        1px solid rgba(184, 226, 235, 0.10);
-
-    padding: 20px 25px;
-
-    color: #5f7c84;
-
-    font-size: 9px;
-
-    letter-spacing: 1.2px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    flex-wrap: wrap;
-
-    margin-top: 40px;
-}
-
-
-/* =========================================================
    PAGE HEADING
    ========================================================= */
 
@@ -1111,7 +1196,6 @@ select {
     display: flex;
 
     align-items: flex-end;
-
     justify-content: space-between;
 
     gap: 25px;
@@ -1119,6 +1203,10 @@ select {
     padding:
         55px 25px 35px 20px;
 
+    min-width: 0;
+}
+
+.page-heading > div {
     min-width: 0;
 }
 
@@ -1132,10 +1220,6 @@ select {
     font-weight: 500;
 
     margin-bottom: 12px;
-}
-
-.page-heading > div {
-    min-width: 0;
 }
 
 .page-heading > div > p:last-child {
@@ -1237,7 +1321,7 @@ select {
 }
 
 .card-heading h2 {
-    font-size: 15px;
+    font-size: 16px;
 
     margin-bottom: 5px;
 }
@@ -1247,7 +1331,7 @@ select {
 
     color: #718d95;
 
-    font-size: 10px;
+    font-size: 11px;
 }
 
 .field-grid {
@@ -1264,7 +1348,7 @@ select {
 
     min-width: 0;
 
-    font-size: 10px;
+    font-size: 11px;
 
     color: #91adb4;
 
@@ -1312,6 +1396,7 @@ select {
 
 select option {
     background: #0b252d;
+
     color: #edf7fa;
 }
 
@@ -1377,7 +1462,7 @@ select option {
 }
 
 .assessment-side p {
-    font-size: 12px;
+    font-size: 13px;
 
     color: #829ea5;
 
@@ -1494,7 +1579,8 @@ select option {
 }
 
 .demo-card:hover {
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 
     border-color:
         rgba(255, 94, 105, 0.5);
@@ -1524,7 +1610,7 @@ select option {
 
     margin-bottom: 7px;
 
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .demo-card small {
@@ -1532,7 +1618,7 @@ select option {
 
     color: #78959d;
 
-    font-size: 9px;
+    font-size: 10px;
 
     line-height: 1.5;
 }
@@ -1560,8 +1646,8 @@ select option {
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1.25fr)
-        minmax(320px, 0.85fr);
+        minmax(0, 1.35fr)
+        minmax(0, 0.85fr);
 
     gap: 18px;
 
@@ -1920,7 +2006,9 @@ select option {
    ========================================================= */
 
 .interpretation-card {
-    min-height: 245px;
+    grid-column: 1 / -1;
+
+    min-height: 220px;
 }
 
 .interpretation-text {
@@ -1969,32 +2057,67 @@ select option {
    SUGGESTIONS + PRECAUTIONS
    ========================================================= */
 
-/*
-   These two cards occupy the COMPLETE next row
-   of the result grid.
-*/
+.guidance-section {
+    padding:
+        0 25px 25px 20px;
 
-.recommendations-card {
-    min-height: 245px;
+    min-width: 0;
+}
+
+.guidance-heading {
+    margin-bottom: 18px;
+}
+
+.guidance-heading h2 {
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 27px;
+
+    font-weight: 500;
+
+    margin-bottom: 6px;
+}
+
+.guidance-heading p:last-child {
+    color: #718d95;
+
+    font-size: 10px;
+}
+
+.guidance-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 18px;
 
     width: 100%;
+
+    min-width: 0;
 }
 
+.guidance-grid .recommendations-card {
+    width: 100%;
 
-/* First recommendations card starts a new row */
+    min-width: 0;
 
-.interpretation-card ~ .recommendations-card {
-    grid-row: auto;
+    min-height: 245px;
 }
 
+.guidance-grid .recommendations-card h2 {
+    font-size: 14px;
 
-/*
-   Make both recommendation cards span
-   half of the next row.
-*/
+    letter-spacing: 0.7px;
+}
 
-.recommendations-card:nth-last-of-type(2) {
-    grid-column: 1;
+.guidance-grid .recommendations-card > p {
+    font-size: 10px;
+
+    color: #718d95;
 }
 
 
@@ -2023,6 +2146,10 @@ select option {
     color: #91aeb4;
 
     font-size: 10px;
+
+    line-height: 1.55;
+
+    overflow-wrap: anywhere;
 }
 
 .recommendation-list span {
@@ -2030,6 +2157,7 @@ select option {
 
     margin-right: 8px;
 }
+
 
 /* =========================================================
    RESULT ACTIONS
@@ -2040,541 +2168,41 @@ select option {
 
     justify-content: flex-end;
 
+    align-items: center;
+
+    gap: 12px;
+
     padding:
         0 25px 25px 20px;
 }
 
 
 /* =========================================================
-   ANIMATIONS
+   FOOTER
    ========================================================= */
 
-@keyframes pulse {
-    0%,
-    100% {
-        transform: scale(1);
-        opacity: 0.9;
-    }
+.footer {
+    border-top:
+        1px solid rgba(184, 226, 235, 0.10);
 
-    50% {
-        transform: scale(1.06);
-        opacity: 1;
-    }
-}
+    padding:
+        20px 25px;
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
+    color: #5f7c84;
 
-
-/* =========================================================
-   TABLET / SMALL LAPTOP
-   ========================================================= */
-
-@media (max-width: 1200px) {
-
-    .app-shell {
-        grid-template-columns: 115px minmax(0, 1fr);
-    }
-
-    .sidebar {
-        width: 80px;
-
-        margin-left: 15px;
-        margin-right: 20px;
-    }
-
-    .brand-mark {
-        justify-content: center;
-
-        padding-left: 0;
-        padding-right: 0;
-    }
-
-    .brand-mark > div:last-child,
-    .nav-item span:last-child,
-    .sidebar-note {
-        display: none;
-    }
-
-    .nav-item {
-        justify-content: center;
-
-        padding: 0;
-    }
-
-    .main {
-        padding-right: 20px;
-    }
-
-    .top-nav {
-        gap: 18px;
-    }
-
-    .search {
-        width: 190px;
-    }
-
-    .model-status {
-        display: none;
-    }
-
-    .hero {
-        grid-template-columns:
-            minmax(0, 1fr)
-            minmax(300px, 0.85fr);
-    }
-
-    .hero h1 {
-        font-size: 46px;
-    }
-
-    .hero-visual {
-        height: 430px;
-    }
-
-    .assessment-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .result-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .demo-grid {
-        grid-template-columns:
-            repeat(3, minmax(0, 1fr));
-    }
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 900px) {
-
-    .hero {
-        grid-template-columns: 1fr;
-
-        padding-top: 45px;
-    }
-
-    .hero-visual {
-        height: 400px;
-    }
-
-    .stats-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-    }
-
-    .info-section {
-        grid-template-columns: 1fr;
-    }
-
-    .process-grid {
-        grid-template-columns:
-            repeat(3, minmax(0, 1fr));
-    }
-
-    .demo-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 780px) {
-
-    html,
-    body {
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
-
-    .app-shell {
-        display: block;
-
-        min-height: 100vh;
-    }
-
-    /* Hide desktop sidebar completely on mobile */
-    .sidebar {
-        display: none;
-    }
-
-    .main {
-        width: 100%;
-        min-height: 100vh;
-
-        padding:
-            12px 12px 60px;
-    }
-
-    .topbar {
-        height: auto;
-
-        position: sticky;
-        top: 12px;
-
-        padding:
-            15px 17px;
-
-        gap: 15px;
-
-        border-radius: 15px;
-    }
-
-    .mobile-brand {
-        display: block;
-
-        font-size: 16px;
-
-        font-weight: 600;
-
-        white-space: nowrap;
-    }
-
-    .top-nav {
-        display: none;
-    }
-
-    .top-actions {
-        margin-left: auto;
-
-        gap: 9px;
-    }
-
-    .search,
-    .model-status {
-        display: none;
-    }
-
-    .avatar {
-        width: 35px;
-        height: 35px;
-    }
-
-    .hero {
-        grid-template-columns: 1fr;
-
-        padding:
-            45px 10px 35px;
-
-        min-height: auto;
-    }
-
-    .hero-copy {
-        padding-left: 0;
-    }
-
-    .hero h1 {
-        font-size: 43px;
-    }
-
-    .hero-visual {
-        height: 390px;
-    }
-
-    .stats-grid {
-        grid-template-columns: 1fr;
-
-        padding:
-            0 10px 45px;
-    }
-
-    .info-section {
-        grid-template-columns: 1fr;
-
-        padding:
-            35px 10px 50px;
-    }
-
-    .process-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .page-heading {
-        display: block;
-
-        padding:
-            45px 10px 30px;
-    }
-
-    .page-heading h1 {
-        font-size: 38px;
-    }
-
-    .date-chip {
-        display: inline-block;
-
-        margin-top: 20px;
-    }
-
-    .assessment-grid {
-        grid-template-columns: 1fr;
-
-        padding:
-            0 10px 35px;
-    }
-
-    .field-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .form-card {
-        padding: 20px;
-    }
-
-    .assessment-side {
-        min-height: auto;
-
-        padding:
-            10px 0 20px;
-    }
-
-    .demo-section {
-        padding:
-            0 10px 25px;
-    }
-
-    .demo-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .demo-card {
-        min-height: 85px;
-    }
-
-    .footer {
-        font-size: 7px;
-
-        padding:
-            18px 10px;
-    }
-
-    .result-grid {
-        grid-template-columns: 1fr;
-
-        padding:
-            0 10px 20px;
-    }
-
-    .result-risk-card,
-    .patient-card,
-    .interpretation-card,
-    .recommendations-card {
-        padding: 18px;
-    }
-
-    .analysis-complete {
-        display: none;
-    }
-
-    .risk-circle {
-        width: 215px;
-        height: 215px;
-    }
-
-    .risk-circle::before {
-        width: 183px;
-        height: 183px;
-    }
-
-    .risk-inner strong {
-        font-size: 40px;
-    }
-
-    .result-actions {
-        padding:
-            0 10px 25px;
-    }
-}
-
-
-/* =========================================================
-   VERY SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 450px) {
-
-    .main {
-        padding-left: 8px;
-        padding-right: 8px;
-    }
-
-    .topbar {
-        padding:
-            13px 14px;
-    }
-
-    .hero {
-        padding-left: 8px;
-        padding-right: 8px;
-    }
-
-    .hero h1 {
-        font-size: 36px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-    }
-
-    .btn {
-        width: 100%;
-    }
-
-    .trust-row {
-        flex-wrap: wrap;
-
-        gap: 12px;
-    }
-
-    .hero-visual {
-        height: 340px;
-    }
-
-    .ring-a {
-        width: 250px;
-        height: 250px;
-    }
-
-    .ring-b {
-        width: 310px;
-        height: 310px;
-    }
-
-    .heart-core {
-        width: 180px;
-        height: 220px;
-    }
-
-    .visual-label {
-        font-size: 7px;
-    }
-
-    .visual-caption {
-        left: 15px;
-        bottom: 15px;
-    }
-
-    .patient-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .patient-grid div:nth-child(odd) {
-        border-right: none;
-    }
-
-    .model-result-card {
-        grid-template-columns: 1fr;
-    }
-
-    .model-result-card div + div {
-        border-left: none;
-
-        border-top:
-            1px solid rgba(184, 226, 235, 0.08);
-    }
-
-    .risk-circle-wrapper {
-        padding:
-            30px 0;
-    }
-
-    .risk-circle {
-        width: 190px;
-        height: 190px;
-    }
-
-    .risk-circle::before {
-        width: 162px;
-        height: 162px;
-    }
-
-    .risk-inner strong {
-        font-size: 35px;
-    }
-}
-/* =========================================================
-   TYPOGRAPHY SCALE
-   ========================================================= */
-
-body {
-    font-size: 14px;
-}
-
-.nav-item {
-    font-size: 14px;
-}
-
-.top-nav a {
-    font-size: 14px;
-}
-
-.search input {
-    font-size: 13px;
-}
-
-.model-status {
-    font-size: 11px;
-}
-
-.hero-text {
-    font-size: 15px;
-}
-
-.eyebrow {
-    font-size: 11px;
-}
-
-.trust-row {
     font-size: 9px;
-}
 
-.stat-card strong {
-    font-size: 15px;
-}
+    letter-spacing: 1.2px;
 
-.stat-card p,
-.process-card p {
-    font-size: 12px;
-}
+    display: flex;
 
-.card-heading h2 {
-    font-size: 16px;
-}
+    justify-content: space-between;
 
-.card-heading p {
-    font-size: 11px;
-}
+    gap: 20px;
 
-.field-grid label {
-    font-size: 11px;
-}
+    flex-wrap: wrap;
 
-.field-grid input,
-.field-grid select {
-    font-size: 13px;
-}
-
-.assessment-side p {
-    font-size: 13px;
-}
-
-.demo-card strong {
-    font-size: 13px;
-}
-
-.demo-card small {
-    font-size: 10px;
+    margin-top: 40px;
 }
 
 
@@ -2584,12 +2212,14 @@ body {
 
 .about-hero {
     display: flex;
+
     align-items: flex-end;
     justify-content: space-between;
 
     gap: 40px;
 
-    padding: 70px 25px 55px 20px;
+    padding:
+        70px 25px 55px 20px;
 
     min-width: 0;
 }
@@ -2599,9 +2229,12 @@ body {
 }
 
 .about-intro h1 {
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-size: 52px;
+
     line-height: 1.08;
 
     font-weight: 500;
@@ -2613,6 +2246,7 @@ body {
 
 .about-intro h1 em {
     font-style: normal;
+
     color: #cfe4e8;
 }
 
@@ -2622,18 +2256,22 @@ body {
     color: #8eaab1;
 
     font-size: 15px;
+
     line-height: 1.8;
 }
 
 
-/* ABOUT STATUS */
+/* =========================================================
+   ABOUT STATUS
+   ========================================================= */
 
 .about-status {
     flex-shrink: 0;
 
     min-width: 225px;
 
-    padding: 18px 20px;
+    padding:
+        18px 20px;
 
     border-radius: 13px;
 
@@ -2678,7 +2316,9 @@ body {
 }
 
 
-/* ABOUT CARDS */
+/* =========================================================
+   ABOUT CARDS
+   ========================================================= */
 
 .about-grid {
     display: grid;
@@ -2699,11 +2339,14 @@ body {
 
     border-radius: 17px;
 
-    transition: 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .about-card:hover {
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 
     border-color:
         rgba(255, 94, 105, 0.28);
@@ -2718,13 +2361,16 @@ body {
 }
 
 .about-card h2 {
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-size: 27px;
 
     font-weight: 500;
 
-    margin: 30px 0 14px;
+    margin:
+        30px 0 14px;
 }
 
 .about-card p {
@@ -2736,7 +2382,9 @@ body {
 }
 
 
-/* TECHNOLOGY */
+/* =========================================================
+   ABOUT TECHNOLOGY
+   ========================================================= */
 
 .about-tech {
     display: grid;
@@ -2757,7 +2405,9 @@ body {
 }
 
 .about-tech h2 {
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-size: 38px;
 
@@ -2776,7 +2426,6 @@ body {
     display: flex;
 
     align-items: center;
-
     justify-content: space-between;
 
     gap: 15px;
@@ -2828,13 +2477,16 @@ body {
 }
 
 
-/* DISCLAIMER */
+/* =========================================================
+   ABOUT DISCLAIMER
+   ========================================================= */
 
 .about-disclaimer {
     margin:
         0 25px 55px 20px;
 
-    padding: 20px 23px;
+    padding:
+        20px 23px;
 
     border-radius: 13px;
 
@@ -2888,31 +2540,653 @@ body {
 }
 
 
-/* ABOUT RESPONSIVE */
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: scale(1.06);
+        opacity: 1;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+
+/* =========================================================
+   1200px — COMPACT DESKTOP / SMALL LAPTOP
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+    .app-shell {
+        grid-template-columns:
+            115px
+            minmax(0, 1fr);
+    }
+
+    .sidebar {
+        width: 80px;
+
+        margin-left: 15px;
+        margin-right: 20px;
+    }
+
+    .brand-mark {
+        justify-content: center;
+
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .brand-mark > div:last-child,
+    .nav-item span:last-child,
+    .sidebar-note {
+        display: none;
+    }
+
+    .nav-item {
+        justify-content: center;
+
+        padding: 0;
+    }
+
+    .main {
+        padding-right: 20px;
+    }
+
+    .top-nav {
+        gap: 18px;
+    }
+
+    .search {
+        width: 190px;
+    }
+
+    .model-status {
+        display: none;
+    }
+
+    .hero {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(300px, 0.85fr);
+
+        gap: 22px;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+    }
+
+    .hero-visual {
+        height: 430px;
+    }
+
+    .assessment-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-grid {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 1fr);
+    }
+
+    .interpretation-card {
+        grid-column: 1 / -1;
+    }
+
+    .about-hero {
+        gap: 25px;
+    }
+}
+
+
+/* =========================================================
+   1100px — REDUCE TOPBAR PRESSURE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .topbar {
+        padding-left: 22px;
+        padding-right: 16px;
+    }
+
+    .top-nav {
+        gap: 20px;
+    }
+
+    .top-nav a {
+        font-size: 12px;
+    }
+
+    .top-actions {
+        gap: 10px;
+    }
+
+    .search {
+        width: 165px;
+    }
+
+    .hero {
+        gap: 20px;
+    }
+
+    .about-hero {
+        gap: 25px;
+    }
+}
+
+
+/* =========================================================
+   1000px — HIDE SEARCH
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .search {
+        display: none;
+    }
+
+    .top-nav {
+        gap: 17px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+}
+
+
+/* =========================================================
+   900px — TABLET
+   Sidebar and desktop navigation disappear.
+   ========================================================= */
 
 @media (max-width: 900px) {
 
+    /* ---------------------------------------------
+       APP
+       --------------------------------------------- */
+
+    .app-shell {
+        display: block;
+
+        min-height: 100vh;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        width: 100%;
+
+        min-height: 100vh;
+
+        padding:
+            20px 20px 60px;
+    }
+
+
+    /* ---------------------------------------------
+       TOP BAR
+       --------------------------------------------- */
+
+    .topbar {
+        height: 72px;
+
+        position: sticky;
+
+        top: 15px;
+
+        padding:
+            0 18px;
+
+        border-radius: 15px;
+    }
+
+    .mobile-brand {
+        display: block;
+
+        font-size: 17px;
+
+        font-weight: 600;
+
+        white-space: nowrap;
+    }
+
+    .mobile-brand span {
+        color: var(--red-light);
+    }
+
+    .top-nav {
+        display: none;
+    }
+
+    .top-actions {
+        margin-left: auto;
+
+        gap: 10px;
+    }
+
+    .model-status {
+        display: none;
+    }
+
+
+    /* ---------------------------------------------
+       HERO
+       --------------------------------------------- */
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        padding:
+            50px 10px 35px;
+
+        min-height: auto;
+    }
+
+    .hero-copy {
+        padding-left: 0;
+    }
+
+    .hero h1 {
+        font-size: 46px;
+    }
+
+    .hero-visual {
+        width: 100%;
+
+        max-width: 650px;
+
+        height: 400px;
+
+        margin:
+            0 auto;
+    }
+
+
+    /* ---------------------------------------------
+       STATS
+       --------------------------------------------- */
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    /* ---------------------------------------------
+       HOW IT WORKS
+       --------------------------------------------- */
+
+    .info-section {
+        grid-template-columns: 1fr;
+    }
+
+    .process-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+
+    /* ---------------------------------------------
+       ASSESSMENT
+       --------------------------------------------- */
+
+    .assessment-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .demo-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+
+    /* ---------------------------------------------
+       RESULT
+       --------------------------------------------- */
+
+    .result-grid {
+        grid-template-columns: 1fr;
+
+        padding:
+            0 10px 20px;
+    }
+
+    .interpretation-card {
+        grid-column: auto;
+    }
+
+    .guidance-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    /* ---------------------------------------------
+       ABOUT
+       --------------------------------------------- */
+
     .about-hero {
         display: block;
+
+        padding:
+            50px 10px 40px;
     }
 
     .about-status {
-        margin-top: 30px;
+        margin-top: 25px;
 
         display: inline-flex;
     }
 
     .about-grid {
         grid-template-columns: 1fr;
+
+        padding:
+            0 10px 50px;
     }
 
     .about-tech {
         grid-template-columns: 1fr;
+
+        padding:
+            40px 10px 50px;
     }
 }
 
 
+/* =========================================================
+   780px — MOBILE
+   ========================================================= */
+
 @media (max-width: 780px) {
+
+    html,
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .main {
+        width: 100%;
+
+        padding:
+            12px 12px 60px;
+    }
+
+    .topbar {
+        height: auto;
+
+        position: sticky;
+
+        top: 12px;
+
+        padding:
+            15px 17px;
+
+        gap: 15px;
+
+        border-radius: 15px;
+    }
+
+    .mobile-brand {
+        font-size: 16px;
+    }
+
+    .top-actions {
+        gap: 9px;
+    }
+
+    .avatar {
+        width: 35px;
+        height: 35px;
+    }
+
+    .icon-btn {
+        font-size: 20px;
+    }
+
+
+    /* ---------------------------------------------
+       HERO
+       --------------------------------------------- */
+
+    .hero {
+        grid-template-columns: 1fr;
+
+        padding:
+            45px 10px 35px;
+
+        min-height: auto;
+    }
+
+    .hero-copy {
+        padding-left: 0;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero-text {
+        font-size: 14px;
+    }
+
+    .hero-visual {
+        height: 390px;
+    }
+
+
+    /* ---------------------------------------------
+       BUTTONS
+       --------------------------------------------- */
+
+    .hero-buttons {
+        flex-wrap: wrap;
+    }
+
+
+    /* ---------------------------------------------
+       STATS
+       --------------------------------------------- */
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+
+        padding:
+            0 10px 45px;
+    }
+
+
+    /* ---------------------------------------------
+       HOW IT WORKS
+       --------------------------------------------- */
+
+    .info-section {
+        grid-template-columns: 1fr;
+
+        padding:
+            35px 10px 50px;
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* ---------------------------------------------
+       PAGE HEADING
+       --------------------------------------------- */
+
+    .page-heading {
+        display: block;
+
+        padding:
+            45px 10px 30px;
+    }
+
+    .page-heading h1 {
+        font-size: 38px;
+    }
+
+    .date-chip {
+        display: inline-block;
+
+        margin-top: 20px;
+    }
+
+
+    /* ---------------------------------------------
+       ASSESSMENT
+       --------------------------------------------- */
+
+    .assessment-grid {
+        grid-template-columns: 1fr;
+
+        padding:
+            0 10px 35px;
+    }
+
+    .field-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-card {
+        padding: 20px;
+    }
+
+    .assessment-side {
+        min-height: auto;
+
+        padding:
+            10px 0 20px;
+    }
+
+    .demo-section {
+        padding:
+            0 10px 25px;
+    }
+
+    .demo-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .demo-card {
+        min-height: 85px;
+    }
+
+
+    /* ---------------------------------------------
+       RESULT
+       --------------------------------------------- */
+
+    .result-grid {
+        grid-template-columns: 1fr;
+
+        padding:
+            0 10px 20px;
+    }
+
+    .result-risk-card,
+    .patient-card,
+    .interpretation-card,
+    .recommendations-card {
+        padding: 18px;
+    }
+
+    .analysis-complete {
+        display: none;
+    }
+
+    .risk-circle {
+        width: 215px;
+        height: 215px;
+    }
+
+    .risk-circle::before {
+        width: 183px;
+        height: 183px;
+    }
+
+    .risk-inner strong {
+        font-size: 40px;
+    }
+
+
+    /* ---------------------------------------------
+       GUIDANCE
+       --------------------------------------------- */
+
+    .guidance-section {
+        padding:
+            0 10px 25px;
+    }
+
+    .guidance-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .guidance-heading h2 {
+        font-size: 25px;
+    }
+
+
+    /* ---------------------------------------------
+       RESULT ACTIONS
+       --------------------------------------------- */
+
+    .result-actions {
+        padding:
+            0 10px 25px;
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .result-actions .btn {
+        width: 100%;
+    }
+
+
+    /* ---------------------------------------------
+       FOOTER
+       --------------------------------------------- */
+
+    .footer {
+        font-size: 7px;
+
+        padding:
+            18px 10px;
+    }
+
+
+    /* ---------------------------------------------
+       ABOUT
+       --------------------------------------------- */
 
     .about-hero {
         padding:
@@ -2956,208 +3230,144 @@ body {
 }
 
 
+/* =========================================================
+   450px — VERY SMALL PHONES
+   ========================================================= */
+
 @media (max-width: 450px) {
+
+    .main {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+
+    /* ---------------------------------------------
+       TOP BAR
+       --------------------------------------------- */
+
+    .topbar {
+        padding:
+            13px 14px;
+    }
+
+    .mobile-brand {
+        font-size: 15px;
+    }
+
+
+    /* ---------------------------------------------
+       HERO
+       --------------------------------------------- */
+
+    .hero {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .trust-row {
+        flex-wrap: wrap;
+
+        gap: 12px;
+    }
+
+    .hero-visual {
+        height: 340px;
+    }
+
+    .ring-a {
+        width: 250px;
+        height: 250px;
+    }
+
+    .ring-b {
+        width: 310px;
+        height: 310px;
+    }
+
+    .heart-core {
+        width: 180px;
+        height: 220px;
+    }
+
+    .visual-label {
+        font-size: 7px;
+    }
+
+    .visual-caption {
+        left: 15px;
+        bottom: 15px;
+    }
+
+
+    /* ---------------------------------------------
+       RESULT
+       --------------------------------------------- */
+
+    .patient-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .patient-grid div:nth-child(odd) {
+        border-right: none;
+    }
+
+    .model-result-card {
+        grid-template-columns: 1fr;
+    }
+
+    .model-result-card div + div {
+        border-left: none;
+
+        border-top:
+            1px solid rgba(184, 226, 235, 0.08);
+    }
+
+    .risk-circle-wrapper {
+        padding:
+            30px 0;
+    }
+
+    .risk-circle {
+        width: 190px;
+        height: 190px;
+    }
+
+    .risk-circle::before {
+        width: 162px;
+        height: 162px;
+    }
+
+    .risk-inner strong {
+        font-size: 35px;
+    }
+
+    .recommendation-list div {
+        font-size: 10px;
+    }
+
+
+    /* ---------------------------------------------
+       ABOUT
+       --------------------------------------------- */
 
     .about-intro h1 {
         font-size: 36px;
     }
 
     .about-status {
-        width: 100%;
-    }
-}
-
-/* =========================================================
-   RESULT PAGE — BETTER CARD PLACEMENT
-   ========================================================= */
-
-/* Main result grid */
-.result-grid {
-    display: grid;
-
-    grid-template-columns:
-        minmax(0, 1.35fr)
-        minmax(0, 0.85fr);
-
-    gap: 18px;
-
-    padding:
-        0 25px 25px 20px;
-
-    min-width: 0;
-}
-
-
-/* ---------------------------------------------------------
-   Interpretation — use the full available width
-   --------------------------------------------------------- */
-
-.interpretation-card {
-    grid-column: 1 / -1;
-
-    min-height: 220px;
-}
-
-
-/* ---------------------------------------------------------
-   Guidance section
-   --------------------------------------------------------- */
-
-.guidance-section {
-    padding:
-        0 25px 25px 20px;
-
-    min-width: 0;
-}
-
-
-/* Guidance heading */
-.guidance-heading {
-    margin-bottom: 18px;
-}
-
-.guidance-heading h2 {
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size: 27px;
-
-    font-weight: 500;
-
-    margin-bottom: 6px;
-}
-
-.guidance-heading p:last-child {
-    color: #718d95;
-
-    font-size: 10px;
-}
-
-
-/* ---------------------------------------------------------
-   Guidance cards — equal width
-   --------------------------------------------------------- */
-
-.guidance-grid {
-    display: grid;
-
-    grid-template-columns:
-        minmax(0, 1fr)
-        minmax(0, 1fr);
-
-    gap: 18px;
-
-    width: 100%;
-}
-
-
-/* Both cards equal height */
-.guidance-grid .recommendations-card {
-    width: 100%;
-
-    min-width: 0;
-
-    min-height: 250px;
-
-    box-sizing: border-box;
-}
-
-
-/* ---------------------------------------------------------
-   Guidance card headings
-   --------------------------------------------------------- */
-
-.guidance-grid .recommendations-card h2 {
-    font-size: 14px;
-
-    letter-spacing: 0.7px;
-}
-
-.guidance-grid .recommendations-card > p {
-    font-size: 10px;
-
-    color: #718d95;
-}
-
-
-/* ---------------------------------------------------------
-   Guidance list
-   --------------------------------------------------------- */
-
-.guidance-grid .recommendation-list {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 10px;
-
-    margin-top: 18px;
-}
-
-.guidance-grid .recommendation-list > div {
-    min-width: 0;
-}
-
-
-/* ---------------------------------------------------------
-   Result actions
-   --------------------------------------------------------- */
-
-.result-actions {
-    display: flex;
-
-    justify-content: flex-end;
-
-    align-items: center;
-
-    gap: 12px;
-
-    padding:
-        0 25px 25px 20px;
-}
-
-
-/* ---------------------------------------------------------
-   Mobile
-   --------------------------------------------------------- */
-
-@media (max-width: 900px) {
-
-    .result-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .interpretation-card {
-        grid-column: auto;
-    }
-
-    .guidance-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-@media (max-width: 780px) {
-
-    .guidance-section {
-        padding:
-            0 10px 25px;
-    }
-
-    .guidance-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .result-actions {
-        padding:
-            0 10px 20px;
-
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .result-actions .btn {
         width: 100%;
     }
 }

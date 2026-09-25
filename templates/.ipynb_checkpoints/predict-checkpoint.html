@@ -1,20 +1,680 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CardioSense — Predict</title><link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"></head>
-<body><div class="shell"><aside class="sidebar glass"><div class="brand"><div class="pulse">⌁</div><div><b>CARDIO<span>.SENSE</span></b><small>AI HEALTH INTELLIGENCE</small></div></div><nav class="nav"><a class="active" href="/predict"><span class="ico">♡</span><span>Predict</span></a><a href="/"><span class="ico">▦</span><span>Dashboard</span></a><a href="#"><span class="ico">⌁</span><span>Insights</span></a><a href="#"><span class="ico">◷</span><span>History</span></a><a href="#"><span class="ico">⚙</span><span>Settings</span></a></nav><div class="side-note"><div class="line"></div><strong>Knowledge today<br>for a healthier tomorrow.</strong><br><br>DATA SCIENCE FOR<br>BETTER LIVES.</div></aside>
-<main class="main"><header class="topbar glass"><nav class="topnav"><a href="/">Home</a><a class="active" href="/predict">Predict</a><a href="#">Insights</a><a href="#">About</a></nav><div class="tools"><div class="search">⌕<input placeholder="Search anything..."></div><div class="avatar">CS</div><div class="status"><span></span> MODEL v1.0 <b>READY</b></div></div></header>
-<section class="content"><div class="heading"><div><div class="eyebrow">PREDICT</div><h1>New Assessment</h1><p>Enter the cardiovascular parameters to generate a CardioSense risk assessment.</p></div><div class="ready">MODEL <b>ONLINE</b></div></div>
-<form class="form-layout" action="/predict" method="post">
-<section class="card glass form-card"><div class="card-head"><div class="num">01</div><div><h2>Patient & Clinical Parameters</h2><p>Use the same variables used during model training.</p></div></div><div class="grid">
-<label>Age<input name="age" type="number" min="1" max="120" placeholder="52" required></label>
-<label>Sex<select name="sex" required><option value="" disabled selected>Select</option><option value="M">Male</option><option value="F">Female</option></select></label>
-<label>Chest Pain Type<select name="chest_pain" required><option value="" disabled selected>Select</option><option value="ATA">Atypical Angina</option><option value="NAP">Non-anginal Pain</option><option value="TA">Typical Angina</option><option value="ASY">Asymptomatic</option></select></label>
-<label>Resting Blood Pressure<div class="unit"><input name="resting_bp" type="number" placeholder="140" required><span>mm Hg</span></div></label>
-<label>Cholesterol<div class="unit"><input name="cholesterol" type="number" placeholder="240" required><span>mg/dL</span></div></label>
-<label>Fasting Blood Sugar<select name="fasting_bs" required><option value="" disabled selected>Select</option><option value="0">≤ 120 mg/dL</option><option value="1">&gt; 120 mg/dL</option></select></label>
-<label>Resting ECG<select name="resting_ecg" required><option value="" disabled selected>Select</option><option value="Normal">Normal</option><option value="ST">ST-T Wave Abnormality</option><option value="LVH">Left Ventricular Hypertrophy</option></select></label>
-<label>Maximum Heart Rate<div class="unit"><input name="max_hr" type="number" placeholder="150" required><span>bpm</span></div></label>
-<label>Exercise-Induced Angina<select name="exercise_angina" required><option value="" disabled selected>Select</option><option value="Y">Yes</option><option value="N">No</option></select></label>
-<label>ST Depression<div class="unit"><input name="oldpeak" type="number" step="0.1" placeholder="1.5" required><span>mm</span></div></label>
-<label>ST Slope<select name="st_slope" required><option value="" disabled selected>Select</option><option value="Up">Up</option><option value="Flat">Flat</option><option value="Down">Down</option></select></label>
-</div></section>
-<section class="card glass side-card"><div class="online"><span></span> MODEL ONLINE</div><h2>Ready to analyze.</h2><p>Review the values, then run the trained Logistic Regression model through the Flask backend.</p><div class="disclaimer">CardioSense is an educational machine-learning project and is not a medical diagnosis.</div><button class="btn full" type="submit">Analyze Risk&nbsp; →</button></section>
-</form></section><footer class="footer"><span>CARDIO.SENSE</span><span>PREVENT &nbsp;|&nbsp; PREDICT &nbsp;|&nbsp; PROGRESS</span></footer></main></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CardioSense — New Assessment</title>
+
+  <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+  <script defer
+          src="{{ url_for('static', filename='js/app.js') }}"></script>
+</head>
+
+<body>
+
+<div class="app-shell">
+
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <!-- ================= SIDEBAR ================= -->
+
+  <aside class="sidebar glass">
+
+    <div class="brand-mark">
+      <div class="pulse-icon">⌁</div>
+
+      <div>
+        <strong>CARDIO<span>.SENSE</span></strong>
+        <small>AI HEALTH INTELLIGENCE</small>
+      </div>
+    </div>
+
+    <nav class="side-nav">
+
+      <a class="nav-item active" href="/predict">
+        <span class="nav-icon">♡</span>
+        <span>Predict</span>
+      </a>
+
+      <a class="nav-item" href="/">
+        <span class="nav-icon">▦</span>
+        <span>Dashboard</span>
+      </a>
+
+      <a class="nav-item" href="#">
+        <span class="nav-icon">⌁</span>
+        <span>Insights</span>
+      </a>
+
+      <a class="nav-item" href="#">
+        <span class="nav-icon">◷</span>
+        <span>History</span>
+      </a>
+
+      <a class="nav-item" href="#">
+        <span class="nav-icon">⚙</span>
+        <span>Settings</span>
+      </a>
+
+    </nav>
+
+    <div class="sidebar-note">
+
+      <div class="tiny-line"></div>
+
+      <p>
+        Knowledge today<br>
+        <b>for a healthier tomorrow.</b>
+      </p>
+
+      <small>
+        DATA SCIENCE FOR<br>
+        BETTER LIVES.
+      </small>
+
+    </div>
+
+  </aside>
+
+
+  <!-- ================= MAIN ================= -->
+
+  <main class="main">
+
+    <!-- TOP BAR -->
+
+    <header class="topbar glass">
+
+      <div class="mobile-brand">
+        CARDIO<span>.SENSE</span>
+      </div>
+
+      <nav class="top-nav">
+        <a href="/">Home</a>
+        <a class="active" href="/predict">Predict</a>
+        <a href="#">Insights</a>
+        <a href="{{ url_for('about') }}">About</a>
+      </nav>
+
+      <div class="top-actions">
+
+        <div class="search">
+          <span>⌕</span>
+          <input placeholder="Search anything...">
+        </div>
+
+        <button class="icon-btn">
+          ♧
+          <i></i>
+        </button>
+
+        <div class="avatar">CS</div>
+
+        <div class="model-status">
+          <span></span>
+          MODEL v1.0
+          <b>READY</b>
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- PAGE HEADING -->
+
+    <section class="page-heading">
+
+      <div>
+
+        <p class="eyebrow">PREDICT</p>
+
+        <h1>New Assessment</h1>
+
+        <p>
+          Enter the patient's cardiovascular parameters
+          to generate a model prediction.
+        </p>
+
+      </div>
+
+      <div class="date-chip">
+        ◫ &nbsp; ASSESSMENT
+        <b>READY</b>
+      </div>
+
+    </section>
+
+
+    <!-- ================= DEMO PROFILES ================= -->
+
+    <section class="demo-section">
+
+      <div class="demo-heading">
+
+        <div>
+          <p class="eyebrow">QUICK DEMO</p>
+
+          <h2>Try a sample profile</h2>
+
+          <p>
+            Use these predefined profiles to explore different
+            model outcomes.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="demo-grid">
+
+        <button type="button"
+                class="demo-card"
+                onclick="loadDemo('low')">
+
+          <span class="demo-number">01</span>
+
+          <strong>Lower-Risk Pattern</strong>
+
+          <small>
+            Younger profile · normal BP · higher max HR
+          </small>
+
+          <span class="demo-arrow">→</span>
+
+        </button>
+
+
+        <button type="button"
+                class="demo-card"
+                onclick="loadDemo('moderate')">
+
+          <span class="demo-number">02</span>
+
+          <strong>Mixed Profile</strong>
+
+          <small>
+            Moderate clinical values · mixed indicators
+          </small>
+
+          <span class="demo-arrow">→</span>
+
+        </button>
+
+
+        <button type="button"
+                class="demo-card"
+                onclick="loadDemo('high')">
+
+          <span class="demo-number">03</span>
+
+          <strong>Higher-Risk Pattern</strong>
+
+          <small>
+            Older profile · elevated BP · multiple indicators
+          </small>
+
+          <span class="demo-arrow">→</span>
+
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= FORM ================= -->
+
+    <form class="assessment-grid"
+          action="/predict"
+          method="post">
+
+
+      <!-- PATIENT PROFILE -->
+
+      <section class="form-card glass">
+
+        <div class="card-heading">
+
+          <span class="heading-icon">01</span>
+
+          <div>
+            <h2>Patient Profile</h2>
+            <p>Basic demographic information</p>
+          </div>
+
+        </div>
+
+
+        <div class="field-grid">
+
+          <label>
+            Age
+
+            <input
+              id="age"
+              name="age"
+              type="number"
+              min="1"
+              max="120"
+              placeholder="e.g. 52"
+              required>
+          </label>
+
+
+          <label>
+            Sex
+
+            <select id="sex"
+                    name="sex"
+                    required>
+
+              <option value="" selected disabled>
+                Select
+              </option>
+
+              <option value="M">Male</option>
+              <option value="F">Female</option>
+
+            </select>
+
+          </label>
+
+        </div>
+
+      </section>
+
+
+      <!-- CLINICAL PARAMETERS -->
+
+      <section class="form-card glass">
+
+        <div class="card-heading">
+
+          <span class="heading-icon">02</span>
+
+          <div>
+            <h2>Clinical Parameters</h2>
+            <p>Key cardiovascular measurements</p>
+          </div>
+
+        </div>
+
+
+        <div class="field-grid">
+
+
+          <label>
+            Chest Pain Type
+
+            <select id="cp"
+                    name="cp"
+                    required>
+
+              <option value="" selected disabled>
+                Select type
+              </option>
+
+              <option value="ATA">
+                Atypical Angina
+              </option>
+
+              <option value="NAP">
+                Non-anginal Pain
+              </option>
+
+              <option value="TA">
+                Typical Angina
+              </option>
+
+              <option value="ASY">
+                Asymptomatic
+              </option>
+
+            </select>
+
+          </label>
+
+
+          <label>
+            Resting Blood Pressure
+
+            <div class="input-unit">
+
+              <input
+                id="trestbps"
+                name="trestbps"
+                type="number"
+                min="50"
+                max="250"
+                placeholder="140"
+                required>
+
+              <span>mm Hg</span>
+
+            </div>
+
+          </label>
+
+
+          <label>
+            Cholesterol
+
+            <div class="input-unit">
+
+              <input
+                id="chol"
+                name="chol"
+                type="number"
+                min="50"
+                max="700"
+                placeholder="240"
+                required>
+
+              <span>mg/dL</span>
+
+            </div>
+
+          </label>
+
+
+          <label>
+            Fasting Blood Sugar
+
+            <select id="fbs"
+                    name="fbs"
+                    required>
+
+              <option value="" selected disabled>
+                Select
+              </option>
+
+              <option value="0">
+                ≤ 120 mg/dL
+              </option>
+
+              <option value="1">
+                &gt; 120 mg/dL
+              </option>
+
+            </select>
+
+          </label>
+
+
+          <label>
+            Resting ECG
+
+            <select id="restecg"
+                    name="restecg"
+                    required>
+
+              <option value="" selected disabled>
+                Select
+              </option>
+
+              <option value="Normal">
+                Normal
+              </option>
+
+              <option value="ST">
+                ST-T Wave Abnormality
+              </option>
+
+              <option value="LVH">
+                Left Ventricular Hypertrophy
+              </option>
+
+            </select>
+
+          </label>
+
+
+          <label>
+            Maximum Heart Rate
+
+            <div class="input-unit">
+
+              <input
+                id="thalach"
+                name="thalach"
+                type="number"
+                min="50"
+                max="250"
+                placeholder="150"
+                required>
+
+              <span>bpm</span>
+
+            </div>
+
+          </label>
+
+        </div>
+
+      </section>
+
+
+      <!-- EXERCISE RESPONSE -->
+
+      <section class="form-card glass">
+
+        <div class="card-heading">
+
+          <span class="heading-icon">03</span>
+
+          <div>
+            <h2>Exercise Response</h2>
+            <p>Exercise-related cardiovascular indicators</p>
+          </div>
+
+        </div>
+
+
+        <div class="field-grid">
+
+
+          <label>
+            Exercise-Induced Angina
+
+            <select id="exang"
+                    name="exang"
+                    required>
+
+              <option value="" selected disabled>
+                Select
+              </option>
+
+              <option value="Y">Yes</option>
+              <option value="N">No</option>
+
+            </select>
+
+          </label>
+
+
+          <label>
+            ST Depression
+
+            <div class="input-unit">
+
+              <input
+                id="oldpeak"
+                name="oldpeak"
+                type="number"
+                step="0.1"
+                min="-5"
+                max="10"
+                placeholder="1.5"
+                required>
+
+              <span>mm</span>
+
+            </div>
+
+          </label>
+
+
+          <label>
+            ST Slope
+
+            <select id="slope"
+                    name="slope"
+                    required>
+
+              <option value="" selected disabled>
+                Select
+              </option>
+
+              <option value="Up">
+                Up
+              </option>
+
+              <option value="Flat">
+                Flat
+              </option>
+
+              <option value="Down">
+                Down
+              </option>
+
+            </select>
+
+          </label>
+
+        </div>
+
+      </section>
+
+
+      <!-- ANALYSIS CARD -->
+
+      <section class="form-card glass assessment-side">
+
+        <div class="mini-status">
+          <span></span>
+          MODEL ONLINE
+        </div>
+
+        <h2>Ready to analyze.</h2>
+
+        <p>
+          Check the entered values before running
+          the CardioSense prediction.
+        </p>
+
+        <div class="disclaimer">
+          This tool is an educational ML project and is
+          not a medical diagnosis.
+        </div>
+
+        <button class="btn btn-primary full"
+                type="submit">
+
+          Analyze Risk
+          <span>→</span>
+
+        </button>
+
+      </section>
+
+    </form>
+
+
+    <footer class="footer">
+
+      <span>CARDIO.SENSE</span>
+
+      <span>
+        PREVENT &nbsp; | &nbsp;
+        PREDICT &nbsp; | &nbsp;
+        PROGRESS
+      </span>
+
+    </footer>
+
+  </main>
+
+</div>
+
+
+<!-- ================= DEMO SCRIPT ================= -->
+
+<script>
+
+function setValue(id, value) {
+  const element = document.getElementById(id);
+
+  if (element) {
+    element.value = value;
+  }
+}
+
+
+function loadDemo(type) {
+
+  if (type === "low") {
+
+    setValue("age", 35);
+    setValue("sex", "F");
+    setValue("cp", "ATA");
+    setValue("trestbps", 120);
+    setValue("chol", 180);
+    setValue("fbs", "0");
+    setValue("restecg", "Normal");
+    setValue("thalach", 175);
+    setValue("exang", "N");
+    setValue("oldpeak", 0.0);
+    setValue("slope", "Up");
+
+  }
+
+
+  if (type === "moderate") {
+
+    setValue("age", 52);
+    setValue("sex", "M");
+    setValue("cp", "NAP");
+    setValue("trestbps", 135);
+    setValue("chol", 220);
+    setValue("fbs", "0");
+    setValue("restecg", "Normal");
+    setValue("thalach", 145);
+    setValue("exang", "N");
+    setValue("oldpeak", 1.0);
+    setValue("slope", "Flat");
+
+  }
+
+
+  if (type === "high") {
+
+    setValue("age", 65);
+    setValue("sex", "M");
+    setValue("cp", "TA");
+    setValue("trestbps", 160);
+    setValue("chol", 300);
+    setValue("fbs", "1");
+    setValue("restecg", "ST");
+    setValue("thalach", 100);
+    setValue("exang", "Y");
+    setValue("oldpeak", 3.0);
+    setValue("slope", "Flat");
+
+  }
+
+  document.querySelector(".assessment-grid")
+    .scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+}
+
+</script>
+
+</body>
+</html>
