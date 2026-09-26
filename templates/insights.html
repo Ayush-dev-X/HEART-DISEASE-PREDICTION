@@ -1,0 +1,1070 @@
+{% extends "base.html" %}
+
+{% block title %}CardioSense | ML Insights{% endblock %}
+
+{% block content %}
+
+<section class="insights-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="insights-hero">
+        <div>
+            <span class="insights-eyebrow">
+                <span class="insights-pulse"></span>
+                MODEL INTELLIGENCE
+            </span>
+
+            <h1>Cardiovascular <span>Insights</span></h1>
+
+            <p>
+                A transparent view of the dataset, preprocessing pipeline,
+                feature relationships and machine-learning performance
+                behind CardioSense.
+            </p>
+        </div>
+
+        <div class="insights-model-badge">
+            <span class="model-badge-label">DEPLOYED MODEL</span>
+            <strong>Logistic Regression</strong>
+            <small>15 model inputs · StandardScaler</small>
+        </div>
+    </div>
+
+
+    <!-- =====================================================
+         KEY DATASET METRICS
+    ====================================================== -->
+
+    <section class="insight-stat-grid">
+
+        <div class="insight-stat-card">
+            <div class="insight-stat-icon">◉</div>
+            <div>
+                <span>DATASET SIZE</span>
+                <strong>918</strong>
+                <small>patient records</small>
+            </div>
+        </div>
+
+        <div class="insight-stat-card">
+            <div class="insight-stat-icon">⌘</div>
+            <div>
+                <span>ORIGINAL FEATURES</span>
+                <strong>12</strong>
+                <small>including target</small>
+            </div>
+        </div>
+
+        <div class="insight-stat-card">
+            <div class="insight-stat-icon">◎</div>
+            <div>
+                <span>MODEL FEATURES</span>
+                <strong>15</strong>
+                <small>after encoding</small>
+            </div>
+        </div>
+
+        <div class="insight-stat-card accent">
+            <div class="insight-stat-icon">✓</div>
+            <div>
+                <span>TEST ACCURACY</span>
+                <strong>86.41%</strong>
+                <small>Logistic Regression</small>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DATASET OVERVIEW
+    ====================================================== -->
+
+    <section class="insight-section">
+
+        <div class="insight-section-heading">
+            <div>
+                <span class="insights-eyebrow">01 · DATASET</span>
+                <h2>Dataset Overview</h2>
+            </div>
+
+            <p>
+                The model is trained on a 918-record cardiovascular
+                dataset containing demographic, clinical and exercise-related
+                measurements.
+            </p>
+        </div>
+
+
+        <div class="dataset-overview-grid">
+
+            <div class="glass insight-info-card">
+                <span class="info-label">TARGET VARIABLE</span>
+                <h3>HeartDisease</h3>
+                <p>
+                    Binary classification target where
+                    <strong>0 = no heart disease</strong> and
+                    <strong>1 = heart disease</strong>.
+                </p>
+            </div>
+
+            <div class="glass insight-info-card">
+                <span class="info-label">DATA QUALITY</span>
+                <h3>Clean baseline</h3>
+                <div class="quality-list">
+                    <div>
+                        <span>Missing values</span>
+                        <strong>0</strong>
+                    </div>
+                    <div>
+                        <span>Duplicate rows</span>
+                        <strong>0</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass insight-info-card">
+                <span class="info-label">TARGET DISTRIBUTION</span>
+
+                <div class="target-bars">
+
+                    <div class="target-row">
+                        <div>
+                            <span>No disease</span>
+                            <strong>410 · 44.66%</strong>
+                        </div>
+                        <div class="target-track">
+                            <div class="target-fill no-disease"
+                                 style="width:44.66%"></div>
+                        </div>
+                    </div>
+
+                    <div class="target-row">
+                        <div>
+                            <span>Heart disease</span>
+                            <strong>508 · 55.34%</strong>
+                        </div>
+                        <div class="target-track">
+                            <div class="target-fill disease"
+                                 style="width:55.34%"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DATASET PREVIEW
+    ====================================================== -->
+
+    <section class="insight-section">
+
+        <div class="insight-section-heading">
+            <div>
+                <span class="insights-eyebrow">02 · RAW DATA</span>
+                <h2>Dataset Preview</h2>
+            </div>
+
+            <p>
+                First 10 records from the heart-disease dataset used by
+                the CardioSense modelling pipeline.
+            </p>
+        </div>
+
+
+        <div class="glass insight-table-card">
+
+            <div class="table-topline">
+                <div>
+                    <strong>heart.csv</strong>
+                    <span>918 rows · 12 columns</span>
+                </div>
+
+                <span class="table-tag">RAW DATA</span>
+            </div>
+
+            <div class="insight-table-wrapper">
+
+                <table class="insight-table">
+
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Age</th>
+                            <th>Sex</th>
+                            <th>Chest Pain</th>
+                            <th>Resting BP</th>
+                            <th>Cholesterol</th>
+                            <th>Fasting BS</th>
+                            <th>Resting ECG</th>
+                            <th>Max HR</th>
+                            <th>Exercise Angina</th>
+                            <th>Oldpeak</th>
+                            <th>ST Slope</th>
+                            <th>Target</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>0</td>
+                            <td>40</td>
+                            <td>M</td>
+                            <td>ATA</td>
+                            <td>140</td>
+                            <td>289</td>
+                            <td>0</td>
+                            <td>Normal</td>
+                            <td>172</td>
+                            <td>N</td>
+                            <td>0.0</td>
+                            <td>Up</td>
+                            <td><span class="target-pill zero">0</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>1</td>
+                            <td>49</td>
+                            <td>F</td>
+                            <td>NAP</td>
+                            <td>160</td>
+                            <td>180</td>
+                            <td>0</td>
+                            <td>Normal</td>
+                            <td>156</td>
+                            <td>N</td>
+                            <td>1.0</td>
+                            <td>Flat</td>
+                            <td><span class="target-pill one">1</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td>37</td>
+                            <td>M</td>
+                            <td>ATA</td>
+                            <td>130</td>
+                            <td>283</td>
+                            <td>0</td>
+                            <td>ST</td>
+                            <td>98</td>
+                            <td>N</td>
+                            <td>0.0</td>
+                            <td>Up</td>
+                            <td><span class="target-pill zero">0</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td>48</td>
+                            <td>F</td>
+                            <td>ASY</td>
+                            <td>138</td>
+                            <td>214</td>
+                            <td>0</td>
+                            <td>Normal</td>
+                            <td>108</td>
+                            <td>Y</td>
+                            <td>1.5</td>
+                            <td>Flat</td>
+                            <td><span class="target-pill one">1</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>4</td>
+                            <td>54</td>
+                            <td>M</td>
+                            <td>NAP</td>
+                            <td>150</td>
+                            <td>195</td>
+                            <td>0</td>
+                            <td>Normal</td>
+                            <td>122</td>
+                            <td>N</td>
+                            <td>0.0</td>
+                            <td>Up</td>
+                            <td><span class="target-pill zero">0</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>5</td>
+                            <td>39</td>
+                            <td>M</td>
+                            <td>NAP</td>
+                            <td>120</td>
+                            <td>339</td>
+                            <td>0</td>
+                            <td>Normal</td>
+                            <td>170</td>
+                            <td>N</td>
+                            <td>0.0</td>
+                            <td>Up</td>
+                            <td><span class="target-pill zero">0</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>6</td>
+                            <td>45</td>
+                            <td>F</td>
+                            <td>ATA</td>
+                            <td>130</td>
+                            <td>237</td>
+                            <td>0</td>
+                            <td>Normal</td>
+                            <td>170</td>
+                            <td>N</td>
+                            <td>0.0</td>
+                            <td>Up</td>
+                            <td><span class="target-pill zero">0</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>7</td>
+                            <td>54</td>
+                            <td>M</td>
+                            <td>ATA</td>
+                            <td>110</td>
+                            <td>208</td>
+                            <td>0</td>
+                            <td>Normal</td>
+                            <td>142</td>
+                            <td>N</td>
+                            <td>0.0</td>
+                            <td>Up</td>
+                            <td><span class="target-pill zero">0</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>8</td>
+                            <td>37</td>
+                            <td>M</td>
+                            <td>ASY</td>
+                            <td>140</td>
+                            <td>207</td>
+                            <td>0</td>
+                            <td>Normal</td>
+                            <td>130</td>
+                            <td>Y</td>
+                            <td>1.5</td>
+                            <td>Flat</td>
+                            <td><span class="target-pill one">1</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>9</td>
+                            <td>48</td>
+                            <td>F</td>
+                            <td>ATA</td>
+                            <td>120</td>
+                            <td>284</td>
+                            <td>0</td>
+                            <td>Normal</td>
+                            <td>120</td>
+                            <td>N</td>
+                            <td>0.0</td>
+                            <td>Up</td>
+                            <td><span class="target-pill zero">0</span></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DATA PREPROCESSING
+    ====================================================== -->
+
+    <section class="insight-section">
+
+        <div class="insight-section-heading">
+            <div>
+                <span class="insights-eyebrow">03 · PIPELINE</span>
+                <h2>From Data to Prediction</h2>
+            </div>
+
+            <p>
+                The same preprocessing sequence used during training
+                is preserved for the deployed model.
+            </p>
+        </div>
+
+
+        <div class="pipeline-card glass">
+
+            <div class="pipeline-step">
+                <span class="pipeline-number">01</span>
+                <strong>Raw Dataset</strong>
+                <small>918 × 12</small>
+            </div>
+
+            <div class="pipeline-arrow">→</div>
+
+            <div class="pipeline-step">
+                <span class="pipeline-number">02</span>
+                <strong>Cleaning</strong>
+                <small>zero-value treatment</small>
+            </div>
+
+            <div class="pipeline-arrow">→</div>
+
+            <div class="pipeline-step">
+                <span class="pipeline-number">03</span>
+                <strong>One-Hot Encoding</strong>
+                <small>categorical → numeric</small>
+            </div>
+
+            <div class="pipeline-arrow">→</div>
+
+            <div class="pipeline-step">
+                <span class="pipeline-number">04</span>
+                <strong>StandardScaler</strong>
+                <small>15 model inputs</small>
+            </div>
+
+            <div class="pipeline-arrow">→</div>
+
+            <div class="pipeline-step final">
+                <span class="pipeline-number">05</span>
+                <strong>Logistic Regression</strong>
+                <small>risk prediction</small>
+            </div>
+
+        </div>
+
+
+        <div class="preprocess-grid">
+
+            <div class="glass preprocessing-card">
+                <span class="info-label">CHOLESTEROL CLEANING</span>
+                <strong>172 zero values</strong>
+                <p>
+                    Zero cholesterol values were replaced using the mean
+                    of the non-zero observations.
+                </p>
+                <div class="preprocess-value">
+                    Replacement mean
+                    <strong>244.64</strong>
+                </div>
+            </div>
+
+            <div class="glass preprocessing-card">
+                <span class="info-label">RESTING BLOOD PRESSURE</span>
+                <strong>Zero values corrected</strong>
+                <p>
+                    Zero RestingBP observations were replaced using the
+                    mean of the non-zero measurements.
+                </p>
+                <div class="preprocess-value">
+                    Replacement mean
+                    <strong>132.54</strong>
+                </div>
+            </div>
+
+            <div class="glass preprocessing-card">
+                <span class="info-label">TRAIN / TEST SPLIT</span>
+                <strong>80 / 20</strong>
+                <p>
+                    The cleaned dataset is divided into training and
+                    testing subsets using random state 42.
+                </p>
+                <div class="preprocess-value">
+                    Training
+                    <strong>734</strong>
+                    <span>·</span>
+                    Testing
+                    <strong>184</strong>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MODEL PERFORMANCE
+    ====================================================== -->
+
+    <section class="insight-section">
+
+        <div class="insight-section-heading">
+            <div>
+                <span class="insights-eyebrow">04 · MODEL EVALUATION</span>
+                <h2>Model Performance</h2>
+            </div>
+
+            <p>
+                Five classification models were evaluated on the same
+                scaled test set using Accuracy and F1 Score.
+            </p>
+        </div>
+
+
+        <div class="performance-grid">
+
+            <div class="glass performance-card">
+
+                <div class="performance-heading">
+                    <div>
+                        <span class="info-label">ACCURACY</span>
+                        <h3>Model comparison</h3>
+                    </div>
+                    <span class="metric-unit">%</span>
+                </div>
+
+
+                <div class="model-bars">
+
+                    <div class="model-row featured">
+                        <div class="model-name">
+                            <span>Logistic Regression</span>
+                            <strong>86.41%</strong>
+                        </div>
+                        <div class="model-track">
+                            <div class="model-fill"
+                                 style="width:86.41%"></div>
+                        </div>
+                    </div>
+
+                    <div class="model-row">
+                        <div class="model-name">
+                            <span>SVM</span>
+                            <strong>85.87%</strong>
+                        </div>
+                        <div class="model-track">
+                            <div class="model-fill"
+                                 style="width:85.87%"></div>
+                        </div>
+                    </div>
+
+                    <div class="model-row">
+                        <div class="model-name">
+                            <span>KNN</span>
+                            <strong>85.33%</strong>
+                        </div>
+                        <div class="model-track">
+                            <div class="model-fill"
+                                 style="width:85.33%"></div>
+                        </div>
+                    </div>
+
+                    <div class="model-row">
+                        <div class="model-name">
+                            <span>Gaussian Naive Bayes</span>
+                            <strong>84.78%</strong>
+                        </div>
+                        <div class="model-track">
+                            <div class="model-fill"
+                                 style="width:84.78%"></div>
+                        </div>
+                    </div>
+
+                    <div class="model-row">
+                        <div class="model-name">
+                            <span>Decision Tree</span>
+                            <strong>80.43%</strong>
+                        </div>
+                        <div class="model-track">
+                            <div class="model-fill"
+                                 style="width:80.43%"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="glass performance-card">
+
+                <div class="performance-heading">
+                    <div>
+                        <span class="info-label">F1 SCORE</span>
+                        <h3>Classification balance</h3>
+                    </div>
+                    <span class="metric-unit">%</span>
+                </div>
+
+
+                <div class="model-bars">
+
+                    <div class="model-row featured">
+                        <div class="model-name">
+                            <span>Logistic Regression</span>
+                            <strong>87.92%</strong>
+                        </div>
+                        <div class="model-track">
+                            <div class="model-fill"
+                                 style="width:87.92%"></div>
+                        </div>
+                    </div>
+
+                    <div class="model-row">
+                        <div class="model-name">
+                            <span>SVM</span>
+                            <strong>87.62%</strong>
+                        </div>
+                        <div class="model-track">
+                            <div class="model-fill"
+                                 style="width:87.62%"></div>
+                        </div>
+                    </div>
+
+                    <div class="model-row">
+                        <div class="model-name">
+                            <span>KNN</span>
+                            <strong>87.08%</strong>
+                        </div>
+                        <div class="model-track">
+                            <div class="model-fill"
+                                 style="width:87.08%"></div>
+                        </div>
+                    </div>
+
+                    <div class="model-row">
+                        <div class="model-name">
+                            <span>Gaussian Naive Bayes</span>
+                            <strong>86.14%</strong>
+                        </div>
+                        <div class="model-track">
+                            <div class="model-fill"
+                                 style="width:86.14%"></div>
+                        </div>
+                    </div>
+
+                    <div class="model-row">
+                        <div class="model-name">
+                            <span>Decision Tree</span>
+                            <strong>82.35%</strong>
+                        </div>
+                        <div class="model-track">
+                            <div class="model-fill"
+                                 style="width:82.35%"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="glass performance-table-card">
+
+            <table class="model-result-table">
+
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Accuracy</th>
+                        <th>F1 Score</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr class="selected-model">
+                        <td>Logistic Regression</td>
+                        <td>86.41%</td>
+                        <td>87.92%</td>
+                        <td><span class="selected-tag">DEPLOYED</span></td>
+                    </tr>
+
+                    <tr>
+                        <td>SVM</td>
+                        <td>85.87%</td>
+                        <td>87.62%</td>
+                        <td>Evaluated</td>
+                    </tr>
+
+                    <tr>
+                        <td>KNN</td>
+                        <td>85.33%</td>
+                        <td>87.08%</td>
+                        <td>Evaluated</td>
+                    </tr>
+
+                    <tr>
+                        <td>Gaussian Naive Bayes</td>
+                        <td>84.78%</td>
+                        <td>86.14%</td>
+                        <td>Evaluated</td>
+                    </tr>
+
+                    <tr>
+                        <td>Decision Tree</td>
+                        <td>80.43%</td>
+                        <td>82.35%</td>
+                        <td>Evaluated</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CORRELATION MATRIX
+    ====================================================== -->
+
+    <section class="insight-section">
+
+        <div class="insight-section-heading">
+            <div>
+                <span class="insights-eyebrow">05 · FEATURE RELATIONSHIPS</span>
+                <h2>Correlation Matrix</h2>
+            </div>
+
+            <p>
+                Pearson correlations between the numeric variables
+                examined in the notebook.
+            </p>
+        </div>
+
+
+        <div class="glass correlation-card">
+
+            <div class="correlation-layout">
+
+                <div class="correlation-matrix-wrap">
+
+                    <table class="correlation-matrix">
+
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Age</th>
+                                <th>BP</th>
+                                <th>Chol</th>
+                                <th>FBS</th>
+                                <th>HR</th>
+                                <th>Oldpeak</th>
+                                <th>HD</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            <tr>
+                                <th>Age</th>
+                                <td class="c-pos-10">1</td>
+                                <td class="c-pos-2">.26</td>
+                                <td class="c-neutral">.053</td>
+                                <td class="c-pos-1">.20</td>
+                                <td class="c-neg-4">-.38</td>
+                                <td class="c-pos-2">.26</td>
+                                <td class="c-pos-3">.28</td>
+                            </tr>
+
+                            <tr>
+                                <th>BP</th>
+                                <td class="c-pos-2">.26</td>
+                                <td class="c-pos-10">1</td>
+                                <td class="c-neutral">.083</td>
+                                <td class="c-neutral">.068</td>
+                                <td class="c-neg-1">-.11</td>
+                                <td class="c-pos-1">.17</td>
+                                <td class="c-pos-1">.12</td>
+                            </tr>
+
+                            <tr>
+                                <th>Chol</th>
+                                <td class="c-neutral">.053</td>
+                                <td class="c-neutral">.083</td>
+                                <td class="c-pos-10">1</td>
+                                <td class="c-neutral">.043</td>
+                                <td class="c-neutral">-.017</td>
+                                <td class="c-neutral">.053</td>
+                                <td class="c-neutral">.094</td>
+                            </tr>
+
+                            <tr>
+                                <th>FBS</th>
+                                <td class="c-pos-1">.20</td>
+                                <td class="c-neutral">.068</td>
+                                <td class="c-neutral">.043</td>
+                                <td class="c-pos-10">1</td>
+                                <td class="c-neg-1">-.13</td>
+                                <td class="c-neutral">.053</td>
+                                <td class="c-pos-2">.27</td>
+                            </tr>
+
+                            <tr>
+                                <th>MaxHR</th>
+                                <td class="c-neg-4">-.38</td>
+                                <td class="c-neg-1">-.11</td>
+                                <td class="c-neutral">-.017</td>
+                                <td class="c-neg-1">-.13</td>
+                                <td class="c-pos-10">1</td>
+                                <td class="c-neg-1">-.16</td>
+                                <td class="c-neg-4">-.40</td>
+                            </tr>
+
+                            <tr>
+                                <th>Oldpeak</th>
+                                <td class="c-pos-2">.26</td>
+                                <td class="c-pos-1">.17</td>
+                                <td class="c-neutral">.053</td>
+                                <td class="c-neutral">.053</td>
+                                <td class="c-neg-1">-.16</td>
+                                <td class="c-pos-10">1</td>
+                                <td class="c-pos-4">.40</td>
+                            </tr>
+
+                            <tr>
+                                <th>HeartDisease</th>
+                                <td class="c-pos-3">.28</td>
+                                <td class="c-pos-1">.12</td>
+                                <td class="c-neutral">.094</td>
+                                <td class="c-pos-2">.27</td>
+                                <td class="c-neg-4">-.40</td>
+                                <td class="c-pos-4">.40</td>
+                                <td class="c-pos-10">1</td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="correlation-insights">
+
+                    <span class="info-label">OBSERVED RELATIONSHIPS</span>
+
+                    <div class="correlation-highlight positive">
+                        <span>+</span>
+                        <div>
+                            <strong>Oldpeak · +0.40</strong>
+                            <small>
+                                Strongest positive numeric correlation
+                                with HeartDisease in the matrix.
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="correlation-highlight negative">
+                        <span>−</span>
+                        <div>
+                            <strong>MaxHR · −0.40</strong>
+                            <small>
+                                Strongest negative numeric correlation
+                                with HeartDisease in the matrix.
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="correlation-highlight">
+                        <span>+</span>
+                        <div>
+                            <strong>Age · +0.28</strong>
+                            <small>
+                                A positive relationship is visible
+                                between age and the target.
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="correlation-highlight">
+                        <span>+</span>
+                        <div>
+                            <strong>FastingBS · +0.27</strong>
+                            <small>
+                                Fasting blood sugar shows a positive
+                                numeric relationship with the target.
+                            </small>
+                        </div>
+                    </div>
+
+                    <p class="correlation-note">
+                        Correlation describes association in this dataset;
+                        it does not establish causation.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MODEL INSIGHTS
+    ====================================================== -->
+
+    <section class="insight-section">
+
+        <div class="insight-section-heading">
+            <div>
+                <span class="insights-eyebrow">06 · MODEL INSIGHTS</span>
+                <h2>What the Model Evaluation Shows</h2>
+            </div>
+
+            <p>
+                Key observations directly derived from the experiments
+                performed in the notebook.
+            </p>
+        </div>
+
+
+        <div class="model-insight-grid">
+
+            <div class="glass model-insight-card">
+                <span class="insight-card-number">01</span>
+                <span class="info-label">PERFORMANCE</span>
+                <h3>Logistic Regression</h3>
+                <p>
+                    Recorded the highest test accuracy among the five
+                    evaluated models at <strong>86.41%</strong>, with an
+                    F1 score of <strong>87.92%</strong>.
+                </p>
+            </div>
+
+            <div class="glass model-insight-card">
+                <span class="insight-card-number">02</span>
+                <span class="info-label">FEATURE SPACE</span>
+                <h3>15 Model Inputs</h3>
+                <p>
+                    One-hot encoding expands the original 12-column
+                    dataset into a 15-feature input space used by the
+                    trained classifier.
+                </p>
+            </div>
+
+            <div class="glass model-insight-card">
+                <span class="insight-card-number">03</span>
+                <span class="info-label">SCALING</span>
+                <h3>Standardized Inputs</h3>
+                <p>
+                    Numerical model inputs are standardized with
+                    <strong>StandardScaler</strong> before reaching the
+                    trained model.
+                </p>
+            </div>
+
+            <div class="glass model-insight-card">
+                <span class="insight-card-number">04</span>
+                <span class="info-label">DATA BALANCE</span>
+                <h3>Moderately Imbalanced</h3>
+                <p>
+                    The target contains 508 positive and 410 negative
+                    observations, giving a 55.34% / 44.66% distribution.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MODEL CONFIGURATION
+    ====================================================== -->
+
+    <section class="insight-section">
+
+        <div class="glass model-config-card">
+
+            <div class="model-config-main">
+
+                <span class="insights-eyebrow">DEPLOYMENT CONFIGURATION</span>
+
+                <h2>CardioSense Prediction Engine</h2>
+
+                <p>
+                    The Flask application loads the trained Logistic Regression
+                    model together with the saved scaler and exact training
+                    column order.
+                </p>
+
+            </div>
+
+
+            <div class="config-grid">
+
+                <div>
+                    <span>MODEL</span>
+                    <strong>LogisticRegression</strong>
+                </div>
+
+                <div>
+                    <span>INPUTS</span>
+                    <strong>15 features</strong>
+                </div>
+
+                <div>
+                    <span>SCALER</span>
+                    <strong>StandardScaler</strong>
+                </div>
+
+                <div>
+                    <span>SPLIT</span>
+                    <strong>80 / 20</strong>
+                </div>
+
+                <div>
+                    <span>RANDOM STATE</span>
+                    <strong>42</strong>
+                </div>
+
+                <div>
+                    <span>OUTPUT</span>
+                    <strong>Binary risk prediction</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         LIMITATION / DISCLAIMER
+    ====================================================== -->
+
+    <section class="insight-disclaimer">
+
+        <div class="disclaimer-icon">i</div>
+
+        <div>
+            <strong>About these insights</strong>
+
+            <p>
+                These metrics describe the performance and patterns observed
+                in the CardioSense development dataset. They are model and
+                dataset insights, not clinical conclusions or a medical
+                diagnosis.
+            </p>
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock %}

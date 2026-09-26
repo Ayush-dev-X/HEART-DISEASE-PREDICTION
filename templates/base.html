@@ -9,6 +9,10 @@
 
     <link rel="stylesheet"
           href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <link rel="icon" type="image/png"
+      href="{{ url_for('static', filename='favicon.png') }}">
+    
 </head>
 
 <body>
@@ -54,7 +58,7 @@
                     Predict
                 </a>
 
-                <a href="#">
+                <a class="{% if request.path == '/insights' %}active{% endif %}" href="/insights">
                     Insights
                 </a>
 
@@ -63,6 +67,14 @@
                 </a>
 
             </nav>
+
+            <button class="menu-toggle" type="button"
+                    aria-label="Toggle navigation"
+                    aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
 
             <!-- ACTIONS -->
@@ -160,6 +172,21 @@
      PAGE-SPECIFIC SCRIPTS
      ========================================================= -->
 {% block scripts %}{% endblock %}
+
+<!-- Hamburger Menu JS -->
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const topNav = document.querySelector(".top-nav");
+
+        if (menuToggle && topNav) {
+            menuToggle.addEventListener("click", () => {
+                const open = topNav.classList.toggle("menu-open");
+
+                menuToggle.classList.toggle("is-open", open);
+                menuToggle.setAttribute("aria-expanded", open);
+            });
+        }
+    </script>
 
 
 </body>
