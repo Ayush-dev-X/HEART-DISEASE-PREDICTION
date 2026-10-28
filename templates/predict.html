@@ -4,486 +4,343 @@
 
 {% block content %}
 
-    <!-- PAGE HEADING -->
+<section class="page-heading">
+  <div>
+    <p class="eyebrow">PREDICT</p>
+    <h1>New Assessment</h1>
+    <p>Enter the patient's cardiovascular parameters to generate a model prediction.</p>
+  </div>
+  <div class="date-chip">
+    ◫ &nbsp; ASSESSMENT
+    <b>READY</b>
+  </div>
+</section>
 
-    <section class="page-heading">
+{% if error %}
+  <div class="disclaimer" role="alert" style="margin-bottom: 1rem;">
+    {{ error }}
+  </div>
+{% endif %}
 
+<!-- ================= DEMO PROFILES ================= -->
+<section class="demo-section">
+  <div class="demo-heading">
+    <div>
+      <p class="eyebrow">QUICK DEMO</p>
+      <h2>Try a sample profile</h2>
+      <p>Use these predefined clinical profiles to explore different model outputs. These are illustrative examples, not patient advice.</p>
+    </div>
+  </div>
+
+  <div class="demo-grid">
+    <button type="button" class="demo-card" onclick="loadDemo('low')">
+      <span class="demo-number">01</span>
+      <strong>Sample Profile A</strong>
+      <small>Younger profile · illustrative values</small>
+      <span class="demo-arrow">→</span>
+    </button>
+
+    <button type="button" class="demo-card" onclick="loadDemo('moderate')">
+      <span class="demo-number">02</span>
+      <strong>Sample Profile B</strong>
+      <small>Mixed clinical values · illustrative values</small>
+      <span class="demo-arrow">→</span>
+    </button>
+
+    <button type="button" class="demo-card" onclick="loadDemo('high')">
+      <span class="demo-number">03</span>
+      <strong>Sample Profile C</strong>
+      <small>Older profile · illustrative values</small>
+      <span class="demo-arrow">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- ================= FORM ================= -->
+<form class="assessment-grid" action="/predict" method="post" id="assessmentForm">
+
+  <!-- MODEL MODE -->
+  <section class="form-card glass">
+    <div class="card-heading">
+      <span class="heading-icon">00</span>
       <div>
-
-        <p class="eyebrow">PREDICT</p>
-
-        <h1>New Assessment</h1>
-
-        <p>
-          Enter the patient's cardiovascular parameters
-          to generate a model prediction.
-        </p>
-
+        <h2>Assessment Mode</h2>
+        <p>Choose the model based on the information available</p>
       </div>
+    </div>
 
-      <div class="date-chip">
-        ◫ &nbsp; ASSESSMENT
-        <b>READY</b>
+    <div class="field-grid">
+      <label>
+        Prediction model
+        <select id="assessment_mode" name="assessment_mode" required>
+          <option value="clinical" selected>Clinical assessment</option>
+          <option value="genetic">Clinical + genetic assessment</option>
+        </select>
+      </label>
+    </div>
+
+    <p class="disclaimer" style="margin-top: 1rem;">
+      Select the genetic option only if you have reliable family-history, genotype, and laboratory results. Do not guess missing values.
+    </p>
+  </section>
+
+  <!-- PATIENT PROFILE -->
+  <section class="form-card glass">
+    <div class="card-heading">
+      <span class="heading-icon">01</span>
+      <div>
+        <h2>Patient Profile</h2>
+        <p>Basic demographic information</p>
       </div>
+    </div>
 
-    </section>
+    <div class="field-grid">
+      <label>
+        Age
+        <input id="age" name="age" type="number" min="1" max="120" placeholder="e.g. 52" required>
+      </label>
 
+      <label>
+        Sex
+        <select id="sex" name="sex" required>
+          <option value="" selected disabled>Select</option>
+          <option value="M">Male</option>
+          <option value="F">Female</option>
+        </select>
+      </label>
+    </div>
+  </section>
 
-    <!-- ================= DEMO PROFILES ================= -->
-
-    <section class="demo-section">
-
-      <div class="demo-heading">
-
-        <div>
-          <p class="eyebrow">QUICK DEMO</p>
-
-          <h2>Try a sample profile</h2>
-
-          <p>
-            Use these predefined profiles to explore different
-            model outcomes.
-          </p>
-        </div>
-
+  <!-- CLINICAL PARAMETERS -->
+  <section class="form-card glass">
+    <div class="card-heading">
+      <span class="heading-icon">02</span>
+      <div>
+        <h2>Clinical Parameters</h2>
+        <p>Key cardiovascular measurements</p>
       </div>
+    </div>
 
+    <div class="field-grid">
+      <label>
+        Chest Pain Type
+        <select id="cp" name="cp" required>
+          <option value="" selected disabled>Select type</option>
+          <option value="ATA">Atypical Angina</option>
+          <option value="NAP">Non-anginal Pain</option>
+          <option value="TA">Typical Angina</option>
+          <option value="ASY">Asymptomatic</option>
+        </select>
+      </label>
 
-      <div class="demo-grid">
+      <label>
+        Resting Blood Pressure
+        <div class="input-unit">
+          <input id="trestbps" name="trestbps" type="number" min="50" max="250" placeholder="140" required>
+          <span>mm Hg</span>
+        </div>
+      </label>
 
-        <button type="button"
-                class="demo-card"
-                onclick="loadDemo('low')">
+      <label>
+        Cholesterol
+        <div class="input-unit">
+          <input id="chol" name="chol" type="number" min="0" max="700" placeholder="240" required>
+          <span>mg/dL</span>
+        </div>
+      </label>
 
-          <span class="demo-number">01</span>
+      <label>
+        Fasting Blood Sugar
+        <select id="fbs" name="fbs" required>
+          <option value="" selected disabled>Select</option>
+          <option value="0">≤ 120 mg/dL</option>
+          <option value="1">&gt; 120 mg/dL</option>
+        </select>
+      </label>
 
-          <strong>Lower-Risk Pattern</strong>
+      <label>
+        Resting ECG
+        <select id="restecg" name="restecg" required>
+          <option value="" selected disabled>Select</option>
+          <option value="Normal">Normal</option>
+          <option value="ST">ST-T Wave Abnormality</option>
+          <option value="LVH">Left Ventricular Hypertrophy</option>
+        </select>
+      </label>
 
-          <small>
-            Younger profile · normal BP · higher max HR
-          </small>
+      <label>
+        Maximum Heart Rate
+        <div class="input-unit">
+          <input id="thalach" name="thalach" type="number" min="50" max="250" placeholder="150" required>
+          <span>bpm</span>
+        </div>
+      </label>
+    </div>
+  </section>
 
-          <span class="demo-arrow">→</span>
-
-        </button>
-
-
-        <button type="button"
-                class="demo-card"
-                onclick="loadDemo('moderate')">
-
-          <span class="demo-number">02</span>
-
-          <strong>Mixed Profile</strong>
-
-          <small>
-            Moderate clinical values · mixed indicators
-          </small>
-
-          <span class="demo-arrow">→</span>
-
-        </button>
-
-
-        <button type="button"
-                class="demo-card"
-                onclick="loadDemo('high')">
-
-          <span class="demo-number">03</span>
-
-          <strong>Higher-Risk Pattern</strong>
-
-          <small>
-            Older profile · elevated BP · multiple indicators
-          </small>
-
-          <span class="demo-arrow">→</span>
-
-        </button>
-
+  <!-- EXERCISE RESPONSE -->
+  <section class="form-card glass">
+    <div class="card-heading">
+      <span class="heading-icon">03</span>
+      <div>
+        <h2>Exercise Response</h2>
+        <p>Exercise-related cardiovascular indicators</p>
       </div>
+    </div>
 
-    </section>
+    <div class="field-grid">
+      <label>
+        Exercise-Induced Angina
+        <select id="exang" name="exang" required>
+          <option value="" selected disabled>Select</option>
+          <option value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
+      </label>
 
-
-    <!-- ================= FORM ================= -->
-
-    <form class="assessment-grid"
-          action="/predict"
-          method="post">
-
-
-      <!-- PATIENT PROFILE -->
-
-      <section class="form-card glass">
-
-        <div class="card-heading">
-
-          <span class="heading-icon">01</span>
-
-          <div>
-            <h2>Patient Profile</h2>
-            <p>Basic demographic information</p>
-          </div>
-
+      <label>
+        ST Depression (Oldpeak)
+        <div class="input-unit">
+          <input id="oldpeak" name="oldpeak" type="number" step="0.1" min="0" max="10" placeholder="1.5" required>
+          <span>mm</span>
         </div>
+      </label>
 
+      <label>
+        ST Slope
+        <select id="slope" name="slope" required>
+          <option value="" selected disabled>Select</option>
+          <option value="Up">Up</option>
+          <option value="Flat">Flat</option>
+          <option value="Down">Down</option>
+        </select>
+      </label>
+    </div>
+  </section>
 
-        <div class="field-grid">
+  <!-- GENETIC INPUTS: SHOWN ONLY IN GENETIC MODE -->
+  <section class="form-card glass" id="geneticSection" hidden>
+    <div class="card-heading">
+      <span class="heading-icon">04</span>
+      <div>
+        <h2>Genetic & Family-History Inputs</h2>
+        <p>Enter values from reliable test results or documented history</p>
+      </div>
+    </div>
 
-          <label>
-            Age
+    <div class="field-grid">
+      <label>
+        Family History
+        <select id="family_history" name="family_history" data-genetic-required>
+          <option value="" selected disabled>Select</option>
+          <option value="0">No known family history</option>
+          <option value="1">Family history present</option>
+        </select>
+      </label>
 
-            <input
-              id="age"
-              name="age"
-              type="number"
-              min="1"
-              max="120"
-              placeholder="e.g. 52"
-              required>
-          </label>
+      <label>
+        rs10757274 Genotype
+        <select id="rs10757274_genotype" name="rs10757274_genotype" data-genetic-required>
+          <option value="" selected disabled>Select genotype</option>
+          <option value="AA">AA</option>
+          <option value="AG">AG</option>
+          <option value="GG">GG</option>
+        </select>
+      </label>
 
+      <label>
+        APOE Genotype
+        <select id="apoe_genotype" name="apoe_genotype" data-genetic-required>
+          <option value="" selected disabled>Select genotype</option>
+          <option value="e2/e2">e2/e2</option>
+          <option value="e2/e3">e2/e3</option>
+          <option value="e2/e4">e2/e4</option>
+          <option value="e3/e3">e3/e3</option>
+          <option value="e3/e4">e3/e4</option>
+          <option value="e4/e4">e4/e4</option>
+        </select>
+      </label>
 
-          <label>
-            Sex
-
-            <select id="sex"
-                    name="sex"
-                    required>
-
-              <option value="" selected disabled>
-                Select
-              </option>
-
-              <option value="M">Male</option>
-              <option value="F">Female</option>
-
-            </select>
-
-          </label>
-
+      <label>
+        Lipoprotein(a) Level
+        <div class="input-unit">
+          <input id="lpa_level" name="lpa_level" type="number" min="0" step="any" placeholder="Use lab report units" data-genetic-required>
+          <span>lab units</span>
         </div>
-
-      </section>
-
-
-      <!-- CLINICAL PARAMETERS -->
-
-      <section class="form-card glass">
-
-        <div class="card-heading">
-
-          <span class="heading-icon">02</span>
-
-          <div>
-            <h2>Clinical Parameters</h2>
-            <p>Key cardiovascular measurements</p>
-          </div>
-
-        </div>
-
-
-        <div class="field-grid">
-
-
-          <label>
-            Chest Pain Type
-
-            <select id="cp"
-                    name="cp"
-                    required>
-
-              <option value="" selected disabled>
-                Select type
-              </option>
-
-              <option value="ATA">
-                Atypical Angina
-              </option>
-
-              <option value="NAP">
-                Non-anginal Pain
-              </option>
-
-              <option value="TA">
-                Typical Angina
-              </option>
-
-              <option value="ASY">
-                Asymptomatic
-              </option>
-
-            </select>
-
-          </label>
-
-
-          <label>
-            Resting Blood Pressure
-
-            <div class="input-unit">
-
-              <input
-                id="trestbps"
-                name="trestbps"
-                type="number"
-                min="50"
-                max="250"
-                placeholder="140"
-                required>
-
-              <span>mm Hg</span>
-
-            </div>
-
-          </label>
-
-
-          <label>
-            Cholesterol
-
-            <div class="input-unit">
-
-              <input
-                id="chol"
-                name="chol"
-                type="number"
-                min="50"
-                max="700"
-                placeholder="240"
-                required>
-
-              <span>mg/dL</span>
-
-            </div>
-
-          </label>
-
-
-          <label>
-            Fasting Blood Sugar
-
-            <select id="fbs"
-                    name="fbs"
-                    required>
-
-              <option value="" selected disabled>
-                Select
-              </option>
-
-              <option value="0">
-                ≤ 120 mg/dL
-              </option>
-
-              <option value="1">
-                &gt; 120 mg/dL
-              </option>
-
-            </select>
-
-          </label>
-
-
-          <label>
-            Resting ECG
-
-            <select id="restecg"
-                    name="restecg"
-                    required>
-
-              <option value="" selected disabled>
-                Select
-              </option>
-
-              <option value="Normal">
-                Normal
-              </option>
-
-              <option value="ST">
-                ST-T Wave Abnormality
-              </option>
-
-              <option value="LVH">
-                Left Ventricular Hypertrophy
-              </option>
-
-            </select>
-
-          </label>
-
-
-          <label>
-            Maximum Heart Rate
-
-            <div class="input-unit">
-
-              <input
-                id="thalach"
-                name="thalach"
-                type="number"
-                min="50"
-                max="250"
-                placeholder="150"
-                required>
-
-              <span>bpm</span>
-
-            </div>
-
-          </label>
-
-        </div>
-
-      </section>
-
-
-      <!-- EXERCISE RESPONSE -->
-
-      <section class="form-card glass">
-
-        <div class="card-heading">
-
-          <span class="heading-icon">03</span>
-
-          <div>
-            <h2>Exercise Response</h2>
-            <p>Exercise-related cardiovascular indicators</p>
-          </div>
-
-        </div>
-
-
-        <div class="field-grid">
-
-
-          <label>
-            Exercise-Induced Angina
-
-            <select id="exang"
-                    name="exang"
-                    required>
-
-              <option value="" selected disabled>
-                Select
-              </option>
-
-              <option value="Y">Yes</option>
-              <option value="N">No</option>
-
-            </select>
-
-          </label>
-
-
-          <label>
-            ST Depression
-
-            <div class="input-unit">
-
-              <input
-                id="oldpeak"
-                name="oldpeak"
-                type="number"
-                step="0.1"
-                min="-5"
-                max="10"
-                placeholder="1.5"
-                required>
-
-              <span>mm</span>
-
-            </div>
-
-          </label>
-
-
-          <label>
-            ST Slope
-
-            <select id="slope"
-                    name="slope"
-                    required>
-
-              <option value="" selected disabled>
-                Select
-              </option>
-
-              <option value="Up">
-                Up
-              </option>
-
-              <option value="Flat">
-                Flat
-              </option>
-
-              <option value="Down">
-                Down
-              </option>
-
-            </select>
-
-          </label>
-
-        </div>
-
-      </section>
-
-
-      <!-- ANALYSIS CARD -->
-
-      <section class="form-card glass assessment-side">
-
-        <div class="mini-status">
-          <span></span>
-          MODEL ONLINE
-        </div>
-
-        <h2>Ready to analyze.</h2>
-
-        <p>
-          Check the entered values before running
-          the CardioSense prediction.
-        </p>
-
-        <div class="disclaimer">
-          This tool is an educational ML project and is
-          not a medical diagnosis.
-        </div>
-
-        <button class="btn btn-primary full"
-                type="submit">
-
-          Analyze Risk
-          <span>→</span>
-
-        </button>
-
-      </section>
-
-    </form>
+      </label>
+
+      <label>
+        FH Mutation
+        <select id="fh_mutation" name="fh_mutation" data-genetic-required>
+          <option value="" selected disabled>Select</option>
+          <option value="0">Not detected / absent</option>
+          <option value="1">Detected / present</option>
+        </select>
+      </label>
+
+      <label>
+        Genetic Risk Score
+        <input id="genetic_risk_score" name="genetic_risk_score" type="number" step="any" placeholder="Enter documented score" data-genetic-required>
+      </label>
+    </div>
+
+    <p class="disclaimer" style="margin-top: 1rem;">
+      Genotype labels, mutation coding, Lp(a) units, and risk-score scale must match the dataset used to train this model. If your lab report does not match these choices or units, do not submit a guessed value.
+    </p>
+  </section>
+
+  <!-- ANALYSIS CARD -->
+  <section class="form-card glass assessment-side">
+    <div class="mini-status">
+      <span></span>
+      MODEL ONLINE
+    </div>
+
+    <h2>Ready to analyze.</h2>
+    <p>Review the entered values before running the CardioSense prediction.</p>
+
+    <div class="disclaimer">
+      This is an educational machine-learning project, not a medical diagnosis. The displayed model score is not a clinically validated personal risk estimate.
+    </div>
+
+    <button class="btn btn-primary full" type="submit">
+      Analyze Assessment
+      <span>→</span>
+    </button>
+  </section>
+</form>
 
 {% endblock %}
 
-
-<!-- ================= DEMO SCRIPT ================= -->
-<!-- Note: We put this outside the content block so it loads correctly -->
 {% block scripts %}
 <script>
-
 function setValue(id, value) {
   const element = document.getElementById(id);
-
-  if (element) {
-    element.value = value;
-  }
+  if (element) element.value = value;
 }
 
+function updateAssessmentMode() {
+  const mode = document.getElementById("assessment_mode").value;
+  const geneticSection = document.getElementById("geneticSection");
+  const geneticFields = geneticSection.querySelectorAll("[data-genetic-required]");
+  const geneticMode = mode === "genetic";
+
+  geneticSection.hidden = !geneticMode;
+  geneticFields.forEach((field) => {
+    field.required = geneticMode;
+    if (!geneticMode) field.value = "";
+  });
+}
+
+document.getElementById("assessment_mode").addEventListener("change", updateAssessmentMode);
+updateAssessmentMode();
 
 function loadDemo(type) {
+  // Demo profiles populate clinical fields only. They do not fabricate genetic results.
+  setValue("assessment_mode", "clinical");
+  updateAssessmentMode();
 
   if (type === "low") {
-
     setValue("age", 35);
     setValue("sex", "F");
     setValue("cp", "ATA");
@@ -495,12 +352,7 @@ function loadDemo(type) {
     setValue("exang", "N");
     setValue("oldpeak", 0.0);
     setValue("slope", "Up");
-
-  }
-
-
-  if (type === "moderate") {
-
+  } else if (type === "moderate") {
     setValue("age", 52);
     setValue("sex", "M");
     setValue("cp", "NAP");
@@ -512,12 +364,7 @@ function loadDemo(type) {
     setValue("exang", "N");
     setValue("oldpeak", 1.0);
     setValue("slope", "Flat");
-
-  }
-
-
-  if (type === "high") {
-
+  } else if (type === "high") {
     setValue("age", 65);
     setValue("sex", "M");
     setValue("cp", "TA");
@@ -529,15 +376,12 @@ function loadDemo(type) {
     setValue("exang", "Y");
     setValue("oldpeak", 3.0);
     setValue("slope", "Flat");
-
   }
 
-  document.querySelector(".assessment-grid")
-    .scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-
+  document.querySelector(".assessment-grid").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
 }
 </script>
 {% endblock %}
