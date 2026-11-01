@@ -1,7 +1,7 @@
 Flask
 gunicorn
 joblib
-numpy+
+numpy
 pandas
 scikit-learn
 matplotlib
