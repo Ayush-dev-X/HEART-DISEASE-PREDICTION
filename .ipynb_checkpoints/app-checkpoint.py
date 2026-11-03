@@ -261,7 +261,11 @@ def predict():
             "RestingBP": resting_bp,
             "Cholesterol": cholesterol,
             "FastingBS": fasting_bs,
-            "RestingECG": resting_ecg.title() if resting_ecg != "LVH" else "LVH",
+           "RestingECG": {
+           "NORMAL": "Normal",
+            "ST": "ST",
+            "LVH": "LVH"
+             }[resting_ecg],
             "MaxHR": max_hr,
             "ExerciseAngina": exercise_angina,
             "Oldpeak": oldpeak,
@@ -315,7 +319,13 @@ def predict():
         )
 
         # A pipeline predicts directly from the raw feature DataFrame.
+        print("STEP 1: Prediction route reached")
+        print("STEP 2: Input data:")
+        print(input_data)
+        print("STEP 3: Model prediction starting")
         prediction = int(selected_model.predict(input_data)[0])
+        print("STEP 4: Prediction successful")
+        print(prediction)
 
         # Use the probability associated with class 1, rather than assuming
         # that the second probability column always represents class 1.
