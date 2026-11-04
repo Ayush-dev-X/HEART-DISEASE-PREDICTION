@@ -20,16 +20,16 @@
             <h1>Cardiovascular <span>Insights</span></h1>
 
             <p>
-                A transparent view of the dataset, preprocessing pipeline,
-                feature relationships and machine-learning performance
-                behind CardioSense.
+                Explore the updated clinical + genetic dataset, preprocessing workflow,
+                feature relationships and comparative Logistic Regression
+                results behind CardioSense.
             </p>
         </div>
 
         <div class="insights-model-badge">
-            <span class="model-badge-label">DEPLOYED MODEL</span>
-            <strong>Logistic Regression</strong>
-            <small>15 model inputs · StandardScaler</small>
+            <span class="model-badge-label">MODEL VARIANT</span>
+            <strong>Clinical + Genetic Logistic Regression</strong>
+            <small>17 source inputs · 31 encoded features</small>
         </div>
     </div>
 
@@ -53,7 +53,7 @@
             <div class="insight-stat-icon">⌘</div>
             <div>
                 <span>ORIGINAL FEATURES</span>
-                <strong>12</strong>
+                <strong>18</strong>
                 <small>including target</small>
             </div>
         </div>
@@ -62,8 +62,8 @@
             <div class="insight-stat-icon">◎</div>
             <div>
                 <span>MODEL FEATURES</span>
-                <strong>15</strong>
-                <small>after encoding</small>
+                <strong>17</strong>
+                <small>clinical + genetic inputs</small>
             </div>
         </div>
 
@@ -71,8 +71,8 @@
             <div class="insight-stat-icon">✓</div>
             <div>
                 <span>TEST ACCURACY</span>
-                <strong>86.41%</strong>
-                <small>Logistic Regression</small>
+                <strong>89.13%</strong>
+                <small>Clinical + Genetic model</small>
             </div>
         </div>
 
@@ -92,9 +92,9 @@
             </div>
 
             <p>
-                The model is trained on a 918-record cardiovascular
-                dataset containing demographic, clinical and exercise-related
-                measurements.
+                The dataset contains 918 patient records and 18 columns: 11 clinical
+                variables, 6 genetic / family-history variables and the binary
+                HeartDisease target.
             </p>
         </div>
 
@@ -107,13 +107,14 @@
                 <p>
                     Binary classification target where
                     <strong>0 = no heart disease</strong> and
-                    <strong>1 = heart disease</strong>.
+                    <strong>1 = heart disease</strong>. The model compares
+                    clinical-only inputs with clinical + genetic inputs.
                 </p>
             </div>
 
             <div class="glass insight-info-card">
                 <span class="info-label">DATA QUALITY</span>
-                <h3>Clean baseline</h3>
+                <h3>Complete dataset</h3>
                 <div class="quality-list">
                     <div>
                         <span>Missing values</span>
@@ -134,22 +135,22 @@
                     <div class="target-row">
                         <div>
                             <span>No disease</span>
-                            <strong>410 · 44.66%</strong>
+                            <strong>436 · 47.49%</strong>
                         </div>
                         <div class="target-track">
                             <div class="target-fill no-disease"
-                                 style="width:44.66%"></div>
+                                 style="width:47.49%"></div>
                         </div>
                     </div>
 
                     <div class="target-row">
                         <div>
                             <span>Heart disease</span>
-                            <strong>508 · 55.34%</strong>
+                            <strong>482 · 52.51%</strong>
                         </div>
                         <div class="target-track">
                             <div class="target-fill disease"
-                                 style="width:55.34%"></div>
+                                 style="width:52.51%"></div>
                         </div>
                     </div>
 
@@ -174,8 +175,8 @@
             </div>
 
             <p>
-                First 10 records from the heart-disease dataset used by
-                the CardioSense modelling pipeline.
+                First 10 records from the updated clinical + genetic dataset,
+                including family-history and genotype-related attributes.
             </p>
         </div>
 
@@ -184,8 +185,8 @@
 
             <div class="table-topline">
                 <div>
-                    <strong>heart.csv</strong>
-                    <span>918 rows · 12 columns</span>
+                    <strong>heart_genetic_disease.csv</strong>
+                    <span>918 rows · 18 columns</span>
                 </div>
 
                 <span class="table-tag">RAW DATA</span>
@@ -193,191 +194,7 @@
 
             <div class="insight-table-wrapper">
 
-                <table class="insight-table">
-
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Age</th>
-                            <th>Sex</th>
-                            <th>Chest Pain</th>
-                            <th>Resting BP</th>
-                            <th>Cholesterol</th>
-                            <th>Fasting BS</th>
-                            <th>Resting ECG</th>
-                            <th>Max HR</th>
-                            <th>Exercise Angina</th>
-                            <th>Oldpeak</th>
-                            <th>ST Slope</th>
-                            <th>Target</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-
-                        <tr>
-                            <td>0</td>
-                            <td>40</td>
-                            <td>M</td>
-                            <td>ATA</td>
-                            <td>140</td>
-                            <td>289</td>
-                            <td>0</td>
-                            <td>Normal</td>
-                            <td>172</td>
-                            <td>N</td>
-                            <td>0.0</td>
-                            <td>Up</td>
-                            <td><span class="target-pill zero">0</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>49</td>
-                            <td>F</td>
-                            <td>NAP</td>
-                            <td>160</td>
-                            <td>180</td>
-                            <td>0</td>
-                            <td>Normal</td>
-                            <td>156</td>
-                            <td>N</td>
-                            <td>1.0</td>
-                            <td>Flat</td>
-                            <td><span class="target-pill one">1</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>2</td>
-                            <td>37</td>
-                            <td>M</td>
-                            <td>ATA</td>
-                            <td>130</td>
-                            <td>283</td>
-                            <td>0</td>
-                            <td>ST</td>
-                            <td>98</td>
-                            <td>N</td>
-                            <td>0.0</td>
-                            <td>Up</td>
-                            <td><span class="target-pill zero">0</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
-                            <td>48</td>
-                            <td>F</td>
-                            <td>ASY</td>
-                            <td>138</td>
-                            <td>214</td>
-                            <td>0</td>
-                            <td>Normal</td>
-                            <td>108</td>
-                            <td>Y</td>
-                            <td>1.5</td>
-                            <td>Flat</td>
-                            <td><span class="target-pill one">1</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>4</td>
-                            <td>54</td>
-                            <td>M</td>
-                            <td>NAP</td>
-                            <td>150</td>
-                            <td>195</td>
-                            <td>0</td>
-                            <td>Normal</td>
-                            <td>122</td>
-                            <td>N</td>
-                            <td>0.0</td>
-                            <td>Up</td>
-                            <td><span class="target-pill zero">0</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>5</td>
-                            <td>39</td>
-                            <td>M</td>
-                            <td>NAP</td>
-                            <td>120</td>
-                            <td>339</td>
-                            <td>0</td>
-                            <td>Normal</td>
-                            <td>170</td>
-                            <td>N</td>
-                            <td>0.0</td>
-                            <td>Up</td>
-                            <td><span class="target-pill zero">0</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>6</td>
-                            <td>45</td>
-                            <td>F</td>
-                            <td>ATA</td>
-                            <td>130</td>
-                            <td>237</td>
-                            <td>0</td>
-                            <td>Normal</td>
-                            <td>170</td>
-                            <td>N</td>
-                            <td>0.0</td>
-                            <td>Up</td>
-                            <td><span class="target-pill zero">0</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>7</td>
-                            <td>54</td>
-                            <td>M</td>
-                            <td>ATA</td>
-                            <td>110</td>
-                            <td>208</td>
-                            <td>0</td>
-                            <td>Normal</td>
-                            <td>142</td>
-                            <td>N</td>
-                            <td>0.0</td>
-                            <td>Up</td>
-                            <td><span class="target-pill zero">0</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>8</td>
-                            <td>37</td>
-                            <td>M</td>
-                            <td>ASY</td>
-                            <td>140</td>
-                            <td>207</td>
-                            <td>0</td>
-                            <td>Normal</td>
-                            <td>130</td>
-                            <td>Y</td>
-                            <td>1.5</td>
-                            <td>Flat</td>
-                            <td><span class="target-pill one">1</span></td>
-                        </tr>
-
-                        <tr>
-                            <td>9</td>
-                            <td>48</td>
-                            <td>F</td>
-                            <td>ATA</td>
-                            <td>120</td>
-                            <td>284</td>
-                            <td>0</td>
-                            <td>Normal</td>
-                            <td>120</td>
-                            <td>N</td>
-                            <td>0.0</td>
-                            <td>Up</td>
-                            <td><span class="target-pill zero">0</span></td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
+                <table class="insight-table"><thead><tr><th>#</th><th>Age</th><th>Sex</th><th>Chest Pain</th><th>Resting BP</th><th>Cholesterol</th><th>Fasting BS</th><th>Resting ECG</th><th>Max HR</th><th>Exercise Angina</th><th>Oldpeak</th><th>ST Slope</th><th>Family History</th><th>rs10757274</th><th>APOE Genotype</th><th>Lp(a)</th><th>FH Mutation</th><th>Genetic Risk</th><th>Target</th></tr></thead><tbody><tr><td>0</td><td>40</td><td>M</td><td>ATA</td><td>140</td><td>289</td><td>0</td><td>Normal</td><td>172</td><td>N</td><td>0</td><td>Up</td><td>0</td><td>AG</td><td>e2/e3</td><td>17.2</td><td>0</td><td>1</td><td><span class="target-pill zero">0</span></td></tr><tr><td>1</td><td>49</td><td>F</td><td>NAP</td><td>160</td><td>180</td><td>0</td><td>Normal</td><td>156</td><td>N</td><td>1</td><td>Flat</td><td>0</td><td>AG</td><td>e3/e3</td><td>19.5</td><td>0</td><td>1</td><td><span class="target-pill zero">0</span></td></tr><tr><td>2</td><td>37</td><td>M</td><td>ATA</td><td>130</td><td>283</td><td>0</td><td>ST</td><td>98</td><td>N</td><td>0</td><td>Up</td><td>1</td><td>AA</td><td>e3/e4</td><td>64</td><td>0</td><td>2.5</td><td><span class="target-pill zero">0</span></td></tr><tr><td>3</td><td>48</td><td>F</td><td>ASY</td><td>138</td><td>214</td><td>0</td><td>Normal</td><td>108</td><td>Y</td><td>1.5</td><td>Flat</td><td>1</td><td>AA</td><td>e3/e4</td><td>64</td><td>0</td><td>2.5</td><td><span class="target-pill one">1</span></td></tr><tr><td>4</td><td>54</td><td>M</td><td>NAP</td><td>150</td><td>195</td><td>0</td><td>Normal</td><td>122</td><td>N</td><td>0</td><td>Up</td><td>0</td><td>AG</td><td>e2/e3</td><td>28.4</td><td>0</td><td>1</td><td><span class="target-pill zero">0</span></td></tr><tr><td>5</td><td>39</td><td>M</td><td>NAP</td><td>120</td><td>339</td><td>0</td><td>Normal</td><td>170</td><td>N</td><td>0</td><td>Up</td><td>1</td><td>AG</td><td>e3/e3</td><td>20.7</td><td>0</td><td>2</td><td><span class="target-pill zero">0</span></td></tr><tr><td>6</td><td>45</td><td>F</td><td>ATA</td><td>130</td><td>237</td><td>0</td><td>Normal</td><td>170</td><td>N</td><td>0</td><td>Up</td><td>0</td><td>AA</td><td>e3/e3</td><td>25.9</td><td>0</td><td>0</td><td><span class="target-pill zero">0</span></td></tr><tr><td>7</td><td>54</td><td>M</td><td>ATA</td><td>110</td><td>208</td><td>0</td><td>Normal</td><td>142</td><td>N</td><td>0</td><td>Up</td><td>0</td><td>AA</td><td>e3/e4</td><td>8.4</td><td>0</td><td>0.5</td><td><span class="target-pill zero">0</span></td></tr><tr><td>8</td><td>37</td><td>M</td><td>ASY</td><td>140</td><td>207</td><td>0</td><td>Normal</td><td>130</td><td>Y</td><td>1.5</td><td>Flat</td><td>0</td><td>GG</td><td>e3/e3</td><td>58.6</td><td>0</td><td>3</td><td><span class="target-pill one">1</span></td></tr><tr><td>9</td><td>48</td><td>F</td><td>ATA</td><td>120</td><td>284</td><td>0</td><td>Normal</td><td>120</td><td>N</td><td>0</td><td>Up</td><td>0</td><td>GG</td><td>e3/e3</td><td>6.7</td><td>0</td><td>2</td><td><span class="target-pill zero">0</span></td></tr></tbody></table>
 
             </div>
 
@@ -399,8 +216,9 @@
             </div>
 
             <p>
-                The same preprocessing sequence used during training
-                is preserved for the deployed model.
+                The final training workflow keeps preprocessing inside each
+                model pipeline and evaluates clinical-only and clinical + genetic
+                Logistic Regression on the same stratified test split.
             </p>
         </div>
 
@@ -410,39 +228,39 @@
             <div class="pipeline-step">
                 <span class="pipeline-number">01</span>
                 <strong>Raw Dataset</strong>
-                <small>918 × 12</small>
+                <small>918 × 18</small>
             </div>
 
             <div class="pipeline-arrow">→</div>
 
             <div class="pipeline-step">
                 <span class="pipeline-number">02</span>
-                <strong>Cleaning</strong>
-                <small>zero-value treatment</small>
+                <strong>Zero-value treatment</strong>
+                <small>mean replacement in BP / cholesterol</small>
             </div>
 
             <div class="pipeline-arrow">→</div>
 
             <div class="pipeline-step">
                 <span class="pipeline-number">03</span>
-                <strong>One-Hot Encoding</strong>
-                <small>categorical → numeric</small>
+                <strong>Preprocessing</strong>
+                <small>impute · scale · one-hot encode</small>
             </div>
 
             <div class="pipeline-arrow">→</div>
 
             <div class="pipeline-step">
                 <span class="pipeline-number">04</span>
-                <strong>StandardScaler</strong>
-                <small>15 model inputs</small>
+                <strong>Feature preparation</strong>
+                <small>numeric + categorical inputs</small>
             </div>
 
             <div class="pipeline-arrow">→</div>
 
             <div class="pipeline-step final">
                 <span class="pipeline-number">05</span>
-                <strong>Logistic Regression</strong>
-                <small>risk prediction</small>
+                <strong>Two LR Pipelines</strong>
+                <small>clinical / clinical + genetic</small>
             </div>
 
         </div>
@@ -454,8 +272,8 @@
                 <span class="info-label">CHOLESTEROL CLEANING</span>
                 <strong>172 zero values</strong>
                 <p>
-                    Zero cholesterol values were replaced using the mean
-                    of the non-zero observations.
+                    Zero cholesterol values were replaced with the mean
+                    of the non-zero observations before model training.
                 </p>
                 <div class="preprocess-value">
                     Replacement mean
@@ -467,8 +285,8 @@
                 <span class="info-label">RESTING BLOOD PRESSURE</span>
                 <strong>Zero values corrected</strong>
                 <p>
-                    Zero RestingBP observations were replaced using the
-                    mean of the non-zero measurements.
+                    The single zero RestingBP observation was replaced with
+                    the mean of the non-zero measurements.
                 </p>
                 <div class="preprocess-value">
                     Replacement mean
@@ -480,8 +298,8 @@
                 <span class="info-label">TRAIN / TEST SPLIT</span>
                 <strong>80 / 20</strong>
                 <p>
-                    The cleaned dataset is divided into training and
-                    testing subsets using random state 42.
+                    Both model variants use the same stratified 80 / 20 split
+                    with random state 42.
                 </p>
                 <div class="preprocess-value">
                     Training
@@ -506,220 +324,138 @@
         <div class="insight-section-heading">
             <div>
                 <span class="insights-eyebrow">04 · MODEL EVALUATION</span>
-                <h2>Model Performance</h2>
+                <h2>Clinical vs Clinical + Genetic</h2>
             </div>
 
             <p>
-                Five classification models were evaluated on the same
-                scaled test set using Accuracy and F1 Score.
+                Two Logistic Regression pipelines were evaluated using the same
+                stratified 80 / 20 train-test split. The second model adds six
+                family-history and genetic attributes to the clinical inputs.
             </p>
         </div>
-
 
         <div class="performance-grid">
 
             <div class="glass performance-card">
-
                 <div class="performance-heading">
                     <div>
                         <span class="info-label">ACCURACY</span>
-                        <h3>Model comparison</h3>
+                        <h3>Test-set comparison</h3>
                     </div>
                     <span class="metric-unit">%</span>
                 </div>
-
-
                 <div class="model-bars">
-
-                    <div class="model-row featured">
-                        <div class="model-name">
-                            <span>Logistic Regression</span>
-                            <strong>86.41%</strong>
-                        </div>
-                        <div class="model-track">
-                            <div class="model-fill"
-                                 style="width:86.41%"></div>
-                        </div>
-                    </div>
-
                     <div class="model-row">
                         <div class="model-name">
-                            <span>SVM</span>
+                            <span>Clinical Only</span>
                             <strong>85.87%</strong>
                         </div>
                         <div class="model-track">
-                            <div class="model-fill"
-                                 style="width:85.87%"></div>
+                            <div class="model-fill" style="width:85.87%"></div>
                         </div>
                     </div>
-
-                    <div class="model-row">
+                    <div class="model-row featured">
                         <div class="model-name">
-                            <span>KNN</span>
-                            <strong>85.33%</strong>
+                            <span>Clinical + Genetic</span>
+                            <strong>89.13%</strong>
                         </div>
                         <div class="model-track">
-                            <div class="model-fill"
-                                 style="width:85.33%"></div>
+                            <div class="model-fill" style="width:89.13%"></div>
                         </div>
                     </div>
-
-                    <div class="model-row">
-                        <div class="model-name">
-                            <span>Gaussian Naive Bayes</span>
-                            <strong>84.78%</strong>
-                        </div>
-                        <div class="model-track">
-                            <div class="model-fill"
-                                 style="width:84.78%"></div>
-                        </div>
-                    </div>
-
-                    <div class="model-row">
-                        <div class="model-name">
-                            <span>Decision Tree</span>
-                            <strong>80.43%</strong>
-                        </div>
-                        <div class="model-track">
-                            <div class="model-fill"
-                                 style="width:80.43%"></div>
-                        </div>
-                    </div>
-
                 </div>
-
             </div>
 
-
             <div class="glass performance-card">
-
                 <div class="performance-heading">
                     <div>
                         <span class="info-label">F1 SCORE</span>
-                        <h3>Classification balance</h3>
+                        <h3>Precision-recall balance</h3>
                     </div>
                     <span class="metric-unit">%</span>
                 </div>
-
-
                 <div class="model-bars">
-
+                    <div class="model-row">
+                        <div class="model-name">
+                            <span>Clinical Only</span>
+                            <strong>86.60%</strong>
+                        </div>
+                        <div class="model-track">
+                            <div class="model-fill" style="width:86.60%"></div>
+                        </div>
+                    </div>
                     <div class="model-row featured">
                         <div class="model-name">
-                            <span>Logistic Regression</span>
-                            <strong>87.92%</strong>
+                            <span>Clinical + Genetic</span>
+                            <strong>89.36%</strong>
                         </div>
                         <div class="model-track">
-                            <div class="model-fill"
-                                 style="width:87.92%"></div>
+                            <div class="model-fill" style="width:89.36%"></div>
                         </div>
                     </div>
-
-                    <div class="model-row">
-                        <div class="model-name">
-                            <span>SVM</span>
-                            <strong>87.62%</strong>
-                        </div>
-                        <div class="model-track">
-                            <div class="model-fill"
-                                 style="width:87.62%"></div>
-                        </div>
-                    </div>
-
-                    <div class="model-row">
-                        <div class="model-name">
-                            <span>KNN</span>
-                            <strong>87.08%</strong>
-                        </div>
-                        <div class="model-track">
-                            <div class="model-fill"
-                                 style="width:87.08%"></div>
-                        </div>
-                    </div>
-
-                    <div class="model-row">
-                        <div class="model-name">
-                            <span>Gaussian Naive Bayes</span>
-                            <strong>86.14%</strong>
-                        </div>
-                        <div class="model-track">
-                            <div class="model-fill"
-                                 style="width:86.14%"></div>
-                        </div>
-                    </div>
-
-                    <div class="model-row">
-                        <div class="model-name">
-                            <span>Decision Tree</span>
-                            <strong>82.35%</strong>
-                        </div>
-                        <div class="model-track">
-                            <div class="model-fill"
-                                 style="width:82.35%"></div>
-                        </div>
-                    </div>
-
                 </div>
-
             </div>
 
         </div>
 
-
         <div class="glass performance-table-card">
-
             <table class="model-result-table">
-
                 <thead>
                     <tr>
                         <th>Model</th>
                         <th>Accuracy</th>
+                        <th>Precision</th>
+                        <th>Recall</th>
                         <th>F1 Score</th>
                         <th>Status</th>
                     </tr>
                 </thead>
-
                 <tbody>
-
-                    <tr class="selected-model">
-                        <td>Logistic Regression</td>
-                        <td>86.41%</td>
-                        <td>87.92%</td>
-                        <td><span class="selected-tag">DEPLOYED</span></td>
-                    </tr>
-
                     <tr>
-                        <td>SVM</td>
+                        <td>Clinical Only · Logistic Regression</td>
                         <td>85.87%</td>
-                        <td>87.62%</td>
-                        <td>Evaluated</td>
+                        <td>86.60%</td>
+                        <td>86.60%</td>
+                        <td>86.60%</td>
+                        <td>Baseline</td>
                     </tr>
-
-                    <tr>
-                        <td>KNN</td>
-                        <td>85.33%</td>
-                        <td>87.08%</td>
-                        <td>Evaluated</td>
+                    <tr class="selected-model">
+                        <td>Clinical + Genetic · Logistic Regression</td>
+                        <td>89.13%</td>
+                        <td>92.31%</td>
+                        <td>86.60%</td>
+                        <td>89.36%</td>
+                        <td><span class="selected-tag">SELECTED</span></td>
                     </tr>
-
-                    <tr>
-                        <td>Gaussian Naive Bayes</td>
-                        <td>84.78%</td>
-                        <td>86.14%</td>
-                        <td>Evaluated</td>
-                    </tr>
-
-                    <tr>
-                        <td>Decision Tree</td>
-                        <td>80.43%</td>
-                        <td>82.35%</td>
-                        <td>Evaluated</td>
-                    </tr>
-
                 </tbody>
-
             </table>
+        </div>
 
+        <div class="glass performance-table-card">
+            <div class="performance-heading">
+                <div>
+                    <span class="info-label">CLINICAL + GENETIC MODEL</span>
+                    <h3>Confusion Matrix</h3>
+                </div>
+                <span class="metric-unit">184 TEST RECORDS</span>
+            </div>
+            <table class="model-result-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Predicted: No Disease</th>
+                        <th>Predicted: Disease</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Actual: No Disease</td><td>80</td><td>7</td></tr>
+                    <tr><td>Actual: Disease</td><td>13</td><td>84</td></tr>
+                </tbody>
+            </table>
+            <p class="correlation-note">
+                The genetic model correctly classified 164 of 184 test records.
+                Metrics are from the notebook's held-out test split.
+            </p>
         </div>
 
     </section>
@@ -734,182 +470,80 @@
         <div class="insight-section-heading">
             <div>
                 <span class="insights-eyebrow">05 · FEATURE RELATIONSHIPS</span>
-                <h2>Correlation Matrix</h2>
+                <h2>Clinical & Genetic Correlations</h2>
             </div>
 
             <p>
-                Pearson correlations between the numeric variables
-                examined in the notebook.
+                Pearson correlations between selected numeric variables and
+                HeartDisease in the updated dataset. Genotype categories are
+                not represented in this numeric-only matrix.
             </p>
         </div>
 
-
         <div class="glass correlation-card">
-
             <div class="correlation-layout">
-
                 <div class="correlation-matrix-wrap">
-
                     <table class="correlation-matrix">
-
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Age</th>
-                                <th>BP</th>
-                                <th>Chol</th>
-                                <th>FBS</th>
-                                <th>HR</th>
-                                <th>Oldpeak</th>
-                                <th>HD</th>
-                            </tr>
-                        </thead>
-
+                        <thead><tr>
+                            <th></th><th>Age</th><th>Oldpeak</th><th>MaxHR</th>
+                            <th>FBS</th><th>Family</th><th>Lp(a)</th><th>Genetic<br>Risk</th><th>HD</th>
+                        </tr></thead>
                         <tbody>
-
-                            <tr>
-                                <th>Age</th>
-                                <td class="c-pos-10">1</td>
-                                <td class="c-pos-2">.26</td>
-                                <td class="c-neutral">.053</td>
-                                <td class="c-pos-1">.20</td>
-                                <td class="c-neg-4">-.38</td>
-                                <td class="c-pos-2">.26</td>
-                                <td class="c-pos-3">.28</td>
-                            </tr>
-
-                            <tr>
-                                <th>BP</th>
-                                <td class="c-pos-2">.26</td>
-                                <td class="c-pos-10">1</td>
-                                <td class="c-neutral">.083</td>
-                                <td class="c-neutral">.068</td>
-                                <td class="c-neg-1">-.11</td>
-                                <td class="c-pos-1">.17</td>
-                                <td class="c-pos-1">.12</td>
-                            </tr>
-
-                            <tr>
-                                <th>Chol</th>
-                                <td class="c-neutral">.053</td>
-                                <td class="c-neutral">.083</td>
-                                <td class="c-pos-10">1</td>
-                                <td class="c-neutral">.043</td>
-                                <td class="c-neutral">-.017</td>
-                                <td class="c-neutral">.053</td>
-                                <td class="c-neutral">.094</td>
-                            </tr>
-
-                            <tr>
-                                <th>FBS</th>
-                                <td class="c-pos-1">.20</td>
-                                <td class="c-neutral">.068</td>
-                                <td class="c-neutral">.043</td>
-                                <td class="c-pos-10">1</td>
-                                <td class="c-neg-1">-.13</td>
-                                <td class="c-neutral">.053</td>
-                                <td class="c-pos-2">.27</td>
-                            </tr>
-
-                            <tr>
-                                <th>MaxHR</th>
-                                <td class="c-neg-4">-.38</td>
-                                <td class="c-neg-1">-.11</td>
-                                <td class="c-neutral">-.017</td>
-                                <td class="c-neg-1">-.13</td>
-                                <td class="c-pos-10">1</td>
-                                <td class="c-neg-1">-.16</td>
-                                <td class="c-neg-4">-.40</td>
-                            </tr>
-
-                            <tr>
-                                <th>Oldpeak</th>
-                                <td class="c-pos-2">.26</td>
-                                <td class="c-pos-1">.17</td>
-                                <td class="c-neutral">.053</td>
-                                <td class="c-neutral">.053</td>
-                                <td class="c-neg-1">-.16</td>
-                                <td class="c-pos-10">1</td>
-                                <td class="c-pos-4">.40</td>
-                            </tr>
-
-                            <tr>
-                                <th>HeartDisease</th>
-                                <td class="c-pos-3">.28</td>
-                                <td class="c-pos-1">.12</td>
-                                <td class="c-neutral">.094</td>
-                                <td class="c-pos-2">.27</td>
-                                <td class="c-neg-4">-.40</td>
-                                <td class="c-pos-4">.40</td>
-                                <td class="c-pos-10">1</td>
-                            </tr>
-
+                            <tr><th>Age</th><td class="c-pos-10">1.00</td><td class="c-pos-2">.26</td><td class="c-neg-4">-.38</td><td class="c-pos-1">.20</td><td class="c-neutral">.09</td><td class="c-neutral">.05</td><td class="c-neutral">.06</td><td class="c-pos-3">.32</td></tr>
+                            <tr><th>Oldpeak</th><td class="c-pos-2">.26</td><td class="c-pos-10">1.00</td><td class="c-neg-1">-.16</td><td class="c-neutral">.05</td><td class="c-neutral">.09</td><td class="c-neutral">.09</td><td class="c-pos-1">.13</td><td class="c-pos-4">.43</td></tr>
+                            <tr><th>MaxHR</th><td class="c-neg-4">-.38</td><td class="c-neg-1">-.16</td><td class="c-pos-10">1.00</td><td class="c-neg-1">-.13</td><td class="c-neg-1">-.12</td><td class="c-neutral">-.09</td><td class="c-neg-1">-.11</td><td class="c-neg-4">-.44</td></tr>
+                            <tr><th>FBS</th><td class="c-pos-1">.20</td><td class="c-neutral">.05</td><td class="c-neg-1">-.13</td><td class="c-pos-10">1.00</td><td class="c-neutral">.04</td><td class="c-neutral">.07</td><td class="c-pos-1">.15</td><td class="c-pos-2">.26</td></tr>
+                            <tr><th>Family</th><td class="c-neutral">.09</td><td class="c-neutral">.09</td><td class="c-neg-1">-.12</td><td class="c-neutral">.04</td><td class="c-pos-10">1.00</td><td class="c-neutral">.04</td><td class="c-pos-3">.37</td><td class="c-pos-3">.27</td></tr>
+                            <tr><th>Lp(a)</th><td class="c-neutral">.05</td><td class="c-neutral">.09</td><td class="c-neg-1">-.09</td><td class="c-pos-1">.07</td><td class="c-neutral">.04</td><td class="c-pos-10">1.00</td><td class="c-pos-3">.38</td><td class="c-pos-2">.22</td></tr>
+                            <tr><th>Genetic Risk</th><td class="c-neutral">.06</td><td class="c-pos-1">.13</td><td class="c-neg-1">-.11</td><td class="c-pos-1">.15</td><td class="c-pos-3">.37</td><td class="c-pos-3">.38</td><td class="c-pos-10">1.00</td><td class="c-pos-4">.41</td></tr>
+                            <tr><th>HeartDisease</th><td class="c-pos-3">.32</td><td class="c-pos-4">.43</td><td class="c-neg-4">-.44</td><td class="c-pos-2">.26</td><td class="c-pos-3">.27</td><td class="c-pos-2">.22</td><td class="c-pos-4">.41</td><td class="c-pos-10">1.00</td></tr>
                         </tbody>
-
                     </table>
-
                 </div>
 
-
                 <div class="correlation-insights">
-
                     <span class="info-label">OBSERVED RELATIONSHIPS</span>
 
                     <div class="correlation-highlight positive">
                         <span>+</span>
                         <div>
-                            <strong>Oldpeak · +0.40</strong>
-                            <small>
-                                Strongest positive numeric correlation
-                                with HeartDisease in the matrix.
-                            </small>
+                            <strong>Oldpeak · +0.43</strong>
+                            <small>Highest positive correlation with HeartDisease among the numeric variables shown.</small>
                         </div>
                     </div>
 
                     <div class="correlation-highlight negative">
                         <span>−</span>
                         <div>
-                            <strong>MaxHR · −0.40</strong>
-                            <small>
-                                Strongest negative numeric correlation
-                                with HeartDisease in the matrix.
-                            </small>
+                            <strong>MaxHR · −0.44</strong>
+                            <small>Largest-magnitude negative correlation with the target in the numeric data.</small>
                         </div>
                     </div>
 
                     <div class="correlation-highlight">
                         <span>+</span>
                         <div>
-                            <strong>Age · +0.28</strong>
-                            <small>
-                                A positive relationship is visible
-                                between age and the target.
-                            </small>
+                            <strong>Genetic Risk Score · +0.41</strong>
+                            <small>A positive numeric association with the target is present in this dataset.</small>
                         </div>
                     </div>
 
                     <div class="correlation-highlight">
                         <span>+</span>
                         <div>
-                            <strong>FastingBS · +0.27</strong>
-                            <small>
-                                Fasting blood sugar shows a positive
-                                numeric relationship with the target.
-                            </small>
+                            <strong>Family History · +0.27</strong>
+                            <small>FamilyHistory has a positive correlation with the target.</small>
                         </div>
                     </div>
 
                     <p class="correlation-note">
-                        Correlation describes association in this dataset;
-                        it does not establish causation.
+                        Correlation indicates association, not causation. These
+                        values are descriptive dataset statistics, not clinical
+                        risk estimates.
                     </p>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
 
 
@@ -926,59 +560,60 @@
             </div>
 
             <p>
-                Key observations directly derived from the experiments
-                performed in the notebook.
+                Key observations from the clinical-only and clinical + genetic
+                Logistic Regression experiments recorded in the notebook.
             </p>
         </div>
-
 
         <div class="model-insight-grid">
 
             <div class="glass model-insight-card">
                 <span class="insight-card-number">01</span>
                 <span class="info-label">PERFORMANCE</span>
-                <h3>Logistic Regression</h3>
+                <h3>Genetic Inputs Improve Results</h3>
                 <p>
-                    Recorded the highest test accuracy among the five
-                    evaluated models at <strong>86.41%</strong>, with an
-                    F1 score of <strong>87.92%</strong>.
+                    Adding genetic and family-history attributes increased
+                    test accuracy from <strong>85.87%</strong> to
+                    <strong>89.13%</strong> and F1 score from
+                    <strong>86.60%</strong> to <strong>89.36%</strong>
+                    on this split.
                 </p>
             </div>
 
             <div class="glass model-insight-card">
                 <span class="insight-card-number">02</span>
-                <span class="info-label">FEATURE SPACE</span>
-                <h3>15 Model Inputs</h3>
+                <span class="info-label">GENETIC FEATURE SET</span>
+                <h3>Six Additional Inputs</h3>
                 <p>
-                    One-hot encoding expands the original 12-column
-                    dataset into a 15-feature input space used by the
-                    trained classifier.
+                    FamilyHistory, rs10757274_Genotype, APOE_Genotype,
+                    Lpa_Level, FH_Mutation and Genetic_Risk_Score are added
+                    to the 11 clinical variables.
                 </p>
             </div>
 
             <div class="glass model-insight-card">
                 <span class="insight-card-number">03</span>
-                <span class="info-label">SCALING</span>
-                <h3>Standardized Inputs</h3>
+                <span class="info-label">PREPROCESSING</span>
+                <h3>Pipeline-based Preparation</h3>
                 <p>
-                    Numerical model inputs are standardized with
-                    <strong>StandardScaler</strong> before reaching the
-                    trained model.
+                    Numeric fields use median imputation and StandardScaler;
+                    categorical fields use most-frequent imputation and
+                    OneHotEncoder with unknown-category handling.
                 </p>
             </div>
 
             <div class="glass model-insight-card">
                 <span class="insight-card-number">04</span>
-                <span class="info-label">DATA BALANCE</span>
-                <h3>Moderately Imbalanced</h3>
+                <span class="info-label">TEST SET</span>
+                <h3>Stratified Evaluation</h3>
                 <p>
-                    The target contains 508 positive and 410 negative
-                    observations, giving a 55.34% / 44.66% distribution.
+                    Both variants use the same 80 / 20 stratified split
+                    (random state 42), with <strong>734</strong> training
+                    records and <strong>184</strong> test records.
                 </p>
             </div>
 
         </div>
-
     </section>
 
 
@@ -989,58 +624,28 @@
     <section class="insight-section">
 
         <div class="glass model-config-card">
-
             <div class="model-config-main">
-
                 <span class="insights-eyebrow">DEPLOYMENT CONFIGURATION</span>
-
                 <h2>CardioSense Prediction Engine</h2>
-
                 <p>
-                    The Flask application loads the trained Logistic Regression
-                    model together with the saved scaler and exact training
-                    column order.
+                    The updated notebook trains two complete Logistic Regression
+                    pipelines. The clinical + genetic pipeline includes both
+                    preprocessing and classification, and is saved as
+                    <strong>genetic_model.pkl</strong>.
                 </p>
-
             </div>
-
 
             <div class="config-grid">
-
-                <div>
-                    <span>MODEL</span>
-                    <strong>LogisticRegression</strong>
-                </div>
-
-                <div>
-                    <span>INPUTS</span>
-                    <strong>15 features</strong>
-                </div>
-
-                <div>
-                    <span>SCALER</span>
-                    <strong>StandardScaler</strong>
-                </div>
-
-                <div>
-                    <span>SPLIT</span>
-                    <strong>80 / 20</strong>
-                </div>
-
-                <div>
-                    <span>RANDOM STATE</span>
-                    <strong>42</strong>
-                </div>
-
-                <div>
-                    <span>OUTPUT</span>
-                    <strong>Binary risk prediction</strong>
-                </div>
-
+                <div><span>MODEL</span><strong>Logistic Regression</strong></div>
+                <div><span>INPUT GROUPS</span><strong>11 clinical + 6 genetic</strong></div>
+                <div><span>PREPROCESSING</span><strong>Imputer + Scaler + Encoder</strong></div>
+                <div><span>ENCODED FEATURES</span><strong>31 (observed categories)</strong></div>
+                <div><span>DATA SPLIT</span><strong>Stratified 80 / 20</strong></div>
+                <div><span>RANDOM STATE</span><strong>42</strong></div>
+                <div><span>TEST ACCURACY</span><strong>89.13%</strong></div>
+                <div><span>SAVED PIPELINES</span><strong>clinical_model.pkl · genetic_model.pkl</strong></div>
             </div>
-
         </div>
-
     </section>
 
 
@@ -1056,10 +661,13 @@
             <strong>About these insights</strong>
 
             <p>
-                These metrics describe the performance and patterns observed
-                in the CardioSense development dataset. They are model and
-                dataset insights, not clinical conclusions or a medical
-                diagnosis.
+                These metrics describe performance on one held-out split of the
+                supplied dataset. The notebook does not demonstrate external
+                validation on an independent hospital or unseen population.
+                Genetic fields in this dataset are model inputs, not a
+                substitute for laboratory testing or clinical interpretation.
+                CardioSense is an educational decision-support prototype and
+                does not provide a medical diagnosis.
             </p>
         </div>
 
